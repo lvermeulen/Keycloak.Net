@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFrameworks>net452;netstandard1.4</TargetFrameworks>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Authors>Luk Vermeulen</Authors>
+    <Copyright>Copyright 2019 by Luk Vermeulen. All rights reserved.</Copyright>
+    <PackageLicenseUrl>https://github.com/lvermeulen/Keycloak/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/lvermeulen/Keycloak.Net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lvermeulen/Keycloak.Net</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>keycloak</PackageTags>
+    <PackageIconUrl>https://i.imgur.com/eEjfRLz.jpg?2</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
