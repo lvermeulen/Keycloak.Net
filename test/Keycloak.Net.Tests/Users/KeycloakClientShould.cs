@@ -1,23 +1,38 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Keycloak.Net.Tests
 {
     public partial class KeycloakClientShould
     {
-        [Fact]
-        public async Task GetUsersAsync()
+        [Theory]
+        [InlineData("Insurance")]
+        public async Task GetUsersAsync(string realm)
         {
-            var result = await _client.GetUsersAsync("Insurance");
+            var result = await _client.GetUsersAsync(realm);
             Assert.NotNull(result);
             Assert.NotEmpty(result);
         }
 
-        [Fact]
-        public async Task GetUsersCountAsync()
+        [Theory]
+        [InlineData("Insurance")]
+        public async Task GetUsersCountAsync(string realm)
         {
-            int result = await _client.GetUsersCountAsync("Insurance");
+            int result = await _client.GetUsersCountAsync(realm);
             Assert.True(result >= 0);
         }
+
+        [Theory]
+        [InlineData("Insurance")]
+        public async Task GetUserAsync(string realm)
+        {
+            var users = await _client.GetUsersAsync(realm);
+            string userId = users.FirstOrDefault()?.Id;
+            var result = await _client.GetUserAsync(realm, userId);
+            Assert.NotNull(result);
+            Assert.Equal(userId, result.Id);
+        }
+
     }
 }
