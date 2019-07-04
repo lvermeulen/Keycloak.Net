@@ -29,10 +29,32 @@ namespace Keycloak.Net.Tests
         {
             var users = await _client.GetUsersAsync(realm);
             string userId = users.FirstOrDefault()?.Id;
+
             var result = await _client.GetUserAsync(realm, userId);
             Assert.NotNull(result);
             Assert.Equal(userId, result.Id);
         }
 
+        [Theory]
+        [InlineData("Insurance", "vermeulen")]
+        public async Task GetUserGroupsAsync(string realm, string search)
+        {
+            var users = await _client.GetUsersAsync(realm, search: search);
+            string userId = users.FirstOrDefault()?.Id;
+
+            var result = await _client.GetUserGroupsAsync(realm, userId);
+            Assert.NotNull(result);
+        }
+
+        [Theory]
+        [InlineData("Insurance", "vermeulen")]
+        public async Task GetUserGroupsCountAsync(string realm, string search)
+        {
+            var users = await _client.GetUsersAsync(realm, search: search);
+            string userId = users.FirstOrDefault()?.Id;
+
+            int result = await _client.GetUserGroupsCountAsync(realm, userId);
+            Assert.True(result >= 0);
+        }
     }
 }
