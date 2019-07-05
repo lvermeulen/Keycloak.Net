@@ -27,5 +27,5 @@ Client for [Keycloak](https://www.keycloak.org/) 6.x
 * [ ] Scope Mappings
 * [ ] User Storage Provider
 * [ ] Users
-* [ ] Root
+* [X] Root
 
