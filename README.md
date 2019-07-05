@@ -4,7 +4,7 @@
  [![license](https://img.shields.io/github/license/lvermeulen/Keycloak.Net.svg?maxAge=2592000)](https://github.com/lvermeulen/Keycloak.Net/blob/master/LICENSE) [![NuGet](https://img.shields.io/nuget/v/Keycloak.Net.svg?maxAge=2592000)](https://www.nuget.org/packages/Keycloak.Net/) 
  ![](https://img.shields.io/badge/.net-4.5.2-yellowgreen.svg) ![](https://img.shields.io/badge/netstandard-1.4-yellowgreen.svg)
 
-Client for [Keycloak](https://www.keycloak.org/) 6.x
+C# client for [Keycloak](https://www.keycloak.org/) 6.x
 
 ## Features
 * [ ] Attack Detection
