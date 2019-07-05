@@ -30,6 +30,6 @@ namespace Keycloak.Net.Models.Users
         [JsonProperty("notBefore")]
         public int NotBefore { get; set; }
         [JsonProperty("access")]
-        public Access Access { get; set; }
+        public UserAccess Access { get; set; }
     }
 }

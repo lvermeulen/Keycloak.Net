@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Keycloak.Net.Models.Clients
 {
-
     public class Client
     {
         [JsonProperty("id")]
@@ -52,60 +52,12 @@ namespace Keycloak.Net.Models.Clients
         [JsonProperty("nodeReRegistrationTimeout")]
         public int NodeReregistrationTimeout { get; set; }
         [JsonProperty("protocolMappers")]
-        public ClientProtocolmapper[] ProtocolMappers { get; set; }
+        public ClientProtocolMapper[] ProtocolMappers { get; set; }
         [JsonProperty("defaultClientScopes")]
-        public string[] DefaultClientScopes { get; set; }
+        public IEnumerable<string> DefaultClientScopes { get; set; }
         [JsonProperty("optionalClientScopes")]
-        public string[] OptionalClientScopes { get; set; }
+        public IEnumerable<string> OptionalClientScopes { get; set; }
         [JsonProperty("access")]
         public ClientAccess Access { get; set; }
-    }
-
-    public class ClientAttributes
-    { }
-
-    public class AuthenticationFlowBindingOverrides
-    { }
-
-    public class ClientAccess
-    {
-        [JsonProperty("view")]
-        public bool View { get; set; }
-        [JsonProperty("configure")]
-        public bool Configure { get; set; }
-        [JsonProperty("manage")]
-        public bool Manage { get; set; }
-    }
-
-    public class ClientProtocolmapper
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-        [JsonProperty("name")]
-        public string Name { get; set; }
-        [JsonProperty("protocol")]
-        public string Protocol { get; set; }
-        [JsonProperty("protocolMapper")]
-        public string ProtocolMapper { get; set; }
-        [JsonProperty("consentRequired")]
-        public bool ConsentRequired { get; set; }
-        [JsonProperty("config")]
-        public ClientConfig Config { get; set; }
-    }
-
-    public class ClientConfig
-    {
-        [JsonProperty("userinfotokenclaim")]
-        public string UserInfoTokenClaim { get; set; }
-        [JsonProperty("userattribute")]
-        public string UserAttribute { get; set; }
-        [JsonProperty("idtokenclaim")]
-        public string IdTokenClaim { get; set; }
-        [JsonProperty("accesstokenclaim")]
-        public string AccessTokenClaim { get; set; }
-        [JsonProperty("claimname")]
-        public string ClaimName { get; set; }
-        [JsonProperty("jsonTypelabel")]
-        public string JsonTypelabel { get; set; }
     }
 }

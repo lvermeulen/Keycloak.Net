@@ -2,7 +2,7 @@
 
 namespace Keycloak.Net.Models.Users
 {
-    public class Access
+    public class UserAccess
     {
         [JsonProperty("manageGroupMembership")]
         public bool ManageGroupMembership { get; set; }

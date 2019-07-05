@@ -37,6 +37,17 @@ namespace Keycloak.Net.Tests
 
         [Theory]
         [InlineData("Insurance", "vermeulen")]
+        public async Task GetUserSocialLoginsAsync(string realm, string search)
+        {
+            var users = await _client.GetUsersAsync(realm, search: search);
+            string userId = users.FirstOrDefault()?.Id;
+
+            var result = await _client.GetUserSocialLoginsAsync(realm, userId);
+            Assert.NotNull(result);
+        }
+
+        [Theory]
+        [InlineData("Insurance", "vermeulen")]
         public async Task GetUserGroupsAsync(string realm, string search)
         {
             var users = await _client.GetUsersAsync(realm, search: search);
@@ -55,6 +66,17 @@ namespace Keycloak.Net.Tests
 
             int result = await _client.GetUserGroupsCountAsync(realm, userId);
             Assert.True(result >= 0);
+        }
+
+        [Theory]
+        [InlineData("Insurance", "vermeulen")]
+        public async Task GetUserSessionsAsync(string realm, string search)
+        {
+            var users = await _client.GetUsersAsync(realm, search: search);
+            string userId = users.FirstOrDefault()?.Id;
+
+            var result = await _client.GetUserSessionsAsync(realm, userId);
+            Assert.NotNull(result);
         }
     }
 }

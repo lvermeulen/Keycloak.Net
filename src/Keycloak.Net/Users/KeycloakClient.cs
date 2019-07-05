@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Flurl.Http;
 using Keycloak.Net.Common;
@@ -68,12 +69,71 @@ namespace Keycloak.Net
             return response.IsSuccessStatusCode;
         }
 
+        [Obsolete("Not working yet", error: true)]
         public async Task<string> GetUserConsentsAsync(string realm, string userId)
         {
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/consents")
                 .GetStringAsync()
                 .ConfigureAwait(false);
+        }
+
+        public async Task<bool> RevokeUserConsentAndOfflineTokensAsync(string realm, string userId, string clientId)
+        {
+            var response = await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/consents/{clientId}")
+                .DeleteAsync()
+                .ConfigureAwait(false);
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> DisableUserCredentialsAsync(string realm, string userId, IEnumerable<string> credentialTypes)
+        {
+            var response = await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/disable-credential-types")
+                .PutJsonAsync(credentialTypes)
+                .ConfigureAwait(false);
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> SendUserUpdateAccountEmailAsync(string realm, string userId, IEnumerable<string> requiredActions, string clientId = null, int? lifespan = null, string redirectUri = null)
+        {
+            var queryParams = new Dictionary<string, object>
+            {
+                ["client_id"] = clientId,
+                [nameof(lifespan)] = lifespan,
+                ["redirect_uri"] = redirectUri
+            };
+
+            var response = await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/execute-actions-email")
+                .SetQueryParams(queryParams)
+                .PutJsonAsync(requiredActions)
+                .ConfigureAwait(false);
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<IEnumerable<FederatedIdentity>> GetUserSocialLoginsAsync(string realm, string userId) => await GetBaseUrl(realm)
+            .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/federated-identity")
+            .GetJsonAsync<IEnumerable<FederatedIdentity>>()
+            .ConfigureAwait(false);
+
+        public async Task<bool> AddUserSocialLoginProviderAsync(string realm, string userId, string provider, FederatedIdentity federatedIdentity)
+        {
+            var response = await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/federated-identity/{provider}")
+                .PostJsonAsync(federatedIdentity)
+                .ConfigureAwait(false);
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> RemoveUserSocialLoginProviderAsync(string realm, string userId, string provider)
+        {
+            var response = await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/federated-identity/{provider}")
+                .DeleteAsync()
+                .ConfigureAwait(false);
+            return response.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Group>> GetUserGroupsAsync(string realm, string userId) => await GetBaseUrl(realm)
@@ -107,5 +167,69 @@ namespace Keycloak.Net
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
+
+        public async Task<IDictionary<string, object>> ImpersonateUserAsync(string realm, string userId)
+        {
+            var response = await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/impersonation")
+                .PostAsync(new StringContent(""))
+                .ReceiveJson()
+                .ConfigureAwait(false);
+            return Converter.DynamicToDictionary(response);
+        }
+
+        public async Task<bool> RemoveUserSessionsAsync(string realm, string userId)
+        {
+            var response = await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/logout")
+                .PostAsync(new StringContent(""))
+                .ConfigureAwait(false);
+            return response.IsSuccessStatusCode;
+        }
+
+        [Obsolete("Not working yet", error: true)]
+        public async Task<IEnumerable<UserSession>> GetUserOfflineSessionsAsync(string realm, string userId, string clientId) => await GetBaseUrl(realm)
+            .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/offline-sessions/{clientId}")
+            .GetJsonAsync<IEnumerable<UserSession>>()
+            .ConfigureAwait(false);
+
+        public async Task<bool> RemoveUserTotpAsync(string realm, string userId)
+        {
+            var response = await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/remove-totp")
+                .PutAsync(new StringContent(""))
+                .ConfigureAwait(false);
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> ResetUserPasswordAsync(string realm, string userId, string password)
+        {
+            var response = await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/reset-password")
+                .PutJsonAsync(new { password })
+                .ConfigureAwait(false);
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> VerifyUserEmailAddressAsync(string realm, string userId, string clientId = null, string redirectUri = null)
+        {
+            var queryParams = new Dictionary<string, object>
+            {
+                ["client_id"] = clientId,
+                ["redirect_uri"] = redirectUri
+            };
+
+            var response = await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/send-verify-email")
+                .SetQueryParams(queryParams)
+                .PutJsonAsync(new StringContent(""))
+                .ConfigureAwait(false);
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<IEnumerable<UserSession>> GetUserSessionsAsync(string realm, string userId) => await GetBaseUrl(realm)
+            .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/sessions")
+            .GetJsonAsync<IEnumerable<UserSession>>()
+            .ConfigureAwait(false);
     }
 }
