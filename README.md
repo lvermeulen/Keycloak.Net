@@ -26,6 +26,6 @@ C# client for [Keycloak](https://www.keycloak.org/) 6.x
 * [ ] Roles (by ID)
 * [ ] Scope Mappings
 * [ ] User Storage Provider
-* [ ] Users
-* [X] Root
+* [X] Users
+* [ ] Root
 
