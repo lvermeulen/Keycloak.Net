@@ -147,7 +147,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/groups/count")
                 .GetJsonAsync()
                 .ConfigureAwait(false);
-            return Convert.ToInt32(Converter.GetFirstPropertyValue(result));
+            return Convert.ToInt32(DynamicExtensions.GetFirstPropertyValue(result));
         }
 
         public async Task<bool> UpdateUserGroupAsync(string realm, string userId, string groupId, Group group)
@@ -175,7 +175,7 @@ namespace Keycloak.Net
                 .PostAsync(new StringContent(""))
                 .ReceiveJson()
                 .ConfigureAwait(false);
-            return Converter.DynamicToDictionary(response);
+            return DynamicExtensions.DynamicToDictionary(response);
         }
 
         public async Task<bool> RemoveUserSessionsAsync(string realm, string userId)

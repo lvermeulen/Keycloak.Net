@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Keycloak.Net.Common
 {
-    public static class Converter
+    public static class DynamicExtensions
     {
         public static IDictionary<string, object> DynamicToDictionary(dynamic obj) => new Dictionary<string, object>(obj);
 
