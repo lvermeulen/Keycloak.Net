@@ -7,7 +7,7 @@
 C# client for [Keycloak](https://www.keycloak.org/) 6.x
 
 ## Features
-* [ ] Attack Detection
+* [X] Attack Detection
 * [ ] Authentication Management
 * [ ] Client Attribute Certificate
 * [ ] Client Initial Access
