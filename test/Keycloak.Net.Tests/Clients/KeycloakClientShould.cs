@@ -10,9 +10,7 @@ namespace Keycloak.Net.Tests
         public async Task GetClientsAsync(string realm)
         {
             var result = await _client.GetClientsAsync(realm);
-            
             Assert.NotNull(result);
-            Assert.NotEmpty(result);
         }
     }
 }

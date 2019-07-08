@@ -12,9 +12,11 @@ namespace Keycloak.Net.Tests
         {
             var users = await _client.GetUsersAsync(realm, search: search);
             string userId = users.FirstOrDefault()?.Id;
-
-            var result = await _client.GetUserNameStatusInBruteForceDetectionAsync(realm, userId);
-            Assert.NotNull(result);
+            if (userId != null)
+            {
+                var result = await _client.GetUserNameStatusInBruteForceDetectionAsync(realm, userId);
+                Assert.NotNull(result);
+            }
         }
     }
 }
