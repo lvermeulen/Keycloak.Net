@@ -18,7 +18,7 @@ C# client for [Keycloak](https://www.keycloak.org/) 6.x
 * [ ] Component
 * [X] Groups
 * [ ] Identity Providers
-* [ ] Key
+* [X] Key
 * [ ] Protocol Mappers
 * [ ] Realms Admin
 * [ ] Role Mapper
