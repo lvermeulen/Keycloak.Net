@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Keycloak.Net.Models.Users
+namespace Keycloak.Net.Models.Groups
 {
     public class Group
     {
