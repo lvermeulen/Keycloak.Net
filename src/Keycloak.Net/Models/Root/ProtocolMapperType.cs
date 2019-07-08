@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Keycloak.Net.Common;
 using Newtonsoft.Json;
 
 namespace Keycloak.Net.Models.Root
@@ -21,6 +22,6 @@ namespace Keycloak.Net.Models.Root
         public long Priority { get; set; }
 
         [JsonProperty("properties")]
-        public List<KeycloakAuthenticationAuthenticatorProperty> Properties { get; set; }
+        public List<ConfigProperty> Properties { get; set; }
     }
 }

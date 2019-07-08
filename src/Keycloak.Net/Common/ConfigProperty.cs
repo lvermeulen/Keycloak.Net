@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using Keycloak.Net.Models.Root;
 using Newtonsoft.Json;
 
-namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Common
 {
-    public class KeycloakAuthenticationAuthenticatorProperty
+    public class ConfigProperty
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -21,7 +22,7 @@ namespace Keycloak.Net.Models.Root
         public bool Secret { get; set; }
 
         [JsonProperty("defaultValue")]
-        public DefaultValue? DefaultValue { get; set; }
+        public string DefaultValue { get; set; }
 
         [JsonProperty("options")]
         public List<string> Options { get; set; }

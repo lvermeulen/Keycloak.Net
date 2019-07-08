@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Keycloak.Net.Common;
 using Newtonsoft.Json;
 
 namespace Keycloak.Net.Models.Root
@@ -12,7 +13,7 @@ namespace Keycloak.Net.Models.Root
         public string HelpText { get; set; }
 
         [JsonProperty("properties")]
-        public List<KeycloakAuthenticationFormActionProperty> Properties { get; set; }
+        public List<ConfigProperty> Properties { get; set; }
 
         [JsonProperty("metadata")]
         public KeycloakStorageLdapMappersLdapStorageMapperMetadata Metadata { get; set; }
