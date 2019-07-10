@@ -14,8 +14,8 @@ test_script:
     if ($true)
     {
         iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/fossas/fossa-cli/master/install.ps1'))
-        fossa init
-        FOSSA_API_KEY=347696dbc63a280e398a8a02878ecde8 fossa analyze
+        & 'C:\ProgramData\fossa-cli\fossa.exe' init
+        $env:FOSSA_API_KEY='347696dbc63a280e398a8a02878ecde8'; & 'C:\ProgramData\fossa-cli\fossa.exe' analyze
     }
 artifacts:
 - path: '.\artifacts\*.nupkg'
