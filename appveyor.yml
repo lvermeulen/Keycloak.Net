@@ -13,7 +13,7 @@ test_script:
 - ps: |
     if ($true)
     {
-        @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/fossas/fossa-cli/master/install.ps1'))"
+        iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/fossas/fossa-cli/master/install.ps1'))
         fossa init
         FOSSA_API_KEY=347696dbc63a280e398a8a02878ecde8 fossa analyze
     }
