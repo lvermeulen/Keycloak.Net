@@ -70,7 +70,7 @@ namespace Keycloak.Net
             return response.IsSuccessStatusCode;
         }
 
-        [Obsolete("Not working yet", error: true)]
+        [Obsolete("Not working yet")]
         public async Task<string> GetUserConsentsAsync(string realm, string userId)
         {
             return await GetBaseUrl(realm)
@@ -188,7 +188,7 @@ namespace Keycloak.Net
             return response.IsSuccessStatusCode;
         }
 
-        [Obsolete("Not working yet", error: true)]
+        [Obsolete("Not working yet")]
         public async Task<IEnumerable<UserSession>> GetUserOfflineSessionsAsync(string realm, string userId, string clientId) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/offline-sessions/{clientId}")
             .GetJsonAsync<IEnumerable<UserSession>>()

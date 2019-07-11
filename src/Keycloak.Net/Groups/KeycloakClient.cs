@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Flurl.Http;
+using Keycloak.Net.Common;
 using Keycloak.Net.Common.Extensions;
 using Keycloak.Net.Models.Groups;
 using Keycloak.Net.Models.Users;
@@ -89,16 +90,16 @@ namespace Keycloak.Net
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<ManagementPermissionReference> GetGroupClientAuthorizationPermissionsInitializedAsync(string realm, string groupId) => await GetBaseUrl(realm)
+        public async Task<ManagementPermission> GetGroupClientAuthorizationPermissionsInitializedAsync(string realm, string groupId) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}/management/permissions")
-            .GetJsonAsync<ManagementPermissionReference>()
+            .GetJsonAsync<ManagementPermission>()
             .ConfigureAwait(false);
 
-        public async Task<ManagementPermissionReference> SetGroupClientAuthorizationPermissionsInitializedAsync(string realm, string groupId, ManagementPermissionReference managementPermissionReference) => 
+        public async Task<ManagementPermission> SetGroupClientAuthorizationPermissionsInitializedAsync(string realm, string groupId, ManagementPermission managementPermissionReference) => 
             await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}/management/permissions")
                 .PutJsonAsync(managementPermissionReference)
-                .ReceiveJson<ManagementPermissionReference>()
+                .ReceiveJson<ManagementPermission>()
                 .ConfigureAwait(false);
 
         public async Task<IEnumerable<User>> GetGroupUsersAsync(string realm, string groupId) => await GetBaseUrl(realm)

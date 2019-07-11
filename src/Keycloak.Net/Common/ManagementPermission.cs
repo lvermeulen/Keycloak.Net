@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Keycloak.Net.Models.Groups
+namespace Keycloak.Net.Common
 {
-    public class ManagementPermissionReference
+    public class ManagementPermission
     {
         [JsonProperty("enabled")]
         public bool Enabled { get; set; }

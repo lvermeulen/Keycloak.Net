@@ -22,7 +22,7 @@ C# client for [Keycloak](https://www.keycloak.org/) 6.x
 * [X] Protocol Mappers
 * [ ] Realms Admin
 * [ ] Role Mapper
-* [ ] Roles
+* [X] Roles
 * [ ] Roles (by ID)
 * [ ] Scope Mappings
 * [ ] User Storage Provider
