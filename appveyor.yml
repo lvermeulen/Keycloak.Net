@@ -15,9 +15,10 @@ test_script:
     {
         Set-Location -Path src\Keycloak.Net
         iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/fossas/fossa-cli/master/install.ps1'))
-        $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
         & 'C:\ProgramData\fossa-cli\fossa.exe' 'init'
+        $LastExitCode = 0
         $env:FOSSA_API_KEY='347696dbc63a280e398a8a02878ecde8'; & 'C:\ProgramData\fossa-cli\fossa.exe' 'analyze'
+        $LastExitCode = 0
     }
 artifacts:
 - path: '.\artifacts\*.nupkg'
