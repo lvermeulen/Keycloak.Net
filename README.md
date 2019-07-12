@@ -14,7 +14,7 @@ C# client for [Keycloak](https://www.keycloak.org/) 6.x
 * [X] Client Registration Policy
 * [X] Client Role Mappings
 * [X] Client Scopes
-* [ ] Clients
+* [X] Clients
 * [X] Component
 * [X] Groups
 * [ ] Identity Providers

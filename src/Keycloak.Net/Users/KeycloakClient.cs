@@ -219,7 +219,7 @@ namespace Keycloak.Net
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/send-verify-email")
                 .SetQueryParams(queryParams)
-                .PutJsonAsync(new StringContent(""))
+                .PutAsync(new StringContent(""))
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
