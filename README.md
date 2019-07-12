@@ -11,7 +11,7 @@ C# client for [Keycloak](https://www.keycloak.org/) 6.x
 * [ ] Authentication Management
 * [ ] Client Attribute Certificate
 * [ ] Client Initial Access
-* [ ] Client Registration Policy
+* [X] Client Registration Policy
 * [X] Client Role Mappings
 * [X] Client Scopes
 * [ ] Clients
