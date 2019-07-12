@@ -12,5 +12,13 @@ namespace Keycloak.Net.Tests
             var result = await _client.GetServerInfoAsync(realm);
             Assert.NotNull(result);
         }
+
+        [Theory]
+        [InlineData("Insurance")]
+        public async Task CorsPreflightAsync(string realm)
+        {
+            bool result = await _client.CorsPreflightAsync(realm);
+            Assert.True(result);
+        }
     }
 }
