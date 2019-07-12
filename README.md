@@ -21,7 +21,7 @@ C# client for [Keycloak](https://www.keycloak.org/) 6.x
 * [X] Key
 * [X] Protocol Mappers
 * [ ] Realms Admin
-* [ ] Role Mapper
+* [X] Role Mapper
 * [X] Roles
 * [X] Roles (by ID)
 * [ ] Scope Mappings
