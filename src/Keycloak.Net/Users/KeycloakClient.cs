@@ -169,15 +169,11 @@ namespace Keycloak.Net
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IDictionary<string, object>> ImpersonateUserAsync(string realm, string userId)
-        {
-            var response = await GetBaseUrl(realm)
-                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/impersonation")
-                .PostAsync(new StringContent(""))
-                .ReceiveJson()
-                .ConfigureAwait(false);
-            return DynamicExtensions.DynamicToDictionary(response);
-        }
+        public async Task<IDictionary<string, object>> ImpersonateUserAsync(string realm, string userId) => await GetBaseUrl(realm)
+            .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/impersonation")
+            .PostAsync(new StringContent(""))
+            .ReceiveJson<IDictionary<string, object>>()
+            .ConfigureAwait(false);
 
         public async Task<bool> RemoveUserSessionsAsync(string realm, string userId)
         {
