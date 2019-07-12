@@ -12,7 +12,7 @@ C# client for [Keycloak](https://www.keycloak.org/) 6.x
 * [ ] Client Attribute Certificate
 * [ ] Client Initial Access
 * [ ] Client Registration Policy
-* [ ] Client Role Mappings
+* [X] Client Role Mappings
 * [X] Client Scopes
 * [ ] Clients
 * [X] Component

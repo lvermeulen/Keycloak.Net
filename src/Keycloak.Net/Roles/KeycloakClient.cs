@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Flurl.Http;
-using Flurl.Http.Content;
 using Keycloak.Net.Common;
 using Keycloak.Net.Models.Groups;
 using Keycloak.Net.Models.Roles;
 using Keycloak.Net.Models.Users;
-using Newtonsoft.Json;
 
 namespace Keycloak.Net
 {
@@ -69,7 +67,7 @@ namespace Keycloak.Net
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}/composites")
-                .SendAsync(HttpMethod.Delete, new CapturedJsonContent(JsonConvert.SerializeObject(roles)))
+                .SendJsonAsync(HttpMethod.Delete, roles)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
@@ -182,7 +180,7 @@ namespace Keycloak.Net
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}/composites")
-                .SendAsync(HttpMethod.Delete, new CapturedJsonContent(JsonConvert.SerializeObject(roles)))
+                .SendJsonAsync(HttpMethod.Delete, roles)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
