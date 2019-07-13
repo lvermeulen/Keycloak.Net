@@ -2,16 +2,16 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Flurl.Http;
-using Keycloak.Net.Models.RoleMapper;
+using Keycloak.Net.Common;
 using Keycloak.Net.Models.Roles;
 
 namespace Keycloak.Net
 {
     public partial class KeycloakClient
     {
-        public async Task<RoleMapping> GetRoleMappingsForGroupAsync(string realm, string groupId) => await GetBaseUrl(realm)
+        public async Task<Mapping> GetRoleMappingsForGroupAsync(string realm, string groupId) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}/role-mappings")
-            .GetJsonAsync<RoleMapping>()
+            .GetJsonAsync<Mapping>()
             .ConfigureAwait(false);
 
         public async Task<bool> AddRealmRoleMappingsToGroupAsync(string realm, string groupId, IEnumerable<Role> roles)
@@ -47,9 +47,9 @@ namespace Keycloak.Net
             .GetJsonAsync<IEnumerable<Role>>()
             .ConfigureAwait(false);
 
-        public async Task<RoleMapping> GetRoleMappingsForUserAsync(string realm, string userId) => await GetBaseUrl(realm)
+        public async Task<Mapping> GetRoleMappingsForUserAsync(string realm, string userId) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/role-mappings")
-            .GetJsonAsync<RoleMapping>()
+            .GetJsonAsync<Mapping>()
             .ConfigureAwait(false);
 
         public async Task<bool> AddRealmRoleMappingsToUserAsync(string realm, string userId, IEnumerable<Role> roles)

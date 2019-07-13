@@ -2,9 +2,9 @@
 using Keycloak.Net.Models.Roles;
 using Newtonsoft.Json;
 
-namespace Keycloak.Net.Models.RoleMapper
+namespace Keycloak.Net.Common
 {
-    public class RoleMapping
+    public class Mapping
     {
         [JsonProperty("clientMappings")]
         public IDictionary<string, object> ClientMappings { get; set; }

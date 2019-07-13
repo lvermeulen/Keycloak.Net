@@ -19,8 +19,4 @@
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ScopeMappings\" />
-  </ItemGroup>
-
 </Project>
