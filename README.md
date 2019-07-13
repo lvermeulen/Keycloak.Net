@@ -6,6 +6,8 @@
 
 C# client for [Keycloak](https://www.keycloak.org/) 6.x
 
+See documentation at [https://www.keycloak.org/docs-api/6.0/rest-api/](https://www.keycloak.org/docs-api/6.0/rest-api/)
+
 ## Features
 * [X] Attack Detection
 * [ ] Authentication Management
