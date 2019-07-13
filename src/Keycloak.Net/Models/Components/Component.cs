@@ -2,7 +2,7 @@
 
 namespace Keycloak.Net.Models.Components
 {
-    public class ComponentRepresentation
+    public class Component
     {
         [JsonProperty("id")]
         public string Id { get; set; }

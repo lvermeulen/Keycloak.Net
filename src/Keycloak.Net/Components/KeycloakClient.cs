@@ -7,7 +7,7 @@ namespace Keycloak.Net
 {
     public partial class KeycloakClient
     {
-        public async Task<bool> CreateComponentAsync(string realm, ComponentRepresentation componentRepresentation)
+        public async Task<bool> CreateComponentAsync(string realm, Component componentRepresentation)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/components")
@@ -16,7 +16,7 @@ namespace Keycloak.Net
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<ComponentRepresentation>> GetComponentsAsync(string realm, string name = null, string parent = null, string type = null)
+        public async Task<IEnumerable<Component>> GetComponentsAsync(string realm, string name = null, string parent = null, string type = null)
         {
             var queryParams = new Dictionary<string, object>
             {
@@ -28,19 +28,19 @@ namespace Keycloak.Net
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/components")
                 .SetQueryParams(queryParams)
-                .GetJsonAsync<IEnumerable<ComponentRepresentation>>()
+                .GetJsonAsync<IEnumerable<Component>>()
                 .ConfigureAwait(false);
         }
 
-        public async Task<ComponentRepresentation> GetComponentAsync(string realm, string componentId)
+        public async Task<Component> GetComponentAsync(string realm, string componentId)
         {
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/components/{componentId}")
-                .GetJsonAsync<ComponentRepresentation>()
+                .GetJsonAsync<Component>()
                 .ConfigureAwait(false);
         }
 
-        public async Task<bool> UpdateComponentAsync(string realm, string componentId, ComponentRepresentation componentRepresentation)
+        public async Task<bool> UpdateComponentAsync(string realm, string componentId, Component componentRepresentation)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/components/{componentId}")

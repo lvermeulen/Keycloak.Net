@@ -130,11 +130,11 @@ namespace Keycloak.Net.Tests
             string clientsId = clients.FirstOrDefault(x => x.ClientId == clientId)?.Id;
             if (clientsId != null)
             {
-                var providers = await _client.GetIdentityProvidersAsync(realm);
-                string providerId = providers.FirstOrDefault()?.ProviderId;
-                if (providerId != null)
+                var providerInstances = await _client.GetIdentityProviderInstancesAsync(realm);
+                string providerInstanceId = providerInstances.FirstOrDefault()?.ProviderId;
+                if (providerInstanceId != null)
                 {
-                    string result = await _client.GetClientProviderAsync(realm, clientsId, providerId);
+                    string result = await _client.GetClientProviderAsync(realm, clientsId, providerInstanceId);
                     Assert.NotNull(result);
                 }
             }
