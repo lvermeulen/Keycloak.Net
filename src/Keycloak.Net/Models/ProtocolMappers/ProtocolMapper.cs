@@ -14,7 +14,7 @@ namespace Keycloak.Net.Models.ProtocolMappers
         // ReSharper disable once InconsistentNaming
         public string _ProtocolMapper { get; set; }
         [JsonProperty("consentRequired")]
-        public bool ConsentRequired { get; set; }
+        public bool? ConsentRequired { get; set; }
         [JsonProperty("config")]
         public Config Config { get; set; }
     }

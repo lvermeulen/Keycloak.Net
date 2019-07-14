@@ -5,10 +5,10 @@ namespace Keycloak.Net.Models.Root
     public class KeycloakStorageLdapMappersLdapStorageMapperMetadata
     {
         [JsonProperty("fedToKeycloakSyncSupported")]
-        public bool FedToKeycloakSyncSupported { get; set; }
+        public bool? FedToKeycloakSyncSupported { get; set; }
 
         [JsonProperty("keycloakToFedSyncSupported")]
-        public bool KeycloakToFedSyncSupported { get; set; }
+        public bool? KeycloakToFedSyncSupported { get; set; }
 
         [JsonProperty("fedToKeycloakSyncMessage")]
         public string FedToKeycloakSyncMessage { get; set; }

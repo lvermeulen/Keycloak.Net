@@ -18,7 +18,7 @@ namespace Keycloak.Net.Tests
         [InlineData("Insurance")]
         public async Task GetGroupsCountAsync(string realm)
         {
-            int result = await _client.GetGroupsCountAsync(realm);
+            int? result = await _client.GetGroupsCountAsync(realm);
             Assert.True(result >= 0);
         }
 

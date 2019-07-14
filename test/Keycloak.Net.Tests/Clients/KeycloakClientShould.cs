@@ -161,7 +161,7 @@ namespace Keycloak.Net.Tests
             string clientsId = clients.FirstOrDefault(x => x.ClientId == clientId)?.Id;
             if (clientsId != null)
             {
-                int result = await _client.GetClientOfflineSessionCountAsync(realm, clientsId);
+                int? result = await _client.GetClientOfflineSessionCountAsync(realm, clientsId);
                 Assert.True(result >= 0);
             }
         }
@@ -226,7 +226,7 @@ namespace Keycloak.Net.Tests
             string clientsId = clients.FirstOrDefault(x => x.ClientId == clientId)?.Id;
             if (clientsId != null)
             {
-                int result = await _client.GetClientSessionCountAsync(realm, clientsId);
+                int? result = await _client.GetClientSessionCountAsync(realm, clientsId);
                 Assert.True(result >= 0);
             }
         }

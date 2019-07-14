@@ -13,7 +13,7 @@ namespace Keycloak.Net.Models.Clients
         [JsonProperty("protocolMapper")]
         public string ProtocolMapper { get; set; }
         [JsonProperty("consentRequired")]
-        public bool ConsentRequired { get; set; }
+        public bool? ConsentRequired { get; set; }
         [JsonProperty("config")]
         public ClientConfig Config { get; set; }
     }

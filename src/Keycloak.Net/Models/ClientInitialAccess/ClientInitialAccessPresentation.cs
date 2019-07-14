@@ -7,9 +7,9 @@ namespace Keycloak.Net.Models.ClientInitialAccess
         [JsonProperty("id")]
         public string Id { get; set; }
         [JsonProperty("remainingCount")]
-        public int RemainingCount { get; set; }
+        public int? RemainingCount { get; set; }
         [JsonProperty("timestamp")]
-        public int Timestamp { get; set; }
+        public int? Timestamp { get; set; }
         [JsonProperty("token")]
         public string Token { get; set; }
     }

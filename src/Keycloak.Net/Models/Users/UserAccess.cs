@@ -5,14 +5,14 @@ namespace Keycloak.Net.Models.Users
     public class UserAccess
     {
         [JsonProperty("manageGroupMembership")]
-        public bool ManageGroupMembership { get; set; }
+        public bool? ManageGroupMembership { get; set; }
         [JsonProperty("view")]
-        public bool View { get; set; }
+        public bool? View { get; set; }
         [JsonProperty("mapRoles")]
-        public bool MapRoles { get; set; }
+        public bool? MapRoles { get; set; }
         [JsonProperty("impersonate")]
-        public bool Impersonate { get; set; }
+        public bool? Impersonate { get; set; }
         [JsonProperty("manage")]
-        public bool Manage { get; set; }
+        public bool? Manage { get; set; }
     }
 }

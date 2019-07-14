@@ -11,19 +11,19 @@ namespace Keycloak.Net.Models.IdentityProviders
         [JsonProperty("providerId")]
         public string ProviderId { get; set; }
         [JsonProperty("enabled")]
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
         [JsonProperty("updateProfileFirstLoginMode")]
         public string UpdateProfileFirstLoginMode { get; set; }
         [JsonProperty("trustEmail")]
-        public bool TrustEmail { get; set; }
+        public bool? TrustEmail { get; set; }
         [JsonProperty("storeToken")]
-        public bool StoreToken { get; set; }
+        public bool? StoreToken { get; set; }
         [JsonProperty("addReadTokenRoleOnCreate")]
-        public bool AddReadTokenRoleOnCreate { get; set; }
+        public bool? AddReadTokenRoleOnCreate { get; set; }
         [JsonProperty("authenticateByDefault")]
-        public bool AuthenticateByDefault { get; set; }
+        public bool? AuthenticateByDefault { get; set; }
         [JsonProperty("linkOnly")]
-        public bool LinkOnly { get; set; }
+        public bool? LinkOnly { get; set; }
         [JsonProperty("firstBrokerLoginFlowAlias")]
         public string FirstBrokerLoginFlowAlias { get; set; }
         [JsonProperty("config")]

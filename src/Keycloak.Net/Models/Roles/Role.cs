@@ -9,9 +9,9 @@ namespace Keycloak.Net.Models.Roles
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("composite")]
-        public bool Composite { get; set; }
+        public bool? Composite { get; set; }
         [JsonProperty("clientRole")]
-        public bool ClientRole { get; set; }
+        public bool? ClientRole { get; set; }
         [JsonProperty("containerId")]
         public string ContainerId { get; set; }
     }

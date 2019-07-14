@@ -12,11 +12,11 @@ namespace Keycloak.Net.Models.Users
         [JsonProperty("username")]
         public string UserName { get; set; }
         [JsonProperty("enabled")]
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
         [JsonProperty("totp")]
-        public bool Totp { get; set; }
+        public bool? Totp { get; set; }
         [JsonProperty("emailVerified")]
-        public bool EmailVerified { get; set; }
+        public bool? EmailVerified { get; set; }
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
         [JsonProperty("lastName")]
@@ -28,7 +28,7 @@ namespace Keycloak.Net.Models.Users
         [JsonProperty("requiredActions")]
         public ReadOnlyCollection<string> RequiredActions { get; set; }
         [JsonProperty("notBefore")]
-        public int NotBefore { get; set; }
+        public int? NotBefore { get; set; }
         [JsonProperty("access")]
         public UserAccess Access { get; set; }
     }

@@ -17,6 +17,6 @@ namespace Keycloak.Net.Models.Root
         public string DefaultValue { get; set; }
 
         [JsonProperty("multipleSupported")]
-        public bool MultipleSupported { get; set; }
+        public bool? MultipleSupported { get; set; }
     }
 }

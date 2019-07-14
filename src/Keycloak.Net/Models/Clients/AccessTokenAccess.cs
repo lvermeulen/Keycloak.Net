@@ -8,6 +8,6 @@ namespace Keycloak.Net.Models.Clients
         [JsonProperty("roles")] 
         public IEnumerable<string> Roles  { get; set; }
         [JsonProperty("verify_caller")] 
-        public bool VerifyCaller { get; set; }
+        public bool? VerifyCaller { get; set; }
     }
 }

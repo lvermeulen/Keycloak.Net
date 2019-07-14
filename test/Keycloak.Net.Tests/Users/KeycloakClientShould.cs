@@ -18,7 +18,7 @@ namespace Keycloak.Net.Tests
         [InlineData("Insurance")]
         public async Task GetUsersCountAsync(string realm)
         {
-            int result = await _client.GetUsersCountAsync(realm);
+            int? result = await _client.GetUsersCountAsync(realm);
             Assert.True(result >= 0);
         }
 
@@ -70,7 +70,7 @@ namespace Keycloak.Net.Tests
             string userId = users.FirstOrDefault()?.Id;
             if (userId != null)
             {
-                int result = await _client.GetUserGroupsCountAsync(realm, userId);
+                int? result = await _client.GetUserGroupsCountAsync(realm, userId);
                 Assert.True(result >= 0);
             }
         }

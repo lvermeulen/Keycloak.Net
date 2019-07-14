@@ -5,7 +5,7 @@ namespace Keycloak.Net.Models.Root
     public class Timer
     {
         [JsonProperty("internal")]
-        public bool Internal { get; set; }
+        public bool? Internal { get; set; }
 
         [JsonProperty("providers")]
         public TimerProviders Providers { get; set; }

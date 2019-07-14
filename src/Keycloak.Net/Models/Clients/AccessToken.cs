@@ -15,7 +15,7 @@ namespace Keycloak.Net.Models.Clients
         [JsonProperty("at_hash")]
         public string AtHash { get; set; }
         [JsonProperty("auth_time")]
-        public int AuthTime { get; set; }
+        public int? AuthTime { get; set; }
         [JsonProperty("authorization")]
         public AccessTokenAuthorization Authorization { get; set; }
         [JsonProperty("azp")]
@@ -34,9 +34,9 @@ namespace Keycloak.Net.Models.Clients
         [JsonProperty("email")]
         public string Email { get; set; }
         [JsonProperty("email_verified")]
-        public bool EmailVerified { get; set; }
+        public bool? EmailVerified { get; set; }
         [JsonProperty("exp")]
-        public int Exp { get; set; }
+        public int? Exp { get; set; }
         [JsonProperty("family_name")]
         public string FamilyName { get; set; }
         [JsonProperty("gender")]
@@ -44,7 +44,7 @@ namespace Keycloak.Net.Models.Clients
         [JsonProperty("given_name")]
         public string GivenName { get; set; }
         [JsonProperty("iat")]
-        public int Iat { get; set; }
+        public int? Iat { get; set; }
         [JsonProperty("iss")]
         public string Iss { get; set; }
         [JsonProperty("jti")]
@@ -64,7 +64,7 @@ namespace Keycloak.Net.Models.Clients
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
         [JsonProperty("phone_number_verified")]
-        public bool PhoneNumberVerified { get; set; }
+        public bool? PhoneNumberVerified { get; set; }
         [JsonProperty("picture")]
         public string Picture { get; set; }
         [JsonProperty("preferred_username")]

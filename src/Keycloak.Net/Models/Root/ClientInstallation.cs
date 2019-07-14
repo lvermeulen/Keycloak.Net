@@ -11,7 +11,7 @@ namespace Keycloak.Net.Models.Root
         public Protocol Protocol { get; set; }
 
         [JsonProperty("downloadOnly")]
-        public bool DownloadOnly { get; set; }
+        public bool? DownloadOnly { get; set; }
 
         [JsonProperty("displayType")]
         public string DisplayType { get; set; }

@@ -13,15 +13,15 @@ namespace Keycloak.Net.Models.AuthenticationManagement
         [JsonProperty("requirementChoices")]
         public string[] RequirementChoices { get; set; }
         [JsonProperty("configurable")]
-        public bool Configurable { get; set; }
+        public bool? Configurable { get; set; }
         [JsonProperty("providerId")]
         public string ProviderId { get; set; }
         [JsonProperty("level")]
-        public int Level { get; set; }
+        public int? Level { get; set; }
         [JsonProperty("index")]
-        public int Index { get; set; }
+        public int? Index { get; set; }
         [JsonProperty("authenticationFlow")]
-        public bool AuthenticationFlow { get; set; }
+        public bool? AuthenticationFlow { get; set; }
         [JsonProperty("flowId")]
         public string FlowId { get; set; }
     }

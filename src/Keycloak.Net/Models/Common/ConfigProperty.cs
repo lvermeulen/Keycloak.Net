@@ -19,7 +19,7 @@ namespace Keycloak.Net.Models.Common
         public JsonTypeLabel Type { get; set; }
 
         [JsonProperty("secret")]
-        public bool Secret { get; set; }
+        public bool? Secret { get; set; }
 
         [JsonProperty("defaultValue")]
         public string DefaultValue { get; set; }

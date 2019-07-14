@@ -7,7 +7,7 @@ namespace Keycloak.Net.Models.Key
         [JsonProperty("providerId")]
         public string ProviderId { get; set; }
         [JsonProperty("providerPriority")]
-        public int ProviderPriority { get; set; }
+        public int? ProviderPriority { get; set; }
         [JsonProperty("kid")]
         public string Kid { get; set; }
         [JsonProperty("status")]

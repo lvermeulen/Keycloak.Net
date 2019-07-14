@@ -14,7 +14,7 @@ namespace Keycloak.Net.Models.Root
         public string ProtocolMapper { get; set; }
 
         [JsonProperty("consentRequired")]
-        public bool ConsentRequired { get; set; }
+        public bool? ConsentRequired { get; set; }
 
         [JsonProperty("config")]
         public SamlConfig Config { get; set; }
