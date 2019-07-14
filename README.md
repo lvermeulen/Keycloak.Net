@@ -10,7 +10,7 @@ See documentation at [https://www.keycloak.org/docs-api/6.0/rest-api/](https://w
 
 ## Features
 * [X] Attack Detection
-* [ ] Authentication Management
+* [X] Authentication Management
 * [ ] Client Attribute Certificate
 * [X] Client Initial Access
 * [X] Client Registration Policy
