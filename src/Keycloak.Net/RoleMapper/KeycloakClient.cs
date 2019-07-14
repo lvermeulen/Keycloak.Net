@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Flurl.Http;
-using Keycloak.Net.Common;
+using Keycloak.Net.Models.Common;
 using Keycloak.Net.Models.Roles;
 
 namespace Keycloak.Net

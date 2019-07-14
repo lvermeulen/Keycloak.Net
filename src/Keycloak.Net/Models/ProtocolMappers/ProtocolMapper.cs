@@ -2,7 +2,7 @@
 
 namespace Keycloak.Net.Models.ProtocolMappers
 {
-    public class ProtocolMapperRepresentation
+    public class ProtocolMapper
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -11,7 +11,8 @@ namespace Keycloak.Net.Models.ProtocolMappers
         [JsonProperty("protocol")]
         public string Protocol { get; set; }
         [JsonProperty("protocolMapper")]
-        public string ProtocolMapper { get; set; }
+        // ReSharper disable once InconsistentNaming
+        public string _ProtocolMapper { get; set; }
         [JsonProperty("consentRequired")]
         public bool ConsentRequired { get; set; }
         [JsonProperty("config")]

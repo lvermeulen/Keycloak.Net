@@ -17,6 +17,6 @@ namespace Keycloak.Net.Models.ClientScopes
         [JsonProperty("attributes")]
         public Attributes Attributes { get; set; }
         [JsonProperty("protocolMappers")]
-        public IEnumerable<ProtocolMapperRepresentation> ProtocolMappers { get; set; }
+        public IEnumerable<ProtocolMapper> ProtocolMappers { get; set; }
     }
 }

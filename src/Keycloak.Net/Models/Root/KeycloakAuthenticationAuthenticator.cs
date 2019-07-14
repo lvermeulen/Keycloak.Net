@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Keycloak.Net.Common;
+using Keycloak.Net.Models.Common;
 using Newtonsoft.Json;
 
 namespace Keycloak.Net.Models.Root

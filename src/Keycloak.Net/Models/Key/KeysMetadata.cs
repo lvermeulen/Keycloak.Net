@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Keycloak.Net.Models.Key
 {
-    public class KeysMetadataRepresentation
+    public class KeysMetadata
     {
         [JsonProperty("active")]
         public Active Active { get; set; }

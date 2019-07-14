@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Flurl.Http;
 using Flurl.Http.Content;
-using Keycloak.Net.Common;
+using Keycloak.Net.Models.Common;
 using Keycloak.Net.Models.Roles;
 using Newtonsoft.Json;
 

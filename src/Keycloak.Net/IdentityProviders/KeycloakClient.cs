@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using Flurl.Http;
-using Keycloak.Net.Common;
+using Keycloak.Net.Models.Common;
 using Keycloak.Net.Models.IdentityProviders;
 
 namespace Keycloak.Net

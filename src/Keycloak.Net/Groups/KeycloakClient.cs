@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Flurl.Http;
-using Keycloak.Net.Common;
 using Keycloak.Net.Common.Extensions;
+using Keycloak.Net.Models.Common;
 using Keycloak.Net.Models.Groups;
 using Keycloak.Net.Models.Users;
 

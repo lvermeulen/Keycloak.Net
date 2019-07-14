@@ -2,7 +2,7 @@
 using Keycloak.Net.Models.Root;
 using Newtonsoft.Json;
 
-namespace Keycloak.Net.Common
+namespace Keycloak.Net.Models.Common
 {
     public class ConfigProperty
     {

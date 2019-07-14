@@ -58,7 +58,7 @@ namespace Keycloak.Net
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<ComponentTypeRepresentation>> GetSubcomponentTypesAsync(string realm, string componentId, string type = null)
+        public async Task<IEnumerable<ComponentType>> GetSubcomponentTypesAsync(string realm, string componentId, string type = null)
         {
             var queryParams = new Dictionary<string, object>
             {
@@ -68,7 +68,7 @@ namespace Keycloak.Net
             var result = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/components/{componentId}/sub-component-types")
                 .SetQueryParams(queryParams)
-                .GetJsonAsync<IEnumerable<ComponentTypeRepresentation>>()
+                .GetJsonAsync<IEnumerable<ComponentType>>()
                 .ConfigureAwait(false);
             return result;
         }

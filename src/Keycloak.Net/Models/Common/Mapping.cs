@@ -2,7 +2,7 @@
 using Keycloak.Net.Models.Roles;
 using Newtonsoft.Json;
 
-namespace Keycloak.Net.Common
+namespace Keycloak.Net.Models.Common
 {
     public class Mapping
     {

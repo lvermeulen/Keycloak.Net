@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Keycloak.Net.Common;
+using Keycloak.Net.Models.Common;
 using Newtonsoft.Json;
 
 namespace Keycloak.Net.Models.Components
 {
-    public class ComponentTypeRepresentation
+    public class ComponentType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
