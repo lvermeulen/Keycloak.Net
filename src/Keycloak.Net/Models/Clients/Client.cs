@@ -44,9 +44,9 @@ namespace Keycloak.Net.Models.Clients
         [JsonProperty("protocol")]
         public string Protocol { get; set; }
         [JsonProperty("attributes")]
-        public ClientAttributes Attributes { get; set; }
+        public IDictionary<string, object> Attributes { get; set; }
         [JsonProperty("authenticationFlowBindingOverrides")]
-        public AuthenticationFlowBindingOverrides AuthenticationFlowBindingOverrides { get; set; }
+        public IDictionary<string, object> AuthenticationFlowBindingOverrides { get; set; }
         [JsonProperty("fullScopeAllowed")]
         public bool? FullScopeAllowed { get; set; }
         [JsonProperty("nodeReRegistrationTimeout")]
