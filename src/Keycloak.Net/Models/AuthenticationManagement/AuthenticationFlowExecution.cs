@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Keycloak.Net.Models.AuthenticationManagement
 {
@@ -11,7 +12,7 @@ namespace Keycloak.Net.Models.AuthenticationManagement
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
         [JsonProperty("requirementChoices")]
-        public string[] RequirementChoices { get; set; }
+        public IEnumerable<string> RequirementChoices { get; set; }
         [JsonProperty("configurable")]
         public bool? Configurable { get; set; }
         [JsonProperty("providerId")]

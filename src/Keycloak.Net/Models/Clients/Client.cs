@@ -20,9 +20,9 @@ namespace Keycloak.Net.Models.Clients
         [JsonProperty("clientAuthenticatorType")]
         public string ClientAuthenticatorType { get; set; }
         [JsonProperty("redirectUris")]
-        public string[] RedirectUris { get; set; }
+        public IEnumerable<string> RedirectUris { get; set; }
         [JsonProperty("webOrigins")]
-        public object[] WebOrigins { get; set; }
+        public IEnumerable<object> WebOrigins { get; set; }
         [JsonProperty("notBefore")]
         public int? NotBefore { get; set; }
         [JsonProperty("bearerOnly")]
@@ -52,7 +52,7 @@ namespace Keycloak.Net.Models.Clients
         [JsonProperty("nodeReRegistrationTimeout")]
         public int? NodeReregistrationTimeout { get; set; }
         [JsonProperty("protocolMappers")]
-        public ClientProtocolMapper[] ProtocolMappers { get; set; }
+        public IEnumerable<ClientProtocolMapper> ProtocolMappers { get; set; }
         [JsonProperty("defaultClientScopes")]
         public IEnumerable<string> DefaultClientScopes { get; set; }
         [JsonProperty("optionalClientScopes")]

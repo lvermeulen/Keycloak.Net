@@ -22,7 +22,7 @@ See documentation at [https://www.keycloak.org/docs-api/6.0/rest-api/](https://w
 * [X] Identity Providers
 * [X] Key
 * [X] Protocol Mappers
-* [ ] Realms Admin
+* [X] Realms Admin
 * [X] Role Mapper
 * [X] Roles
 * [X] Roles (by ID)
