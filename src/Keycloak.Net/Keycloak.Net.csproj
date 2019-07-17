@@ -12,6 +12,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>keycloak</PackageTags>
     <PackageIconUrl>https://i.imgur.com/eEjfRLz.jpg?2</PackageIconUrl>
+    <Description>C# client for Keycloak</Description>
   </PropertyGroup>
 
   <ItemGroup>
