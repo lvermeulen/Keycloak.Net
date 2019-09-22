@@ -203,7 +203,7 @@ namespace Keycloak.Net
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/reset-password")
-                .PutJsonAsync(new { password })
+                .PutJsonAsync(new { type = "password", value = password, temporary = true })
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
