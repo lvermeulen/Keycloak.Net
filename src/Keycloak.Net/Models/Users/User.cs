@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 
 namespace Keycloak.Net.Models.Users
@@ -31,5 +32,7 @@ namespace Keycloak.Net.Models.Users
         public int? NotBefore { get; set; }
         [JsonProperty("access")]
         public UserAccess Access { get; set; }
+        [JsonProperty("attributes")]
+        public Dictionary<string, string> Attributes { get; set; }
     }
 }
