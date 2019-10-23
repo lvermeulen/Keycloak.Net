@@ -8,6 +8,15 @@ namespace Keycloak.Net.Tests
     {
         [Theory]
         [InlineData("Insurance")]
+        public async Task GetResourcesOwnByUserAsync(string realm)
+        {
+            //memo: we need to add a client which named 'school', give some permission to the user(resources, and scopes)
+            var result = await _client.GetAllResourcesOwnByCurrentUser(realm, "school");
+            Assert.NotNull(result);
+        }
+
+        [Theory]
+        [InlineData("Insurance")]
         public async Task GetUsersAsync(string realm)
         {
             var result = await _client.GetUsersAsync(realm);

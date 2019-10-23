@@ -33,6 +33,6 @@ namespace Keycloak.Net.Models.Users
         [JsonProperty("access")]
         public UserAccess Access { get; set; }
         [JsonProperty("attributes")]
-        public Dictionary<string, object> Attributes { get; set; }
+        public Dictionary<string, string[]> Attributes { get; set; }
     }
 }
