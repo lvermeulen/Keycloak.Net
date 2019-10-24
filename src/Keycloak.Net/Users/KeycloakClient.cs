@@ -31,7 +31,7 @@ namespace Keycloak.Net
         }
 
         public async Task<IEnumerable<User>> GetUsersAsync(string realm, bool? briefRepresentation = null, string email = null, int? first = null,
-              string firstName = null, string lastName = null, int? max = null, string search = null, string username = null)
+            string firstName = null, string lastName = null, int? max = null, string search = null, string username = null)
         {
             var queryParams = new Dictionary<string, object>
             {
@@ -79,7 +79,6 @@ namespace Keycloak.Net
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
-
 
         [Obsolete("Not working yet")]
         public async Task<string> GetUserConsentsAsync(string realm, string userId)
