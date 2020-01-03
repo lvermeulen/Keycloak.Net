@@ -285,5 +285,16 @@ namespace Keycloak.Net
                 .GetJsonAsync<IEnumerable<UserSession>>()
                 .ConfigureAwait(false);
         }
+
+        public async Task<IEnumerable<Resource>> GetResourcesOwnedByClientAsync(string realm, string clientId) => await GetBaseUrl(realm)
+	        .AppendPathSegment($"/realms/{realm}/protocol/openid-connect/token")
+	        .PostUrlEncodedAsync(new List<KeyValuePair<string, string>>
+	        {
+		        new KeyValuePair<string, string>("grant_type", "urn:ietf:params:oauth:grant-type:uma-ticket"),
+		        new KeyValuePair<string, string>("response_mode", "permissions"),
+		        new KeyValuePair<string, string>("audience", clientId)
+	        })
+	        .ReceiveJson<IEnumerable<Resource>>()
+	        .ConfigureAwait(false);
     }
 }

@@ -256,5 +256,13 @@ namespace Keycloak.Net.Tests
                 Assert.NotNull(result);
             }
         }
+
+        [Theory]
+        [InlineData("Insurance", "insurance-product")]
+        public async Task GetResourcesOwnedByClientAsync(string realm, string clientId)
+        {
+	        var result = await _client.GetResourcesOwnedByClientAsync(realm, clientId);
+	        Assert.NotNull(result);
+        }
     }
 }
