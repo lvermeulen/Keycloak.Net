@@ -209,11 +209,25 @@ namespace Keycloak.Net
 			return response.IsSuccessStatusCode;
 		}
 
-		public async Task<bool> ResetUserPasswordAsync(string realm, string userId, string password)
+		public async Task<bool> ResetUserPasswordAsync(string realm, string userId, Credentials credentials)
 		{
 			var response = await GetBaseUrl(realm)
 				.AppendPathSegment($"/admin/realms/{realm}/users/{userId}/reset-password")
-				.PutJsonAsync(new { type = "password", value = password, temporary = true })
+				.PutJsonAsync(credentials)
+				.ConfigureAwait(false);
+			return response.IsSuccessStatusCode;
+		}
+
+		public async Task<bool> ResetUserPasswordAsync(string realm, string userId, string password, bool temporary = true)
+		{
+			var credentials = new Credentials
+			{
+				Value = password,
+				Temporary = temporary
+			};
+			var response = await GetBaseUrl(realm)
+				.AppendPathSegment($"/admin/realms/{realm}/users/{userId}/reset-password")
+				.PutJsonAsync(credentials)
 				.ConfigureAwait(false);
 			return response.IsSuccessStatusCode;
 		}
