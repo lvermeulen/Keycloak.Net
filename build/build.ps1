@@ -10,7 +10,7 @@ foreach ($src in ls $PSScriptRoot\..\src/*) {
 
 	Write-Output "build: Building & packaging project in $src"
 
-    if ($TagVersionNumber -ne $null) {
+    if ($TagVersionNumber) {
         $version = $TagVersionNumber
     }
     else {
