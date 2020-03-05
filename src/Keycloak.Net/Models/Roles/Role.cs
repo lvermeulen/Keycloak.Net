@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Keycloak.Net.Models.Roles
 {
@@ -14,5 +15,8 @@ namespace Keycloak.Net.Models.Roles
         public bool? ClientRole { get; set; }
         [JsonProperty("containerId")]
         public string ContainerId { get; set; }
+        [JsonProperty("attributes")]
+        public IDictionary<string, string> Attributes { get; set; }
+
     }
 }
