@@ -16,15 +16,6 @@ namespace Keycloak.Net
             NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore
         });
 
-        static KeycloakClient()
-        {
-            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
-            {
-                ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore
-            };
-        }
-
         private readonly Url _url;
         private readonly string _userName;
         private readonly string _password;
@@ -47,7 +38,7 @@ namespace Keycloak.Net
         {
             _getToken = getToken;
         }
-        
+
         private IFlurlRequest GetBaseUrl(string authenticationRealm) => new Url(_url)
             .AppendPathSegment("/auth")
             .ConfigureRequest(settings => settings.JsonSerializer = s_serializer)
