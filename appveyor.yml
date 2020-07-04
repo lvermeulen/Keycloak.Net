@@ -9,7 +9,7 @@ build_script:
 - ps: .\build\build.ps1 $env:APPVEYOR_BUILD_VERSION $env:APPVEYOR_REPO_TAG_NAME
 #before_test:
 #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-sartifacts:
+artifacts:
 - path: '.\artifacts\*.nupkg'
 deploy:
 - provider: NuGet
