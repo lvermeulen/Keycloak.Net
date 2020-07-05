@@ -5,7 +5,6 @@ using Flurl.Http;
 using Flurl.Http.Content;
 using Keycloak.Net.Models.Common;
 using Keycloak.Net.Models.Roles;
-using Newtonsoft.Json;
 
 namespace Keycloak.Net
 {
@@ -52,7 +51,7 @@ namespace Keycloak.Net
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/roles-by-id/{roleId}/composites")
-                .SendJsonAsync(HttpMethod.Delete, new CapturedJsonContent(JsonConvert.SerializeObject(roles)))
+                .SendJsonAsync(HttpMethod.Delete, new CapturedJsonContent(s_serializer.Serialize(roles)))
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
