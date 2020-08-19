@@ -1,7 +1,7 @@
 version: 1.0.0-{build}
 branches:
   only:
-  - master
+  - main
 pull_requests:
   do_not_increment_build_number: true
 image: Visual Studio 2019
@@ -18,5 +18,5 @@ deploy:
   skip_symbols: false
   artifact: /.*\.nupkg/
   on:
-      branch: master                # release from master branch only
+      branch: main                # release from main branch only
       appveyor_repo_tag: true       # deploy on tag push only
