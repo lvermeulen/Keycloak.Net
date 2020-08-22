@@ -11,16 +11,16 @@ namespace Keycloak.Net.Common.Extensions
         private static async Task<string> GetAccessTokenAsync(string url, string realm, string userName, string password)
         {
             var result = await url
-                .AppendPathSegment($"/auth/realms/{realm}/protocol/openid-connect/token")
-                .WithHeader("Accept", "application/json")
-                .PostUrlEncodedAsync(new List<KeyValuePair<string, string>>
-                {
-                    new KeyValuePair<string, string>("grant_type", "password"),
-                    new KeyValuePair<string, string>("username", userName),
-                    new KeyValuePair<string, string>("password", password),
-                    new KeyValuePair<string, string>("client_id", "admin-cli")
-                })
-                .ReceiveJson();
+				.AppendPathSegment($"/auth/realms/{realm}/protocol/openid-connect/token")
+				.WithHeader("Accept", "application/json")
+				.PostUrlEncodedAsync(new List<KeyValuePair<string, string>>
+				{
+					new KeyValuePair<string, string>("grant_type", "password"),
+					new KeyValuePair<string, string>("username", userName),
+					new KeyValuePair<string, string>("password", password),
+					new KeyValuePair<string, string>("client_id", "admin-cli")
+				})
+				.ReceiveJson().ConfigureAwait(false);
 
             string accessToken = result
                 .access_token.ToString();

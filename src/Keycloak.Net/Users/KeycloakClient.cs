@@ -13,7 +13,7 @@ namespace Keycloak.Net
 	{
 		public async Task<bool> CreateUserAsync(string realm, User user)
 		{
-			var response = await InternalCreateUserAsync(realm, user);
+			var response = await InternalCreateUserAsync(realm, user).ConfigureAwait(false);
 			return response.IsSuccessStatusCode;
 		}
 
@@ -24,7 +24,7 @@ namespace Keycloak.Net
 
 		public async Task<string> CreateAndRetrieveUserIdAsync(string realm, User user)
 		{
-			var response = await InternalCreateUserAsync(realm, user);
+			var response = await InternalCreateUserAsync(realm, user).ConfigureAwait(false);
 			string locationPathAndQuery = response.Headers.Location.PathAndQuery;
 			string userId = response.IsSuccessStatusCode ? locationPathAndQuery.Substring(locationPathAndQuery.LastIndexOf("/", StringComparison.Ordinal) + 1) : null;
 			return userId;

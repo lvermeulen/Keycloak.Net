@@ -10,7 +10,7 @@ namespace Keycloak.Net.Tests
         public async Task TriggerUserSynchronizationAsync(string realm)
         {
             string storageProviderId = "";
-            var result = await _client.TriggerUserSynchronizationAsync(realm, storageProviderId, UserSyncActions.Full);
+            var result = await _client.TriggerUserSynchronizationAsync(realm, storageProviderId, UserSyncActions.Full).ConfigureAwait(false);
             Assert.NotNull(result);
         }
 
@@ -20,7 +20,7 @@ namespace Keycloak.Net.Tests
         {
             string storageProviderId = "";
             string mapperId = "";
-            var result = await _client.TriggerLdapMapperSynchronizationAsync(realm, storageProviderId, mapperId, LdapMapperSyncActions.KeycloakToFed);
+            var result = await _client.TriggerLdapMapperSynchronizationAsync(realm, storageProviderId, mapperId, LdapMapperSyncActions.KeycloakToFed).ConfigureAwait(false);
             Assert.NotNull(result);
         }
     }

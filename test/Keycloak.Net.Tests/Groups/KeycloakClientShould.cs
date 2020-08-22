@@ -10,7 +10,7 @@ namespace Keycloak.Net.Tests
         [InlineData("Insurance")]
         public async Task GetGroupHierarchyAsync(string realm)
         {
-            var result = await _client.GetGroupHierarchyAsync(realm);
+            var result = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
             Assert.NotNull(result);
         }
 
@@ -26,11 +26,11 @@ namespace Keycloak.Net.Tests
         [InlineData("Insurance")]
         public async Task GetGroupAsync(string realm)
         {
-            var groups = await _client.GetGroupHierarchyAsync(realm);
+            var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
             string groupId = groups.FirstOrDefault()?.Id;
             if (groupId != null)
             {
-                var result = await _client.GetGroupAsync(realm, groupId);
+                var result = await _client.GetGroupAsync(realm, groupId).ConfigureAwait(false);
                 Assert.NotNull(result);
             }
         }
@@ -39,11 +39,11 @@ namespace Keycloak.Net.Tests
         [InlineData("Insurance")]
         public async Task GetGroupClientAuthorizationPermissionsInitializedAsync(string realm)
         {
-            var groups = await _client.GetGroupHierarchyAsync(realm);
+            var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
             string groupId = groups.FirstOrDefault()?.Id;
             if (groupId != null)
             {
-                var result = await _client.GetGroupClientAuthorizationPermissionsInitializedAsync(realm, groupId);
+                var result = await _client.GetGroupClientAuthorizationPermissionsInitializedAsync(realm, groupId).ConfigureAwait(false);
                 Assert.NotNull(result);
             }
         }
@@ -52,11 +52,11 @@ namespace Keycloak.Net.Tests
         [InlineData("Insurance")]
         public async Task GetGroupUsersAsync(string realm)
         {
-            var groups = await _client.GetGroupHierarchyAsync(realm);
+            var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
             string groupId = groups.FirstOrDefault()?.Id;
             if (groupId != null)
             {
-                var result = await _client.GetGroupUsersAsync(realm, groupId);
+                var result = await _client.GetGroupUsersAsync(realm, groupId).ConfigureAwait(false);
                 Assert.NotNull(result);
             }
         }
