@@ -21,6 +21,11 @@ namespace Keycloak.Net
             return response.IsSuccessStatusCode;
         }
 
+        public async Task<IEnumerable<Realm>> GetRealmsAsync(string realm) => await GetBaseUrl(realm)
+	        .AppendPathSegment($"/admin/realms")
+	        .GetJsonAsync<IEnumerable<Realm>>()
+	        .ConfigureAwait(false);
+
         public async Task<Realm> GetRealmAsync(string realm) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}")
             .GetJsonAsync<Realm>()

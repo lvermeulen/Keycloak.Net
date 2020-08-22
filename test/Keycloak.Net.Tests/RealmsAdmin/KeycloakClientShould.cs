@@ -6,6 +6,14 @@ namespace Keycloak.Net.Tests
 {
     public partial class KeycloakClientShould
     {
+	    [Theory]
+        [InlineData("Insurance")]
+	    public async Task GetRealmsAsync(string realm)
+	    {
+		    var result = await _client.GetRealmsAsync(realm);
+		    Assert.NotNull(result);
+	    }
+
         [Theory]
         [InlineData("Insurance")]
         public async Task GetRealmAsync(string realm)
