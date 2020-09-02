@@ -10,7 +10,7 @@ namespace Keycloak.Net
 {
     public partial class KeycloakClient
     {
-        private static readonly ISerializer s_serializer = new NewtonsoftJsonSerializer(new JsonSerializerSettings
+        private ISerializer _serializer = new NewtonsoftJsonSerializer(new JsonSerializerSettings
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
             NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore
@@ -39,9 +39,14 @@ namespace Keycloak.Net
             _getToken = getToken;
         }
 
+        public void SetSerializer(ISerializer serializer)
+        {
+            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
+        }
+
         private IFlurlRequest GetBaseUrl(string authenticationRealm) => new Url(_url)
             .AppendPathSegment("/auth")
-            .ConfigureRequest(settings => settings.JsonSerializer = s_serializer)
+            .ConfigureRequest(settings => settings.JsonSerializer = _serializer)
             .WithAuthentication(_getToken, _url, authenticationRealm, _userName, _password);
     }
 }
