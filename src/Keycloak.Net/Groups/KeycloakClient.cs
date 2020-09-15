@@ -26,7 +26,8 @@ namespace Keycloak.Net
             {
                 [nameof(first)] = first,
                 [nameof(max)] = max,
-                [nameof(search)] = search
+                [nameof(search)] = search,
+                ["briefRepresentation"] = false
             };
 
             return await GetBaseUrl(realm)
