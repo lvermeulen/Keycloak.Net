@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Flurl.Http;
 using Keycloak.Net.Common.Extensions;
 using Keycloak.Net.Models.Groups;
 using Keycloak.Net.Models.Users;
+using Newtonsoft.Json;
 
 namespace Keycloak.Net
 {
@@ -219,26 +221,42 @@ namespace Keycloak.Net
 		}
 
 		public async Task<bool> ResetUserPasswordAsync(string realm, string userId, string password, bool temporary = true)
-		{
-			var credentials = new Credentials
-			{
-				Value = password,
-				Temporary = temporary
-			};
-			var response = await GetBaseUrl(realm)
-				.AppendPathSegment($"/admin/realms/{realm}/users/{userId}/reset-password")
-				.PutJsonAsync(credentials)
-				.ConfigureAwait(false);
-			return response.IsSuccessStatusCode;
-		}
+        {
+            HttpResponseMessage response = await InternalResetUserPasswordAsync(realm, userId, password, temporary).ConfigureAwait(false);
+            return response.IsSuccessStatusCode;
+        }
 
-		public async Task<bool> VerifyUserEmailAddressAsync(string realm, string userId, string clientId = null, string redirectUri = null)
-		{
-			var queryParams = new Dictionary<string, object>
-			{
-				["client_id"] = clientId,
-				["redirect_uri"] = redirectUri
-			};
+        private async Task<HttpResponseMessage> InternalResetUserPasswordAsync(string realm, string userId, string password, bool temporary)
+        {
+            var credentials = new Credentials
+            {
+                Value = password,
+                Temporary = temporary
+            };
+            var response = await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/reset-password")
+                .PutJsonAsync(credentials)
+                .ConfigureAwait(false);
+            return response;
+        }
+
+        public async Task<SetPasswordResponse> SetUserPasswordAsync(string realm, string userId, string password)
+        {
+            var response = await InternalResetUserPasswordAsync(realm, userId, password, false);
+            if (response.IsSuccessStatusCode)
+                return new SetPasswordResponse {Success = response.IsSuccessStatusCode};
+
+            var jsonString = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<SetPasswordResponse>(jsonString);
+        }
+
+        public async Task<bool> VerifyUserEmailAddressAsync(string realm, string userId, string clientId = null, string redirectUri = null)
+        {
+            var queryParams = new Dictionary<string, object>
+            {
+                ["client_id"] = clientId,
+                ["redirect_uri"] = redirectUri
+            };
 
 			var response = await GetBaseUrl(realm)
 				.AppendPathSegment($"/admin/realms/{realm}/users/{userId}/send-verify-email")
