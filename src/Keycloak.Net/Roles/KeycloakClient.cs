@@ -21,10 +21,21 @@ namespace Keycloak.Net
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<Role>> GetRolesAsync(string realm, string clientId) => await GetBaseUrl(realm)
-            .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles")
-            .GetJsonAsync<IEnumerable<Role>>()
-            .ConfigureAwait(false);
+        public async Task<IEnumerable<Role>> GetRolesAsync(string realm, string clientId, int? first = null, int? max = null, string search = null)
+        {
+            var queryParams = new Dictionary<string, object>
+            {
+                [nameof(first)] = first,
+                [nameof(max)] = max,
+                [nameof(search)] = search
+            };
+
+            return await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles")
+                .SetQueryParams(queryParams)
+                .GetJsonAsync<IEnumerable<Role>>()
+                .ConfigureAwait(false);
+        }
 
         public async Task<Role> GetRoleByNameAsync(string realm, string clientId, string roleName) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}")
@@ -134,10 +145,21 @@ namespace Keycloak.Net
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<Role>> GetRolesAsync(string realm) => await GetBaseUrl(realm)
-            .AppendPathSegment($"/admin/realms/{realm}/roles")
-            .GetJsonAsync<IEnumerable<Role>>()
-            .ConfigureAwait(false);
+        public async Task<IEnumerable<Role>> GetRolesAsync(string realm, int? first = null, int? max = null, string search = null)
+        {
+            var queryParams = new Dictionary<string, object>
+            {
+                [nameof(first)] = first,
+                [nameof(max)] = max,
+                [nameof(search)] = search
+            };
+
+            return await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/roles")
+                .SetQueryParams(queryParams)
+                .GetJsonAsync<IEnumerable<Role>>()
+                .ConfigureAwait(false);
+        }
 
         public async Task<Role> GetRoleByNameAsync(string realm, string roleName) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}")
