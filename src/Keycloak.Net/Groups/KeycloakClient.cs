@@ -95,16 +95,26 @@ namespace Keycloak.Net
             .GetJsonAsync<ManagementPermission>()
             .ConfigureAwait(false);
 
-        public async Task<ManagementPermission> SetGroupClientAuthorizationPermissionsInitializedAsync(string realm, string groupId, ManagementPermission managementPermission) => 
+        public async Task<ManagementPermission> SetGroupClientAuthorizationPermissionsInitializedAsync(string realm, string groupId, ManagementPermission managementPermission) =>
             await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}/management/permissions")
                 .PutJsonAsync(managementPermission)
                 .ReceiveJson<ManagementPermission>()
                 .ConfigureAwait(false);
 
-        public async Task<IEnumerable<User>> GetGroupUsersAsync(string realm, string groupId) => await GetBaseUrl(realm)
-            .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}/members")
-            .GetJsonAsync<IEnumerable<User>>()
-            .ConfigureAwait(false);
+        public async Task<IEnumerable<User>> GetGroupUsersAsync(string realm, string groupId, int? first = null, int? max = null) 
+        {
+            var queryParams = new Dictionary<string, object>
+            {
+                [nameof(first)] = first,
+                [nameof(max)] = max
+            };
+
+            return await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}/members")
+                .SetQueryParams(queryParams)
+                .GetJsonAsync<IEnumerable<User>>()
+                .ConfigureAwait(false);
+        }
     }
 }
