@@ -9,6 +9,8 @@ namespace Keycloak.Net.Models.Roles
         public string Id { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
         [JsonProperty("composite")]
         public bool? Composite { get; set; }
         [JsonProperty("composites")]
@@ -18,8 +20,6 @@ namespace Keycloak.Net.Models.Roles
         [JsonProperty("containerId")]
         public string ContainerId { get; set; }
         [JsonProperty("attributes")]
-        public IDictionary<string, string> Attributes { get; set; }
-        [JsonProperty("description")]
-        public string Description { get; set; }
+        public IDictionary<string, object> Attributes { get; set; }
     }
 }
