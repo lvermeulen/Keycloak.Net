@@ -51,7 +51,7 @@ namespace Keycloak.Net
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/roles-by-id/{roleId}/composites")
-                .SendJsonAsync(HttpMethod.Delete, new CapturedJsonContent(s_serializer.Serialize(roles)))
+                .SendJsonAsync(HttpMethod.Delete, new CapturedJsonContent(_serializer.Serialize(roles)))
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
