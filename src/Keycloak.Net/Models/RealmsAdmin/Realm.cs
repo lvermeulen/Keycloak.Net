@@ -134,5 +134,7 @@ namespace Keycloak.Net.Models.RealmsAdmin
         public Attributes Attributes { get; set; }
         [JsonProperty("userManagedAccessAllowed")]
         public bool? UserManagedAccessAllowed { get; set; }
+        [JsonProperty("passwordPolicy")]
+        public string PasswordPolicy{ get; set; }
     }
 }
