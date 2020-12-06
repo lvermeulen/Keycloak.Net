@@ -34,6 +34,17 @@ namespace Keycloak.Net
             .GetJsonAsync<IdentityProvider>()
             .ConfigureAwait(false);
 
+        /// <summary>
+        /// <see cref="https://github.com/keycloak/keycloak-documentation/blob/master/server_development/topics/identity-brokering/tokens.adoc"/>
+        /// </summary>
+        /// <param name="realm"></param>
+        /// <param name="identityProviderAlias"></param>
+        /// <returns></returns>
+        public async Task<IdentityProviderToken> GetIdentityProviderTokenAsync(string realm, string identityProviderAlias) => await GetBaseUrl(realm)
+            .AppendPathSegment($"/auth/realms/{realm}/broker/{identityProviderAlias}/token")
+            .GetJsonAsync<IdentityProviderToken>()
+            .ConfigureAwait(false);
+
         public async Task<bool> UpdateIdentityProviderAsync(string realm, string identityProviderAlias, IdentityProvider identityProvider)
         {
             var response = await GetBaseUrl(realm)
