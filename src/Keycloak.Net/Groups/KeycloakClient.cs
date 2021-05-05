@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Flurl.Http;
 using Keycloak.Net.Common.Extensions;
@@ -11,13 +12,23 @@ namespace Keycloak.Net
 {
     public partial class KeycloakClient
     {
-        public async Task<bool> CreateGroupAsync(string realm, Group group)
-        {
-            var response = await GetBaseUrl(realm)
+        private async Task<HttpResponseMessage> InternalCreateGroupAsync(string realm, Group group) => await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/groups")
                 .PostJsonAsync(group)
                 .ConfigureAwait(false);
+
+        public async Task<bool> CreateGroupAsync(string realm, Group group)
+        {
+            var response = await InternalCreateGroupAsync(realm, group);
             return response.IsSuccessStatusCode;
+        }
+
+        public async Task<string> CreateAndRetrieveGroupIdAsync(string realm, Group group)
+        {
+            var response = await InternalCreateGroupAsync(realm, group).ConfigureAwait(false);
+            string locationPathAndQuery = response.Headers.Location.PathAndQuery;
+            string groupId = response.IsSuccessStatusCode ? locationPathAndQuery.Substring(locationPathAndQuery.LastIndexOf("/", StringComparison.Ordinal) + 1) : null;
+            return groupId;
         }
 
         public async Task<IEnumerable<Group>> GetGroupHierarchyAsync(string realm, int? first = null, int? max = null, string search = null)
