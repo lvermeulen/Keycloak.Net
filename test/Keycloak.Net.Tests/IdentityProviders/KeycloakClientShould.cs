@@ -27,6 +27,14 @@ namespace Keycloak.Net.Tests
             }
         }
 
+        //[Theory]
+        //[InlineData("Insurance")]
+        //public async Task GetIdentityProviderTokenAsync(string realm)
+        //{
+        //    var token = await _client.GetIdentityProviderTokenAsync(realm).ConfigureAwait(false);
+        //    Assert.NotNull(token);
+        //}
+
         [Theory]
         [InlineData("master")]
         public async Task GetIdentityProviderAuthorizationPermissionsInitializedAsync(string realm)

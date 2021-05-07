@@ -252,16 +252,21 @@ namespace Keycloak.Net
 
         public async Task<bool> VerifyUserEmailAddressAsync(string realm, string userId, string clientId = null, string redirectUri = null)
         {
-            var queryParams = new Dictionary<string, object>
+            var queryParams = new Dictionary<string, object>();
+            if (!string.IsNullOrEmpty(clientId))
             {
-                ["client_id"] = clientId,
-                ["redirect_uri"] = redirectUri
-            };
+				queryParams.Add("client_id", clientId);
+            }
+
+            if (!string.IsNullOrEmpty(redirectUri))
+            {
+                queryParams.Add("redirect_uri", redirectUri);
+            }
 
 			var response = await GetBaseUrl(realm)
 				.AppendPathSegment($"/admin/realms/{realm}/users/{userId}/send-verify-email")
 				.SetQueryParams(queryParams)
-				.PutAsync(new StringContent(""))
+				.PutJsonAsync(null)
 				.ConfigureAwait(false);
 			return response.IsSuccessStatusCode;
 		}

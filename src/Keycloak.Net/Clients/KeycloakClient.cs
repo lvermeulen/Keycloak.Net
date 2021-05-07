@@ -77,15 +77,15 @@ namespace Keycloak.Net
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<Credential> GenerateClientSecretAsync(string realm, string clientId) => await GetBaseUrl(realm)
+        public async Task<Credentials> GenerateClientSecretAsync(string realm, string clientId) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/client-secret")
             .PostJsonAsync(new StringContent(""))
-            .ReceiveJson<Credential>()
+            .ReceiveJson<Credentials>()
             .ConfigureAwait(false);
 
-        public async Task<Credential> GetClientSecretAsync(string realm, string clientId) => await GetBaseUrl(realm)
+        public async Task<Credentials> GetClientSecretAsync(string realm, string clientId) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/client-secret")
-            .GetJsonAsync<Credential>()
+            .GetJsonAsync<Credentials>()
             .ConfigureAwait(false);
 
         public async Task<IEnumerable<ClientScope>> GetDefaultClientScopesAsync(string realm, string clientId) => await GetBaseUrl(realm)

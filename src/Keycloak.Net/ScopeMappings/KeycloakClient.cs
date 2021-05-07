@@ -85,36 +85,36 @@ namespace Keycloak.Net
 			.GetJsonAsync<Mapping>()
 			.ConfigureAwait(false);
 
-		public async Task<bool> AddClientRolesScopeMappingToClientAsync(string realm, string clientId, IEnumerable<Role> roles)
+		public async Task<bool> AddClientRolesScopeMappingToClientAsync(string realm, string clientId, string scopeClientId, IEnumerable<Role> roles)
 		{
 			var response = await GetBaseUrl(realm)
-				.AppendPathSegment($"/admin/realms/{realm}/scope-mappings/clients/{clientId}")
+				.AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/scope-mappings/clients/{scopeClientId}")
 				.PostJsonAsync(roles)
 				.ConfigureAwait(false);
 			return response.IsSuccessStatusCode;
 		}
 
-		public async Task<IEnumerable<Role>> GetClientRolesScopeMappingsForClientAsync(string realm, string clientId) => await GetBaseUrl(realm)
-			.AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/scope-mappings/clients/{clientId}")
+		public async Task<IEnumerable<Role>> GetClientRolesScopeMappingsForClientAsync(string realm, string clientId, string scopeClientId) => await GetBaseUrl(realm)
+			.AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/scope-mappings/clients/{scopeClientId}")
 			.GetJsonAsync<IEnumerable<Role>>()
 			.ConfigureAwait(false);
 
-		public async Task<bool> RemoveClientRolesFromClientScopeForClientAsync(string realm, string clientId, IEnumerable<Role> roles)
+		public async Task<bool> RemoveClientRolesFromClientScopeForClientAsync(string realm, string clientId, string scopeClientId, IEnumerable<Role> roles)
 		{
 			var response = await GetBaseUrl(realm)
-				.AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/scope-mappings/clients/{clientId}")
+				.AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/scope-mappings/clients/{scopeClientId}")
 				.SendJsonAsync(HttpMethod.Delete, roles)
 				.ConfigureAwait(false);
 			return response.IsSuccessStatusCode;
 		}
 
-		public async Task<IEnumerable<Role>> GetAvailableClientRolesForClientScopeForClientAsync(string realm, string clientScopeId, string clientId) => await GetBaseUrl(realm)
-			.AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}/scope-mappings/clients/{clientId}/available")
+		public async Task<IEnumerable<Role>> GetAvailableClientRolesForClientScopeForClientAsync(string realm, string clientId, string scopeClientId) => await GetBaseUrl(realm)
+			.AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/scope-mappings/clients/{scopeClientId}/available")
 			.GetJsonAsync<IEnumerable<Role>>()
 			.ConfigureAwait(false);
 
-		public async Task<IEnumerable<Role>> GetEffectiveClientRolesForClientScopeForClientAsync(string realm, string clientScopeId, string clientId) => await GetBaseUrl(realm)
-			.AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}/scope-mappings/clients/{clientId}/composite")
+		public async Task<IEnumerable<Role>> GetEffectiveClientRolesForClientScopeForClientAsync(string realm, string clientId, string scopeClientId) => await GetBaseUrl(realm)
+			.AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/scope-mappings/clients/{scopeClientId}/composite")
 			.GetJsonAsync<IEnumerable<Role>>()
 			.ConfigureAwait(false);
 
