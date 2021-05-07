@@ -7,7 +7,7 @@ namespace Keycloak.Net.Tests
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetAuthenticatorProvidersAsync(string realm)
         {
             var result = await _client.GetAuthenticatorProvidersAsync(realm).ConfigureAwait(false);
@@ -15,7 +15,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetClientAuthenticatorProvidersAsync(string realm)
         {
             var result = await _client.GetClientAuthenticatorProvidersAsync(realm).ConfigureAwait(false);
@@ -23,7 +23,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetAuthenticatorProviderConfigurationDescriptionAsync(string realm)
         {
             var providers = await _client.GetAuthenticatorProvidersAsync(realm).ConfigureAwait(false);
@@ -36,7 +36,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory(Skip = "Not working yet")]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetAuthenticatorConfigurationAsync(string realm)
         {
             string configurationId = ""; //TODO
@@ -48,7 +48,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetAuthenticationExecutionAsync(string realm)
         {
             var flows = await _client.GetAuthenticationFlowsAsync(realm).ConfigureAwait(false);
@@ -66,7 +66,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetAuthenticationFlowsAsync(string realm)
         {
             var result = await _client.GetAuthenticationFlowsAsync(realm).ConfigureAwait(false);
@@ -74,7 +74,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetAuthenticationFlowExecutionsAsync(string realm)
         {
             var flows = await _client.GetAuthenticationFlowsAsync(realm).ConfigureAwait(false);
@@ -87,7 +87,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetAuthenticationFlowByIdAsync(string realm)
         {
             var flows = await _client.GetAuthenticationFlowsAsync(realm).ConfigureAwait(false);
@@ -100,7 +100,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetFormActionProvidersAsync(string realm)
         {
             var result = await _client.GetFormActionProvidersAsync(realm).ConfigureAwait(false);
@@ -108,7 +108,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetFormProvidersAsync(string realm)
         {
             var result = await _client.GetFormProvidersAsync(realm).ConfigureAwait(false);
@@ -116,7 +116,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetConfigurationDescriptionsForAllClientsAsync(string realm)
         {
             var result = await _client.GetConfigurationDescriptionsForAllClientsAsync(realm).ConfigureAwait(false);
@@ -124,7 +124,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetRequiredActionsAsync(string realm)
         {
             var result = await _client.GetRequiredActionsAsync(realm).ConfigureAwait(false);
@@ -132,7 +132,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetRequiredActionByAliasAsync(string realm)
         {
             var requiredActions = await _client.GetRequiredActionsAsync(realm).ConfigureAwait(false);
@@ -145,7 +145,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetUnregisteredRequiredActionsAsync(string realm)
         {
             var result = await _client.GetUnregisteredRequiredActionsAsync(realm).ConfigureAwait(false);

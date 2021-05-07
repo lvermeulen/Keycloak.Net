@@ -7,7 +7,7 @@ namespace Keycloak.Net.Tests
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetProtocolMappersAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -20,7 +20,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetProtocolMapperAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -38,7 +38,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetProtocolMappersByNameAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);

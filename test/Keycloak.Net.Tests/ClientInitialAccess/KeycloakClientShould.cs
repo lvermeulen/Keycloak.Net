@@ -6,7 +6,7 @@ namespace Keycloak.Net.Tests
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetClientInitialAccessAsync(string realm)
         {
             var result = await _client.GetClientInitialAccessAsync(realm).ConfigureAwait(false);

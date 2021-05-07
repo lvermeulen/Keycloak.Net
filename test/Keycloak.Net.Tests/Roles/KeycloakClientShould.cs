@@ -146,7 +146,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetRolesForRealmAsync(string realm)
         {
             var result = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -154,7 +154,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetRoleByNameForRealmAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -167,7 +167,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetRoleCompositesForRealmAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -198,7 +198,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetRealmRolesForCompositeForRealmAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -211,7 +211,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory(Skip = "Not working yet")]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetGroupsWithRoleNameForRealmAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -224,7 +224,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetRoleAuthorizationPermissionsInitializedForRealmAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -237,7 +237,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetUsersWithRoleNameForRealmAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
