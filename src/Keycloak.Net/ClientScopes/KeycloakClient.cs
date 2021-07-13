@@ -13,7 +13,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/client-scopes")
                 .PostJsonAsync(clientScope)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<ClientScope>> GetClientScopesAsync(string realm) => await GetBaseUrl(realm)
@@ -32,7 +32,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}")
                 .PutJsonAsync(clientScope)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteClientScopeAsync(string realm, string clientScopeId)
@@ -41,7 +41,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
     }
 }
