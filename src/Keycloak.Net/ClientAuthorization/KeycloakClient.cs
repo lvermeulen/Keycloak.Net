@@ -60,7 +60,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/{permission.Id}")
                 .PutJsonAsync(permission)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteAuthorizationPermissionAsync(string realm, string clientId, AuthorizationPermissionType permissionType,
@@ -72,7 +72,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/{permissionId}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
         
         public async Task<IEnumerable<Policy>> GetAuthorizationPermissionAssociatedPoliciesAsync(string realm, string clientId, string permissionId)
@@ -171,7 +171,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/{policy.Id}")
                 .PutJsonAsync(policy)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteRolePolicyAsync(string realm, string clientId, PolicyType policyType, string rolePolicyId)
@@ -182,7 +182,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/{rolePolicyId}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
         #endregion
     }

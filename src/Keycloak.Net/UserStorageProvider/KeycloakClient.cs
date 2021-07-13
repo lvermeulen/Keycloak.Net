@@ -15,7 +15,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/user-storage/{storageProviderId}/remove-imported-users")
                 .PostAsync(new StringContent(""))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         [Obsolete("Not working yet")]
@@ -33,7 +33,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/user-storage/{storageProviderId}/unlink-users")
                 .PostAsync(new StringContent(""))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         [Obsolete("Not working yet")]

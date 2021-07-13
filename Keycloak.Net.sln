@@ -25,6 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Keycloak.Net", "src\Keycloa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Keycloak.Net.Tests", "test\Keycloak.Net.Tests\Keycloak.Net.Tests.csproj", "{3614BF25-4947-47A7-9C7E-7E3A0BFED2AA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Keycloak.Net.Tests.Docker", "Keycloak.Net.Tests.Docker", "{17AE17B6-5589-4620-8CFE-CCDF83B31BE8}"
+ProjectSection(SolutionItems) = preProject
+	test\Keycloak.Net.Tests.Docker\docker-compose.yml = test\Keycloak.Net.Tests.Docker\docker-compose.yml
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +69,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3614BF25-4947-47A7-9C7E-7E3A0BFED2AA} = {04ECC844-41D5-4A2B-85F1-DA1E3B3C58B3}
+		{17AE17B6-5589-4620-8CFE-CCDF83B31BE8} = {04ECC844-41D5-4A2B-85F1-DA1E3B3C58B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4842084-5CB2-44EE-8494-6E05D534809A}
