@@ -46,12 +46,12 @@ namespace Keycloak.Net
             _getToken = getToken;
         }
 
-        public void SetSerializer(ISerializer serializer)
+        public virtual void SetSerializer(ISerializer serializer)
         {
             _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
         }
 
-        private IFlurlRequest GetBaseUrl(string authenticationRealm) => new Url(_url)
+        protected virtual IFlurlRequest GetBaseUrl(string authenticationRealm) => new Url(_url)
             .AppendPathSegment("/auth")
             .ConfigureRequest(settings => settings.JsonSerializer = _serializer)
             .WithAuthentication(_getToken, _url, authenticationRealm, _userName, _password, _clientSecret);
