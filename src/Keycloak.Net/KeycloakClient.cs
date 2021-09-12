@@ -19,6 +19,7 @@ namespace Keycloak.Net
         private readonly Url _url;
         private readonly string _userName;
         private readonly string _password;
+        private readonly string _clientId;
         private readonly string _clientSecret;
         private readonly Func<string> _getToken;
 
@@ -27,16 +28,18 @@ namespace Keycloak.Net
             _url = url;
         }
 
-        public KeycloakClient(string url, string userName, string password)
+        public KeycloakClient(string url, string userName, string password, string clientId = "admin-cli")
             : this(url)
         {
             _userName = userName;
             _password = password;
+            _clientId = clientId;
         }
 
-        public KeycloakClient(string url, string clientSecret)
+        public KeycloakClient(string url, string clientSecret, string clientId = "admin-cli")
             : this(url)
-        {
+        {            
+            _clientId = clientId;
             _clientSecret = clientSecret;
         }
 
@@ -54,6 +57,6 @@ namespace Keycloak.Net
         private IFlurlRequest GetBaseUrl(string authenticationRealm) => new Url(_url)
             .AppendPathSegment("/auth")
             .ConfigureRequest(settings => settings.JsonSerializer = _serializer)
-            .WithAuthentication(_getToken, _url, authenticationRealm, _userName, _password, _clientSecret);
+            .WithAuthentication(_getToken, _url, authenticationRealm, _userName, _password, _clientId, _clientSecret);
     }
 }
