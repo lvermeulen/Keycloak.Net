@@ -14,9 +14,9 @@ namespace Keycloak.Net.Tests
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .Build();
 
-            string url = configuration["url"];
-            string userName = configuration["userName"];
-            string password = configuration["password"];
+            string url = configuration["url"] ?? "https://localhost:8443";
+            string userName = configuration["userName"] ?? "admin";
+            string password = configuration["password"] ?? "changeit";
 
             _client = new KeycloakClient(url, userName, password);
         }
