@@ -101,6 +101,9 @@ namespace Keycloak.Net
         #endregion 
 
         #region Policy
+        
+        #region Role Policies
+        
         public async Task<RolePolicy> CreateRolePolicyAsync(string realm, string clientId, RolePolicy policy)
         {
                 var response = await GetBaseUrl(realm)
@@ -184,6 +187,23 @@ namespace Keycloak.Net
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
+        
+        #endregion
+        
+        #region Client Policies
+
+        public async Task<ClientPolicy> CreateClientPolicyAsync(string realm, string clientId, ClientPolicy policy)
+        {
+            var response = await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/policy/client")
+                .PostJsonAsync(policy)
+                .ReceiveJson<ClientPolicy>()
+                .ConfigureAwait(false);
+            return response;
+        } 
+        
+        #endregion
+        
         #endregion
     }
 }
