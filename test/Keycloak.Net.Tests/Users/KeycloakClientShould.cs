@@ -7,7 +7,7 @@ namespace Keycloak.Net.Tests
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetUsersAsync(string realm)
         {
             var result = await _client.GetUsersAsync(realm).ConfigureAwait(false);
@@ -15,7 +15,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetUsersCountAsync(string realm)
         {
             int? result = await _client.GetUsersCountAsync(realm);
@@ -23,7 +23,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetUserAsync(string realm)
         {
             var users = await _client.GetUsersAsync(realm).ConfigureAwait(false);

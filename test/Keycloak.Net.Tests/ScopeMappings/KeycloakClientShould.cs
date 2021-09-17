@@ -7,7 +7,7 @@ namespace Keycloak.Net.Tests
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetScopeMappingsAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -20,7 +20,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetClientRolesForClientScopeAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -38,7 +38,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetAvailableClientRolesForClientScopeAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -56,7 +56,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetEffectiveClientRolesForClientScopeAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -74,7 +74,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetRealmRolesForClientScopeAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -87,7 +87,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetAvailableRealmRolesForClientScopeAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -100,7 +100,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetEffectiveRealmRolesForClientScopeAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -113,7 +113,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetScopeMappingsForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -126,7 +126,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetClientRolesScopeMappingsForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -139,7 +139,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetAvailableClientRolesForClientScopeForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -152,7 +152,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetEffectiveClientRolesForClientScopeForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -165,7 +165,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetRealmRolesScopeMappingsForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -178,7 +178,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetAvailableRealmRolesForClientScopeForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -191,7 +191,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetEffectiveRealmRolesForClientScopeForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);

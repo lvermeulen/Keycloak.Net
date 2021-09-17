@@ -7,7 +7,7 @@ namespace Keycloak.Net.Tests
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetClientScopesAsync(string realm)
         {
             var result = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -15,7 +15,7 @@ namespace Keycloak.Net.Tests
         }
 
         [Theory]
-        [InlineData("Insurance")]
+        [InlineData("master")]
         public async Task GetClientScopeAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
