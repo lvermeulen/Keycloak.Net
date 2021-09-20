@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using Flurl;
 using Flurl.Http;
 using Flurl.Http.Configuration;
@@ -21,10 +22,15 @@ namespace Keycloak.Net
         private readonly string _password;
         private readonly string _clientSecret;
         private readonly Func<string> _getToken;
+        private readonly ConfigurableHttpClientFactory _clientFactory;
 
         private KeycloakClient(string url)
         {
             _url = url;
+
+            this._clientFactory = new ConfigurableHttpClientFactory();
+            FlurlHttp.ConfigureClient(this._url,
+                cli => cli.Settings.HttpClientFactory = this._clientFactory);
         }
 
         public KeycloakClient(string url, string userName, string password)
@@ -51,9 +57,34 @@ namespace Keycloak.Net
             _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
         }
 
+        public void SetHttpClientHandler(HttpClientHandler clientHandler)
+        {
+            this._clientFactory.SetHttpClientHandler(clientHandler);
+        }
+
         private IFlurlRequest GetBaseUrl(string authenticationRealm) => new Url(_url)
             .AppendPathSegment("/auth")
             .ConfigureRequest(settings => settings.JsonSerializer = _serializer)
             .WithAuthentication(_getToken, _url, authenticationRealm, _userName, _password, _clientSecret);
+    }
+    public class ConfigurableHttpClientFactory : DefaultHttpClientFactory
+    {
+        // Values for client configuration
+        private HttpClientHandler _clientHandler;
+
+        public ConfigurableHttpClientFactory()
+        {
+            this._clientHandler = new HttpClientHandler();
+        }
+
+        public void SetHttpClientHandler(HttpClientHandler clientHandler)
+        {
+            this._clientHandler = clientHandler;
+        }
+
+        public override HttpMessageHandler CreateMessageHandler()
+        {
+            return this._clientHandler;
+        }
     }
 }
