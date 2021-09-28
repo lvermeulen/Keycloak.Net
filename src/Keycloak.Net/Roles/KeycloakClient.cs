@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Flurl.Http;
 using Keycloak.Net.Models.Common;
@@ -12,16 +13,16 @@ namespace Keycloak.Net
 {
     public partial class KeycloakClient
     {
-        public async Task<bool> CreateRoleAsync(string realm, string clientId, Role role)
+        public async Task<bool> CreateRoleAsync(string realm, string clientId, Role role, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles")
-                .PostJsonAsync(role)
+                .PostJsonAsync(role, cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<Role>> GetRolesAsync(string realm, string clientId, int? first = null, int? max = null, string search = null)
+        public async Task<IEnumerable<Role>> GetRolesAsync(string realm, string clientId, int? first = null, int? max = null, string search = null, CancellationToken cancellationToken = default)
         {
             var queryParams = new Dictionary<string, object>
             {
@@ -33,68 +34,68 @@ namespace Keycloak.Net
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles")
                 .SetQueryParams(queryParams)
-                .GetJsonAsync<IEnumerable<Role>>()
+                .GetJsonAsync<IEnumerable<Role>>(cancellationToken)
                 .ConfigureAwait(false);
         }
 
-        public async Task<Role> GetRoleByNameAsync(string realm, string clientId, string roleName) => await GetBaseUrl(realm)
+        public async Task<Role> GetRoleByNameAsync(string realm, string clientId, string roleName, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}")
-            .GetJsonAsync<Role>()
+            .GetJsonAsync<Role>(cancellationToken)
             .ConfigureAwait(false);
         
-        public async Task<bool> UpdateRoleByNameAsync(string realm, string clientId, string roleName, Role role)
+        public async Task<bool> UpdateRoleByNameAsync(string realm, string clientId, string roleName, Role role, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}")
-                .PutJsonAsync(role)
+                .PutJsonAsync(role, cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> DeleteRoleByNameAsync(string realm, string clientId, string roleName)
+        public async Task<bool> DeleteRoleByNameAsync(string realm, string clientId, string roleName, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}")
-                .DeleteAsync()
+                .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> AddCompositesToRoleAsync(string realm, string clientId, string roleName, IEnumerable<Role> roles)
+        public async Task<bool> AddCompositesToRoleAsync(string realm, string clientId, string roleName, IEnumerable<Role> roles, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}/composites")
-                .PostJsonAsync(roles)
+                .PostJsonAsync(roles, cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<Role>> GetRoleCompositesAsync(string realm, string clientId, string roleName) => await GetBaseUrl(realm)
+        public async Task<IEnumerable<Role>> GetRoleCompositesAsync(string realm, string clientId, string roleName, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}/composites")
-            .GetJsonAsync<IEnumerable<Role>>()
+            .GetJsonAsync<IEnumerable<Role>>(cancellationToken)
             .ConfigureAwait(false);
 
-        public async Task<bool> RemoveCompositesFromRoleAsync(string realm, string clientId, string roleName, IEnumerable<Role> roles)
+        public async Task<bool> RemoveCompositesFromRoleAsync(string realm, string clientId, string roleName, IEnumerable<Role> roles, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}/composites")
-                .SendJsonAsync(HttpMethod.Delete, roles)
+                .SendJsonAsync(HttpMethod.Delete, roles, cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<Role>> GetApplicationRolesForCompositeAsync(string realm, string clientId, string roleName, string forClientId) => await GetBaseUrl(realm)
+        public async Task<IEnumerable<Role>> GetApplicationRolesForCompositeAsync(string realm, string clientId, string roleName, string forClientId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}/composites/clients/{forClientId}")
-            .GetJsonAsync<IEnumerable<Role>>()
+            .GetJsonAsync<IEnumerable<Role>>(cancellationToken)
             .ConfigureAwait(false);
 
-        public async Task<IEnumerable<Role>> GetRealmRolesForCompositeAsync(string realm, string clientId, string roleName) => await GetBaseUrl(realm)
+        public async Task<IEnumerable<Role>> GetRealmRolesForCompositeAsync(string realm, string clientId, string roleName, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}/composites/realm")
-            .GetJsonAsync<IEnumerable<Role>>()
+            .GetJsonAsync<IEnumerable<Role>>(cancellationToken)
             .ConfigureAwait(false);
 
         [Obsolete("Not working yet")]
-        public async Task<IEnumerable<Group>> GetGroupsWithRoleNameAsync(string realm, string clientId, string roleName, int? first = null, bool? full = null, int? max = null)
+        public async Task<IEnumerable<Group>> GetGroupsWithRoleNameAsync(string realm, string clientId, string roleName, int? first = null, bool? full = null, int? max = null, CancellationToken cancellationToken = default)
         {
             var queryParams = new Dictionary<string, object>
             {
@@ -106,22 +107,22 @@ namespace Keycloak.Net
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}/groups")
                 .SetQueryParams(queryParams)
-                .GetJsonAsync<IEnumerable<Group>>()
+                .GetJsonAsync<IEnumerable<Group>>(cancellationToken)
                 .ConfigureAwait(false);
         }
 
-        public async Task<ManagementPermission> GetRoleAuthorizationPermissionsInitializedAsync(string realm, string clientId, string roleName) => await GetBaseUrl(realm)
+        public async Task<ManagementPermission> GetRoleAuthorizationPermissionsInitializedAsync(string realm, string clientId, string roleName, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}/management/permissions")
-            .GetJsonAsync<ManagementPermission>()
+            .GetJsonAsync<ManagementPermission>(cancellationToken)
             .ConfigureAwait(false);
 
-        public async Task<ManagementPermission> SetRoleAuthorizationPermissionsInitializedAsync(string realm, string clientId, string roleName, ManagementPermission managementPermission) => await GetBaseUrl(realm)
+        public async Task<ManagementPermission> SetRoleAuthorizationPermissionsInitializedAsync(string realm, string clientId, string roleName, ManagementPermission managementPermission, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}/management/permissions")
-            .PutJsonAsync(managementPermission)
+            .PutJsonAsync(managementPermission, cancellationToken)
             .ReceiveJson<ManagementPermission>()
             .ConfigureAwait(false);
 
-        public async Task<IEnumerable<User>> GetUsersWithRoleNameAsync(string realm, string clientId, string roleName, int? first = null, int? max = null)
+        public async Task<IEnumerable<User>> GetUsersWithRoleNameAsync(string realm, string clientId, string roleName, int? first = null, int? max = null, CancellationToken cancellationToken = default)
         {
             var queryParams = new Dictionary<string, object>
             {
@@ -132,20 +133,20 @@ namespace Keycloak.Net
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles/{roleName}/users")
                 .SetQueryParams(queryParams)
-                .GetJsonAsync<IEnumerable<User>>()
+                .GetJsonAsync<IEnumerable<User>>(cancellationToken)
                 .ConfigureAwait(false);
         }
 
-        public async Task<bool> CreateRoleAsync(string realm, Role role)
+        public async Task<bool> CreateRoleAsync(string realm, Role role, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/roles")
-                .PostJsonAsync(role)
+                .PostJsonAsync(role, cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<Role>> GetRolesAsync(string realm, int? first = null, int? max = null, string search = null)
+        public async Task<IEnumerable<Role>> GetRolesAsync(string realm, int? first = null, int? max = null, string search = null, CancellationToken cancellationToken = default)
         {
             var queryParams = new Dictionary<string, object>
             {
@@ -157,68 +158,68 @@ namespace Keycloak.Net
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/roles")
                 .SetQueryParams(queryParams)
-                .GetJsonAsync<IEnumerable<Role>>()
+                .GetJsonAsync<IEnumerable<Role>>(cancellationToken)
                 .ConfigureAwait(false);
         }
 
-        public async Task<Role> GetRoleByNameAsync(string realm, string roleName) => await GetBaseUrl(realm)
+        public async Task<Role> GetRoleByNameAsync(string realm, string roleName, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}")
-            .GetJsonAsync<Role>()
+            .GetJsonAsync<Role>(cancellationToken)
             .ConfigureAwait(false);
         
-        public async Task<bool> UpdateRoleByNameAsync(string realm, string roleName, Role role)
+        public async Task<bool> UpdateRoleByNameAsync(string realm, string roleName, Role role, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}")
-                .PutJsonAsync(role)
+                .PutJsonAsync(role, cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> DeleteRoleByNameAsync(string realm, string roleName)
+        public async Task<bool> DeleteRoleByNameAsync(string realm, string roleName, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}")
-                .DeleteAsync()
+                .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> AddCompositesToRoleAsync(string realm, string roleName, IEnumerable<Role> roles)
+        public async Task<bool> AddCompositesToRoleAsync(string realm, string roleName, IEnumerable<Role> roles, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}/composites")
-                .PostJsonAsync(roles)
+                .PostJsonAsync(roles, cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<Role>> GetRoleCompositesAsync(string realm, string roleName) => await GetBaseUrl(realm)
+        public async Task<IEnumerable<Role>> GetRoleCompositesAsync(string realm, string roleName, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}/composites")
-            .GetJsonAsync<IEnumerable<Role>>()
+            .GetJsonAsync<IEnumerable<Role>>(cancellationToken)
             .ConfigureAwait(false);
 
-        public async Task<bool> RemoveCompositesFromRoleAsync(string realm, string roleName, IEnumerable<Role> roles)
+        public async Task<bool> RemoveCompositesFromRoleAsync(string realm, string roleName, IEnumerable<Role> roles, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}/composites")
-                .SendJsonAsync(HttpMethod.Delete, roles)
+                .SendJsonAsync(HttpMethod.Delete, roles, cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<Role>> GetApplicationRolesForCompositeAsync(string realm, string roleName, string forClientId) => await GetBaseUrl(realm)
+        public async Task<IEnumerable<Role>> GetApplicationRolesForCompositeAsync(string realm, string roleName, string forClientId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}/composites/clients/{forClientId}")
-            .GetJsonAsync<IEnumerable<Role>>()
+            .GetJsonAsync<IEnumerable<Role>>(cancellationToken)
             .ConfigureAwait(false);
 
-        public async Task<IEnumerable<Role>> GetRealmRolesForCompositeAsync(string realm, string roleName) => await GetBaseUrl(realm)
+        public async Task<IEnumerable<Role>> GetRealmRolesForCompositeAsync(string realm, string roleName, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}/composites/realm")
-            .GetJsonAsync<IEnumerable<Role>>()
+            .GetJsonAsync<IEnumerable<Role>>(cancellationToken)
             .ConfigureAwait(false);
 
         [Obsolete("Not working yet")]
-        public async Task<IEnumerable<Group>> GetGroupsWithRoleNameAsync(string realm, string roleName, int? first = null, bool? full = null, int? max = null)
+        public async Task<IEnumerable<Group>> GetGroupsWithRoleNameAsync(string realm, string roleName, int? first = null, bool? full = null, int? max = null, CancellationToken cancellationToken = default)
         {
             var queryParams = new Dictionary<string, object>
             {
@@ -230,22 +231,22 @@ namespace Keycloak.Net
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}/groups")
                 .SetQueryParams(queryParams)
-                .GetJsonAsync<IEnumerable<Group>>()
+                .GetJsonAsync<IEnumerable<Group>>(cancellationToken)
                 .ConfigureAwait(false);
         }
 
-        public async Task<ManagementPermission> GetRoleAuthorizationPermissionsInitializedAsync(string realm, string roleName) => await GetBaseUrl(realm)
+        public async Task<ManagementPermission> GetRoleAuthorizationPermissionsInitializedAsync(string realm, string roleName, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}/management/permissions")
-            .GetJsonAsync<ManagementPermission>()
+            .GetJsonAsync<ManagementPermission>(cancellationToken)
             .ConfigureAwait(false);
 
-        public async Task<ManagementPermission> SetRoleAuthorizationPermissionsInitializedAsync(string realm, string roleName, ManagementPermission managementPermission) => await GetBaseUrl(realm)
+        public async Task<ManagementPermission> SetRoleAuthorizationPermissionsInitializedAsync(string realm, string roleName, ManagementPermission managementPermission, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}/management/permissions")
-            .PutJsonAsync(managementPermission)
+            .PutJsonAsync(managementPermission, cancellationToken)
             .ReceiveJson<ManagementPermission>()
             .ConfigureAwait(false);
 
-        public async Task<IEnumerable<User>> GetUsersWithRoleNameAsync(string realm, string roleName, int? first = null, int? max = null)
+        public async Task<IEnumerable<User>> GetUsersWithRoleNameAsync(string realm, string roleName, int? first = null, int? max = null, CancellationToken cancellationToken = default)
         {
             var queryParams = new Dictionary<string, object>
             {
@@ -256,7 +257,7 @@ namespace Keycloak.Net
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/roles/{roleName}/users")
                 .SetQueryParams(queryParams)
-                .GetJsonAsync<IEnumerable<User>>()
+                .GetJsonAsync<IEnumerable<User>>(cancellationToken)
                 .ConfigureAwait(false);
         }
     }

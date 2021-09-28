@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Flurl.Http;
 using Keycloak.Net.Models.ClientScopes;
@@ -7,39 +8,39 @@ namespace Keycloak.Net
 {
     public partial class KeycloakClient
     {
-        public async Task<bool> CreateClientScopeAsync(string realm, ClientScope clientScope)
+        public async Task<bool> CreateClientScopeAsync(string realm, ClientScope clientScope, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/client-scopes")
-                .PostJsonAsync(clientScope)
+                .PostJsonAsync(clientScope, cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<ClientScope>> GetClientScopesAsync(string realm) => await GetBaseUrl(realm)
+        public async Task<IEnumerable<ClientScope>> GetClientScopesAsync(string realm, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/client-scopes")
-            .GetJsonAsync<IEnumerable<ClientScope>>()
+            .GetJsonAsync<IEnumerable<ClientScope>>(cancellationToken)
             .ConfigureAwait(false);
 
-        public async Task<ClientScope> GetClientScopeAsync(string realm, string clientScopeId) => await GetBaseUrl(realm)
+        public async Task<ClientScope> GetClientScopeAsync(string realm, string clientScopeId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}")
-            .GetJsonAsync<ClientScope>()
+            .GetJsonAsync<ClientScope>(cancellationToken)
             .ConfigureAwait(false);
 
-        public async Task<bool> UpdateClientScopeAsync(string realm, string clientScopeId, ClientScope clientScope)
+        public async Task<bool> UpdateClientScopeAsync(string realm, string clientScopeId, ClientScope clientScope, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}")
-                .PutJsonAsync(clientScope)
+                .PutJsonAsync(clientScope, cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> DeleteClientScopeAsync(string realm, string clientScopeId)
+        public async Task<bool> DeleteClientScopeAsync(string realm, string clientScopeId, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}")
-                .DeleteAsync()
+                .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
