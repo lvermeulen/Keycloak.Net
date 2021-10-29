@@ -12,13 +12,23 @@ namespace Keycloak.Net
 {
     public partial class KeycloakClient
     {
-        public async Task<bool> CreateRoleAsync(string realm, string clientId, Role role)
-        {
-            var response = await GetBaseUrl(realm)
+        private async Task<HttpResponseMessage> InternalCreateRoleAsync(string realm, string clientId, Role role) => await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/roles")
                 .PostJsonAsync(role)
                 .ConfigureAwait(false);
+
+        public async Task<bool> CreateRoleAsync(string realm, string clientId, Role role)
+        {
+            var response = await InternalCreateRoleAsync(realm, clientId, role);
             return response.IsSuccessStatusCode;
+        }
+
+        public async Task<string> CreateAndRetrieveRoleIdAsync(string realm, string clientId, Role role)
+        {
+            var response = await InternalCreateRoleAsync(realm, clientId, role).ConfigureAwait(false);
+            string locationPathAndQuery = response.Headers.Location.PathAndQuery;
+            string roleId = response.IsSuccessStatusCode ? locationPathAndQuery.Substring(locationPathAndQuery.LastIndexOf("/", StringComparison.Ordinal) + 1) : null;
+            return roleId;
         }
 
         public async Task<IEnumerable<Role>> GetRolesAsync(string realm, string clientId, int? first = null, int? max = null, string search = null)
