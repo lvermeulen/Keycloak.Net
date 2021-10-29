@@ -5,6 +5,8 @@ namespace Keycloak.Net.Models.Users
 {
 	public class Credentials
 	{
+		[JsonProperty("id")]
+		public string Id { get; set; }
 		[JsonProperty("algorithm")]
 		public string Algorithm { get; set; }
 		[JsonProperty("config")]

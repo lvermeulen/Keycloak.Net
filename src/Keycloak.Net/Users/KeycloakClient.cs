@@ -59,10 +59,34 @@ namespace Keycloak.Net
 			.GetJsonAsync<int>()
 			.ConfigureAwait(false);
 
-		public async Task<User> GetUserAsync(string realm, string userId) => await GetBaseUrl(realm)
-			.AppendPathSegment($"/admin/realms/{realm}/users/{userId}")
-			.GetJsonAsync<User>()
-			.ConfigureAwait(false);
+		public async Task<User> GetUserAsync(string realm, string userId)
+		{
+			var baseUrl = GetBaseUrl(realm)
+				.AppendPathSegment($"/admin/realms/{realm}/users/{userId}");
+			var user = await baseUrl.GetJsonAsync<User>().ConfigureAwait(false);
+
+			return  user;
+		}
+
+		public async Task<List<Credentials>> GetUserCredentialsAsync(string realm, string userId)
+		{
+			var baseUrl = GetBaseUrl(realm)
+				.AppendPathSegment($"/admin/realms/{realm}/users/{userId}/credentials");
+
+			var userCredentials = await baseUrl.GetJsonAsync<List<Credentials>>().ConfigureAwait(false);
+			return userCredentials;
+		}
+
+		public async Task DeleteUserCredentialsAsync(string realm, string userId, string credentialId)
+		{
+			var baseUrl = GetBaseUrl(realm)
+				.AppendPathSegment($"/admin/realms/{realm}/users/{userId}/credentials/{credentialId}");
+
+			await baseUrl.DeleteAsync().ConfigureAwait(false);
+
+			return;
+		}
+
 
 		public async Task<bool> UpdateUserAsync(string realm, string userId, User user)
 		{
