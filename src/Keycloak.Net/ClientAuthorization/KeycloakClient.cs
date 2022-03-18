@@ -4,6 +4,7 @@ using Keycloak.Net.Models.AuthorizationScopes;
 using Keycloak.Net.Models.Clients;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using AuthorizationResource = Keycloak.Net.Models.AuthorizationResources.AuthorizationResource;
 
@@ -12,24 +13,24 @@ namespace Keycloak.Net
     public partial class KeycloakClient
     {
         #region Permissions
-        public async Task<AuthorizationPermission> CreateAuthorizationPermissionAsync(string realm, string clientId, AuthorizationPermission permission) =>
+        public async Task<AuthorizationPermission> CreateAuthorizationPermissionAsync(string realm, string clientId, AuthorizationPermission permission, CancellationToken cancellationToken = default) =>
             await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/permission")
                 .AppendPathSegment(permission.Type == AuthorizationPermissionType.Scope ? "/scope" : "/resource")
-                .PostJsonAsync(permission)
+                .PostJsonAsync(permission, cancellationToken)
                 .ReceiveJson<AuthorizationPermission>()
                 .ConfigureAwait(false);
 
         public async Task<AuthorizationPermission> GetAuthorizationPermissionByIdAsync(string realm, string clientId,
-            AuthorizationPermissionType permissionType, string permissionId) => await GetBaseUrl(realm)
+            AuthorizationPermissionType permissionType, string permissionId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/permission")
             .AppendPathSegment(permissionType == AuthorizationPermissionType.Scope ? "/scope" : "/resource")
             .AppendPathSegment($"/{permissionId}")
-            .GetJsonAsync<AuthorizationPermission>()
+            .GetJsonAsync<AuthorizationPermission>(cancellationToken)
             .ConfigureAwait(false);
 
         public async Task<IEnumerable<AuthorizationPermission>> GetAuthorizationPermissionsAsync(string realm, string clientId, AuthorizationPermissionType? ofPermissionType = null, 
-            int? first = null, int? max = null, string name = null, string resource = null, string scope = null)
+            int? first = null, int? max = null, string name = null, string resource = null, string scope = null, CancellationToken cancellationToken = default)
         {
             var queryParams = new Dictionary<string, object>
             {
@@ -48,81 +49,81 @@ namespace Keycloak.Net
             
             return await request
                 .SetQueryParams(queryParams)
-                .GetJsonAsync<IEnumerable<AuthorizationPermission>>()
+                .GetJsonAsync<IEnumerable<AuthorizationPermission>>(cancellationToken)
                 .ConfigureAwait(false);
         }
 
-        public async Task<bool> UpdateAuthorizationPermissionAsync(string realm, string clientId, AuthorizationPermission permission)
+        public async Task<bool> UpdateAuthorizationPermissionAsync(string realm, string clientId, AuthorizationPermission permission, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/permission")
                 .AppendPathSegment(permission.Type == AuthorizationPermissionType.Scope ? "/scope" : "/resource")
                 .AppendPathSegment($"/{permission.Id}")
-                .PutJsonAsync(permission)
+                .PutJsonAsync(permission, cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteAuthorizationPermissionAsync(string realm, string clientId, AuthorizationPermissionType permissionType,
-            string permissionId)
+            string permissionId, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/permission")
                 .AppendPathSegment(permissionType == AuthorizationPermissionType.Scope ? "/scope" : "/resource")
                 .AppendPathSegment($"/{permissionId}")
-                .DeleteAsync()
+                .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
         
-        public async Task<IEnumerable<Policy>> GetAuthorizationPermissionAssociatedPoliciesAsync(string realm, string clientId, string permissionId)
+        public async Task<IEnumerable<Policy>> GetAuthorizationPermissionAssociatedPoliciesAsync(string realm, string clientId, string permissionId, CancellationToken cancellationToken = default)
         {
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/policy/{permissionId}/associatedPolicies")
-                .GetJsonAsync<IEnumerable<Policy>>()
+                .GetJsonAsync<IEnumerable<Policy>>(cancellationToken)
                 .ConfigureAwait(false);
         }
 
-        public async Task<IEnumerable<AuthorizationScope>> GetAuthorizationPermissionAssociatedScopesAsync(string realm, string clientId, string permissionId)
+        public async Task<IEnumerable<AuthorizationScope>> GetAuthorizationPermissionAssociatedScopesAsync(string realm, string clientId, string permissionId, CancellationToken cancellationToken = default)
         {
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/policy/{permissionId}/scopes")
-                .GetJsonAsync<IEnumerable<AuthorizationScope>>()
+                .GetJsonAsync<IEnumerable<AuthorizationScope>>(cancellationToken)
                 .ConfigureAwait(false);
         }
 
-        public async Task<IEnumerable<AuthorizationResource>> GetAuthorizationPermissionAssociatedResourcesAsync(string realm, string clientId, string permissionId)
+        public async Task<IEnumerable<AuthorizationResource>> GetAuthorizationPermissionAssociatedResourcesAsync(string realm, string clientId, string permissionId, CancellationToken cancellationToken = default)
         {
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/policy/{permissionId}/resources")
-                .GetJsonAsync<IEnumerable<AuthorizationResource>>()
+                .GetJsonAsync<IEnumerable<AuthorizationResource>>(cancellationToken)
                 .ConfigureAwait(false);
         }
         #endregion 
 
         #region Policy
-        public async Task<RolePolicy> CreateRolePolicyAsync(string realm, string clientId, RolePolicy policy)
+        public async Task<RolePolicy> CreateRolePolicyAsync(string realm, string clientId, RolePolicy policy, CancellationToken cancellationToken = default)
         {
                 var response = await GetBaseUrl(realm)
                     .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/policy")
                     .AppendPathSegment(policy.Type == PolicyType.Role ? "/role" : string.Empty)
-                    .PostJsonAsync(policy)
+                    .PostJsonAsync(policy, cancellationToken)
                     .ReceiveJson<RolePolicy>()
                     .ConfigureAwait(false);
                 return response;
         }
 
-        public async Task<RolePolicy> GetRolePolicyByIdAsync(string realm, string clientId, PolicyType policyType, string rolePolicyId) => await GetBaseUrl(realm)
+        public async Task<RolePolicy> GetRolePolicyByIdAsync(string realm, string clientId, PolicyType policyType, string rolePolicyId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/policy")
             .AppendPathSegment(policyType == PolicyType.Role ? "/role" : string.Empty)
             .AppendPathSegment($"/{rolePolicyId}")
-            .GetJsonAsync<RolePolicy>()
+            .GetJsonAsync<RolePolicy>(cancellationToken)
             .ConfigureAwait(false);
 
         public async Task<IEnumerable<Policy>> GetAuthorizationPoliciesAsync(string realm, string clientId, 
             int? first = null, int? max = null, 
             string name = null, string resource = null,
-            string scope = null, bool? permission = null)
+            string scope = null, bool? permission = null, CancellationToken cancellationToken = default)
         {
             var queryParams = new Dictionary<string, object>
             {
@@ -137,14 +138,14 @@ namespace Keycloak.Net
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/policy")
                 .SetQueryParams(queryParams)
-                .GetJsonAsync<IEnumerable<Policy>>()
+                .GetJsonAsync<IEnumerable<Policy>>(cancellationToken)
                 .ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<RolePolicy>> GetRolePoliciesAsync(string realm, string clientId, 
             int? first = null, int? max = null, 
             string name = null, string resource = null,
-            string scope = null, bool? permission = null)
+            string scope = null, bool? permission = null, CancellationToken cancellationToken = default)
         {
             var queryParams = new Dictionary<string, object>
             {
@@ -159,28 +160,28 @@ namespace Keycloak.Net
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/policy/role")
                 .SetQueryParams(queryParams)
-                .GetJsonAsync<IEnumerable<RolePolicy>>()
+                .GetJsonAsync<IEnumerable<RolePolicy>>(cancellationToken)
                 .ConfigureAwait(false);
         }
 
-        public async Task<bool> UpdateRolePolicyAsync(string realm, string clientId, RolePolicy policy)
+        public async Task<bool> UpdateRolePolicyAsync(string realm, string clientId, RolePolicy policy, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/policy")
                 .AppendPathSegment(policy.Type == PolicyType.Role ? "/role" : string.Empty)
                 .AppendPathSegment($"/{policy.Id}")
-                .PutJsonAsync(policy)
+                .PutJsonAsync(policy, cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> DeleteRolePolicyAsync(string realm, string clientId, PolicyType policyType, string rolePolicyId)
+        public async Task<bool> DeleteRolePolicyAsync(string realm, string clientId, PolicyType policyType, string rolePolicyId, CancellationToken cancellationToken = default)
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/policy")
                 .AppendPathSegment(policyType == PolicyType.Role ? "/role" : string.Empty)
                 .AppendPathSegment($"/{rolePolicyId}")
-                .DeleteAsync()
+                .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode;
         }
