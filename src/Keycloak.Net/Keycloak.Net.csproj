@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net452;netstandard1.4;netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFramework>net6.0</TargetFramework>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>Luk Vermeulen</Authors>
-    <Copyright>Copyright 2019 by Luk Vermeulen. All rights reserved.</Copyright>
+    <Authors>Luk Vermeulen, Peter Andersson</Authors>
+    <Copyright>Copyright 2022 by Luk Vermeulen, Peter Andersson. All rights reserved.</Copyright>
     <PackageLicenseUrl>https://github.com/lvermeulen/Keycloak.Net/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/lvermeulen/Keycloak.Net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lvermeulen/Keycloak.Net</RepositoryUrl>
