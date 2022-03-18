@@ -303,14 +303,14 @@ namespace Keycloak.Net
         }
 
         public async Task<IEnumerable<Resource>> GetResourcesOwnedByClientAsync(string realm, string clientId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
-	        .AppendPathSegment($"/realms/{realm}/protocol/openid-connect/token")
-	        .PostUrlEncodedAsync(new List<KeyValuePair<string, string>>
-	        {
-		        new KeyValuePair<string, string>("grant_type", "urn:ietf:params:oauth:grant-type:uma-ticket"),
-		        new KeyValuePair<string, string>("response_mode", "permissions"),
-		        new KeyValuePair<string, string>("audience", clientId)
-	        }, cancellationToken)
-	        .ReceiveJson<IEnumerable<Resource>>()
-	        .ConfigureAwait(false);
+            .AppendPathSegment($"/realms/{realm}/protocol/openid-connect/token")
+            .PostUrlEncodedAsync(new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("grant_type", "urn:ietf:params:oauth:grant-type:uma-ticket"),
+                new KeyValuePair<string, string>("response_mode", "permissions"),
+                new KeyValuePair<string, string>("audience", clientId)
+            }, cancellationToken)
+            .ReceiveJson<IEnumerable<Resource>>()
+            .ConfigureAwait(false);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Keycloak.Net.Models.Clients
 {
@@ -15,6 +16,6 @@ namespace Keycloak.Net.Models.Clients
         [JsonProperty("consentRequired")]
         public bool? ConsentRequired { get; set; }
         [JsonProperty("config")]
-        public ClientConfig Config { get; set; }
+        public Dictionary<string, string> Config { get; set; }
     }
 }
