@@ -1,7 +1,6 @@
 ![Icon](https://i.imgur.com/eEjfRLz.jpg?2)
-# Keycloak.Net 
-[![Build status](https://ci.appveyor.com/api/projects/status/c9npduu2dp9ljlps?svg=true)](https://ci.appveyor.com/project/lvermeulen/keycloak-net)
- [![license](https://img.shields.io/github/license/AnderssonPeter/Keycloak.Net.svg?maxAge=2592000)](https://github.com/AnderssonPeter/Keycloak.Net/blob/master/LICENSE) [![NuGet](https://img.shields.io/nuget/v/Keycloak.Net.Core.svg?maxAge=2592000)](https://www.nuget.org/packages/Keycloak.Net.Core/) ![downloads](https://img.shields.io/nuget/dt/Keycloak.Net.Core)
+# Keycloak.Net.Core
+[![license](https://img.shields.io/github/license/AnderssonPeter/Keycloak.Net.svg?maxAge=2592000)](https://github.com/AnderssonPeter/Keycloak.Net/blob/master/LICENSE) [![NuGet](https://img.shields.io/nuget/v/Keycloak.Net.Core.svg?maxAge=2592000)](https://www.nuget.org/packages/Keycloak.Net.Core/)[![downloads](https://img.shields.io/nuget/dt/Keycloak.Net.Core)](https://www.nuget.org/packages/Keycloak.Net.Core/)
  
 
  A Fork of https://github.com/lvermeulen/Keycloak.Net with some additional patches
