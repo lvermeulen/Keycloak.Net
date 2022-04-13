@@ -54,10 +54,32 @@ namespace Keycloak.Net
 				.ConfigureAwait(false);
 		}
 
-		public async Task<int> GetUsersCountAsync(string realm) => await GetBaseUrl(realm)
-			.AppendPathSegment($"/admin/realms/{realm}/users/count")
-			.GetJsonAsync<int>()
-			.ConfigureAwait(false);
+		public async Task<int> GetUsersCountAsync(
+			string realm,
+			string email = null,
+			bool? emailVerified = null,
+			string firstName = null,
+			string lastName = null,
+			string search = null,
+			string username = null
+		)
+		{
+			var queryParams = new Dictionary<string, object>
+			{
+				[nameof(email)] = email,
+				[nameof(emailVerified)] = emailVerified,
+				[nameof(firstName)] = firstName,
+				[nameof(lastName)] = lastName,
+				[nameof(search)] = search,
+				[nameof(username)] = username
+			};
+			
+			return await GetBaseUrl(realm)
+				.AppendPathSegment($"/admin/realms/{realm}/users/count")
+				.SetQueryParams(queryParams)
+				.GetJsonAsync<int>()
+				.ConfigureAwait(false);
+		}
 
 		public async Task<User> GetUserAsync(string realm, string userId) => await GetBaseUrl(realm)
 			.AppendPathSegment($"/admin/realms/{realm}/users/{userId}")
