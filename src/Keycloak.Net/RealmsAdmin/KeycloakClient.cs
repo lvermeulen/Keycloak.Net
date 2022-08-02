@@ -18,7 +18,7 @@ namespace Keycloak.Net
                 .AppendPathSegment("/admin/realms")
                 .PostJsonAsync(rep)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Realm>> GetRealmsAsync(string realm) => await GetBaseUrl(realm)
@@ -37,7 +37,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}")
                 .PutJsonAsync(rep)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteRealmAsync(string realm)
@@ -46,7 +46,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<AdminEvent>> GetAdminEventsAsync(string realm, string authClient = null, string authIpAddress = null, string authRealm = null, string authUser = null,
@@ -81,7 +81,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/admin-events")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
         
         public async Task<bool> ClearKeysCacheAsync(string realm)
@@ -90,7 +90,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/clear-keys-cache")
                 .PostAsync(new StringContent(""))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
         
         public async Task<bool> ClearRealmCacheAsync(string realm)
@@ -99,7 +99,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/clear-realm-cache")
                 .PostAsync(new StringContent(""))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
         
         public async Task<bool> ClearUserCacheAsync(string realm)
@@ -108,7 +108,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/clear-user-cache")
                 .PostAsync(new StringContent(""))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
         
         public async Task<Client> BasePathForImportingClientsAsync(string realm, string description) => await GetBaseUrl(realm)
@@ -133,7 +133,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/default-default-client-scopes/{clientScopeId}")
                 .PutAsync(new StringContent(""))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteRealmDefaultClientScopeAsync(string realm, string clientScopeId)
@@ -142,7 +142,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/default-default-client-scopes/{clientScopeId}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Group>> GetRealmGroupHierarchyAsync(string realm) => await GetBaseUrl(realm)
@@ -156,7 +156,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/default-groups/{groupId}")
                 .PutAsync(new StringContent(""))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteRealmGroupAsync(string realm, string groupId)
@@ -165,7 +165,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/default-groups/{groupId}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<ClientScope>> GetRealmOptionalClientScopesAsync(string realm) => await GetBaseUrl(realm)
@@ -179,7 +179,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/default-optional-client-scopes/{clientScopeId}")
                 .PutAsync(new StringContent(""))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteRealmOptionalClientScopeAsync(string realm, string clientScopeId)
@@ -188,7 +188,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/default-optional-client-scopes/{clientScopeId}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Event>> GetEventsAsync(string realm, string client = null, string dateFrom = null, string dateTo = null, int? first = null, 
@@ -219,7 +219,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/events")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<RealmEventsConfig> GetRealmEventsProviderConfigurationAsync(string realm) => await GetBaseUrl(realm)
@@ -233,7 +233,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/events/config")
                 .PutJsonAsync(rep)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<Group> GetRealmGroupByPathAsync(string realm, string path) => await GetBaseUrl(realm)
@@ -269,7 +269,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/partialImport")
                 .PostJsonAsync(rep)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<GlobalRequestResult> PushRealmRevocationPolicyAsync(string realm) => await GetBaseUrl(realm)
@@ -284,7 +284,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/sessions/{session}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> TestLdapConnectionAsync(string realm, string action = null, string bindCredential = null, string bindDn = null, 
@@ -301,7 +301,7 @@ namespace Keycloak.Net
                     .AddString(nameof(connectionUrl), connectionUrl)
                     .AddString(nameof(useTruststoreSpi), useTruststoreSpi))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> TestSmtpConnectionAsync(string realm, string config)
@@ -310,7 +310,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/testSMTPConnection/{config}")
                 .PostAsync(new StringContent(""))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<ManagementPermission> GetRealmUsersManagementPermissionsAsync(string realm) => await GetBaseUrl(realm)

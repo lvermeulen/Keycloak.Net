@@ -52,7 +52,6 @@ namespace Keycloak.Net
         }
 
         private IFlurlRequest GetBaseUrl(string authenticationRealm) => new Url(_url)
-            .AppendPathSegment("/auth")
             .ConfigureRequest(settings => settings.JsonSerializer = _serializer)
             .WithAuthentication(_getToken, _url, authenticationRealm, _userName, _password, _clientSecret);
     }

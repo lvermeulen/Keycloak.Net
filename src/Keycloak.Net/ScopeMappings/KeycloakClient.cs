@@ -20,7 +20,7 @@ namespace Keycloak.Net
 				.AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}/scope-mappings/clients/{clientId}")
 				.PostJsonAsync(roles)
 				.ConfigureAwait(false);
-			return response.IsSuccessStatusCode;
+			return response.ResponseMessage.IsSuccessStatusCode;
 		}
 
 		public async Task<IEnumerable<Role>> GetClientRolesForClientScopeAsync(string realm, string clientScopeId, string clientId) => await GetBaseUrl(realm)
@@ -34,7 +34,7 @@ namespace Keycloak.Net
 				.AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}/scope-mappings/clients/{clientId}")
 				.SendJsonAsync(HttpMethod.Delete, roles)
 				.ConfigureAwait(false);
-			return response.IsSuccessStatusCode;
+			return response.ResponseMessage.IsSuccessStatusCode;
 		}
 
 		public async Task<IEnumerable<Role>> GetAvailableClientRolesForClientScopeAsync(string realm, string clientScopeId, string clientId) => await GetBaseUrl(realm)
@@ -53,7 +53,7 @@ namespace Keycloak.Net
 				.AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}/scope-mappings/realm")
 				.PostJsonAsync(roles)
 				.ConfigureAwait(false);
-			return response.IsSuccessStatusCode;
+			return response.ResponseMessage.IsSuccessStatusCode;
 		}
 
 		public async Task<IEnumerable<Role>> GetRealmRolesForClientScopeAsync(string realm, string clientScopeId) => await GetBaseUrl(realm)
@@ -67,7 +67,7 @@ namespace Keycloak.Net
 				.AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}/scope-mappings/realm")
 				.SendJsonAsync(HttpMethod.Delete, roles)
 				.ConfigureAwait(false);
-			return response.IsSuccessStatusCode;
+			return response.ResponseMessage.IsSuccessStatusCode;
 		}
 
 		public async Task<IEnumerable<Role>> GetAvailableRealmRolesForClientScopeAsync(string realm, string clientScopeId) => await GetBaseUrl(realm)
@@ -91,7 +91,7 @@ namespace Keycloak.Net
 				.AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/scope-mappings/clients/{scopeClientId}")
 				.PostJsonAsync(roles)
 				.ConfigureAwait(false);
-			return response.IsSuccessStatusCode;
+			return response.ResponseMessage.IsSuccessStatusCode;
 		}
 
 		public async Task<IEnumerable<Role>> GetClientRolesScopeMappingsForClientAsync(string realm, string clientId, string scopeClientId) => await GetBaseUrl(realm)
@@ -105,7 +105,7 @@ namespace Keycloak.Net
 				.AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/scope-mappings/clients/{scopeClientId}")
 				.SendJsonAsync(HttpMethod.Delete, roles)
 				.ConfigureAwait(false);
-			return response.IsSuccessStatusCode;
+			return response.ResponseMessage.IsSuccessStatusCode;
 		}
 
 		public async Task<IEnumerable<Role>> GetAvailableClientRolesForClientScopeForClientAsync(string realm, string clientId, string scopeClientId) => await GetBaseUrl(realm)
@@ -124,7 +124,7 @@ namespace Keycloak.Net
 				.AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/scope-mappings/realm")
 				.PostJsonAsync(roles)
 				.ConfigureAwait(false);
-			return response.IsSuccessStatusCode;
+			return response.ResponseMessage.IsSuccessStatusCode;
 		}
 
 		public async Task<IEnumerable<Role>> GetRealmRolesScopeMappingsForClientAsync(string realm, string clientId) => await GetBaseUrl(realm)
@@ -138,7 +138,7 @@ namespace Keycloak.Net
 				.AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/scope-mappings/realm")
 				.SendJsonAsync(HttpMethod.Delete, roles)
 				.ConfigureAwait(false);
-			return response.IsSuccessStatusCode;
+			return response.ResponseMessage.IsSuccessStatusCode;
 		}
 
 		public async Task<IEnumerable<Role>> GetAvailableRealmRolesForClientScopeForClientAsync(string realm, string clientId) => await GetBaseUrl(realm)

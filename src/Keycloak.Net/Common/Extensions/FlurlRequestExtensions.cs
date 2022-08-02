@@ -11,7 +11,7 @@ namespace Keycloak.Net.Common.Extensions
         private static async Task<string> GetAccessTokenAsync(string url, string realm, string userName, string password)
         {
             var result = await url
-                .AppendPathSegment($"/auth/realms/{realm}/protocol/openid-connect/token")
+                .AppendPathSegment($"/realms/{realm}/protocol/openid-connect/token")
                 .WithHeader("Accept", "application/json")
                 .PostUrlEncodedAsync(new List<KeyValuePair<string, string>>
                 {
@@ -33,7 +33,7 @@ namespace Keycloak.Net.Common.Extensions
         private static async Task<string> GetAccessTokenAsync(string url, string realm, string clientSecret)
         {
             var result = await url
-                .AppendPathSegment($"/auth/realms/{realm}/protocol/openid-connect/token")
+                .AppendPathSegment($"/realms/{realm}/protocol/openid-connect/token")
                 .WithHeader("Content-Type", "application/x-www-form-urlencoded")
                 .PostUrlEncodedAsync(new List<KeyValuePair<string, string>>
                 {
