@@ -124,6 +124,7 @@ namespace Keycloak.Net
 
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/execute-actions-email")
+                .AllowAnyHttpStatus()
                 .SetQueryParams(queryParams)
                 .PutJsonAsync(requiredActions)
                 .ConfigureAwait(false);
