@@ -17,7 +17,7 @@ namespace Keycloak.Net
                 .AppendPathSegment("/admin/serverinfo/")
                 .OptionsAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
     }
 }

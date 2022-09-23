@@ -20,7 +20,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}/role-mappings/realm")
                 .PostJsonAsync(roles)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Role>> GetRealmRoleMappingsForGroupAsync(string realm, string groupId) => await GetBaseUrl(realm)
@@ -34,7 +34,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}/role-mappings/realm")
                 .SendJsonAsync(HttpMethod.Delete, roles)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Role>> GetAvailableRealmRoleMappingsForGroupAsync(string realm, string groupId) => await GetBaseUrl(realm)
@@ -58,7 +58,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/role-mappings/realm")
                 .PostJsonAsync(roles)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Role>> GetRealmRoleMappingsForUserAsync(string realm, string userId) => await GetBaseUrl(realm)
@@ -72,7 +72,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/role-mappings/realm")
                 .SendJsonAsync(HttpMethod.Delete, roles)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Role>> GetAvailableRealmRoleMappingsForUserAsync(string realm, string userId) => await GetBaseUrl(realm)

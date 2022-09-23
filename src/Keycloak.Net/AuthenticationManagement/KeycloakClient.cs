@@ -36,7 +36,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/config/{configurationId}")
                 .PutJsonAsync(authenticatorConfig)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteAuthenticatorConfigurationAsync(string realm, string configurationId)
@@ -45,7 +45,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/config/{configurationId}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> AddAuthenticationExecutionAsync(string realm, AuthenticationExecution authenticationExecution)
@@ -54,7 +54,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/executions")
                 .PostJsonAsync(authenticationExecution)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<AuthenticationExecutionById> GetAuthenticationExecutionAsync(string realm, string executionId) => await GetBaseUrl(realm)
@@ -68,7 +68,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/executions/{executionId}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> UpdateAuthenticationExecutionConfigurationAsync(string realm, string executionId, AuthenticatorConfig authenticatorConfig)
@@ -77,7 +77,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/executions/{executionId}/config")
                 .PostJsonAsync(authenticatorConfig)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> LowerAuthenticationExecutionPriorityAsync(string realm, string executionId)
@@ -86,7 +86,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/executions/{executionId}/lower-priority")
                 .PostAsync(new StringContent(""))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> RaiseAuthenticationExecutionPriorityAsync(string realm, string executionId)
@@ -95,7 +95,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/executions/{executionId}/raise-priority")
                 .PostAsync(new StringContent(""))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> CreateAuthenticationFlowAsync(string realm, AuthenticationFlow authenticationFlow)
@@ -104,7 +104,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/flows")
                 .PostJsonAsync(authenticationFlow)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<AuthenticationFlow>> GetAuthenticationFlowsAsync(string realm) => await GetBaseUrl(realm)
@@ -118,7 +118,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/flows/{flowAlias}/copy")
                 .PostJsonAsync(new Dictionary<string, object> { [nameof(newName)] = newName })
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<AuthenticationFlowExecution>> GetAuthenticationFlowExecutionsAsync(string realm, string flowAlias) => await GetBaseUrl(realm)
@@ -132,7 +132,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/flows/{flowAlias}/executions")
                 .PutJsonAsync(authenticationExecutionInfo)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> AddAuthenticationFlowExecutionAsync(string realm, string flowAlias, IDictionary<string, object> dataWithProvider)
@@ -141,7 +141,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/flows/{flowAlias}/executions/execution")
                 .PostJsonAsync(dataWithProvider)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> AddAuthenticationFlowAndExecutionToAuthenticationFlowAsync(string realm, string flowAlias, IDictionary<string, object> dataWithAliasTypeProviderDescription)
@@ -150,7 +150,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/flows/{flowAlias}/executions/flow")
                 .PostJsonAsync(dataWithAliasTypeProviderDescription)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<AuthenticationFlow> GetAuthenticationFlowByIdAsync(string realm, string flowId) => await GetBaseUrl(realm)
@@ -164,7 +164,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/flows/{flowId}")
                 .PutJsonAsync(authenticationFlow)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteAuthenticationFlowAsync(string realm, string flowId)
@@ -173,7 +173,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/flows/{flowId}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<IDictionary<string, object>>> GetFormActionProvidersAsync(string realm) => await GetBaseUrl(realm)
@@ -197,7 +197,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/register-required-action")
                 .PostJsonAsync(dataWithProviderIdName)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<RequiredActionProvider>> GetRequiredActionsAsync(string realm) => await GetBaseUrl(realm)
@@ -216,7 +216,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/required-actions/{requiredActionAlias}")
                 .PutJsonAsync(requiredActionProvider)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteRequiredActionAsync(string realm, string requiredActionAlias)
@@ -225,7 +225,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/required-actions/{requiredActionAlias}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> LowerRequiredActionPriorityAsync(string realm, string requiredActionAlias)
@@ -234,7 +234,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/required-actions/{requiredActionAlias}/lower-priority")
                 .PostAsync(new StringContent(""))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> RaiseRequiredActionPriorityAsync(string realm, string requiredActionAlias)
@@ -243,7 +243,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/authentication/required-actions/{requiredActionAlias}/raise-priority")
                 .PostAsync(new StringContent(""))
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<IDictionary<string, object>>> GetUnregisteredRequiredActionsAsync(string realm) => await GetBaseUrl(realm)
