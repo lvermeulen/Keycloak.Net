@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Keycloak.Net.Models.ProtocolMappers
 {
@@ -16,6 +17,6 @@ namespace Keycloak.Net.Models.ProtocolMappers
         [JsonProperty("consentRequired")]
         public bool? ConsentRequired { get; set; }
         [JsonProperty("config")]
-        public Config Config { get; set; }
+        public Dictionary<string,string> Config { get; set; }
     }
 }
