@@ -8,6 +8,31 @@
  * changed ClientConfig to Dictionary<string, string>
  * removed signing
  * .net 6 support only
+ * updated for keycloak version 17+
+ * added support for changing default `AdminClientId` which has default `admin-cli` value
+
+ To use different AdminClientId, use newly introduced KeyCloakOptions:
+  ```cs
+ new KeycloakClient(
+    "http://keycloak.url",
+    "adminUserName",
+    "adminPassword",
+    new KeycloakOptions(adminClientId:"admin"
+    )
+);
+ ```
+
+ ## Older version support for using /auth path
+ When creating a new KeycloakClient, use newly introduced KeycloakOptions:
+ ```cs
+ new KeycloakClient(
+    "http://keycloak.url",
+    "adminUserName",
+    "adminPassword",
+    new KeycloakOptions(prefix:"auth"
+    )
+);
+ ```
 
 C# client for [Keycloak](https://www.keycloak.org/) 6.x
 
