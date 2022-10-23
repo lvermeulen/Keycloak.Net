@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>Luk Vermeulen, Peter Andersson</Authors>
+    <Authors>Luk Vermeulen, Peter Andersson, Galip Tolga Erdem</Authors>
     <Copyright>Copyright 2022 by Luk Vermeulen, Peter Andersson. All rights reserved.</Copyright>
     <PackageLicenseUrl>https://github.com/AnderssonPeter/Keycloak.Net/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/AnderssonPeter/Keycloak.Net</PackageProjectUrl>
@@ -17,7 +17,7 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Version>1.0.19</Version>
+    <Version>1.0.20</Version>
   </PropertyGroup>
 
   <ItemGroup>
