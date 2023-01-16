@@ -136,5 +136,11 @@ namespace Keycloak.Net.Models.RealmsAdmin
         public bool? UserManagedAccessAllowed { get; set; }
         [JsonProperty("passwordPolicy")]
         public string PasswordPolicy{ get; set; }
+        [JsonProperty("displayName")]
+        public string? DisplayName { get; set; }
+        [JsonProperty("displayNameHtml")]
+        public string? DisplayNameHtml { get; set; }
+        [JsonProperty("defaultLocale")]
+        public string? DefaultLocale { get; set; }
     }
 }
