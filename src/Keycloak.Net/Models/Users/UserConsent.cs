@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Users
+﻿namespace Keycloak.Net.Models.Users
 {
-	public class UserConsent
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
+    public class UserConsent
 	{
 		[JsonProperty("clientId")]
 		public string ClientId { get; set; }

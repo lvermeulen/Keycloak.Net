@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.UserStorageProvider
+﻿namespace Keycloak.Net.Models.UserStorageProvider
 {
+    using Newtonsoft.Json;
+
     public class SynchronizationResult
     {
         [JsonProperty("added")]

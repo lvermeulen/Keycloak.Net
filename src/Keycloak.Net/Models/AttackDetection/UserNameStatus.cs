@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.AttackDetection
+﻿namespace Keycloak.Net.Models.AttackDetection
 {
+    using Newtonsoft.Json;
+
     public class UserNameStatus
     {
         [JsonProperty("numFailures")]

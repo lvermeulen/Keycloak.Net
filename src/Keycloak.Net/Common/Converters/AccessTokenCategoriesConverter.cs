@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Keycloak.Net.Models.Clients;
-
-namespace Keycloak.Net.Common.Converters
+﻿namespace Keycloak.Net.Common.Converters
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Keycloak.Net.Models.Clients;
+
     public class AccessTokenCategoriesConverter : JsonEnumConverter<AccessTokenCategories>
     {
         private static readonly Dictionary<AccessTokenCategories, string> s_pairs = new Dictionary<AccessTokenCategories, string>
@@ -18,7 +18,10 @@ namespace Keycloak.Net.Common.Converters
 
         protected override string EntityString { get; } = "access token category";
 
-        protected override string ConvertToString(AccessTokenCategories value) => s_pairs[value];
+        protected override string ConvertToString(AccessTokenCategories value)
+        {
+            return s_pairs[value];
+        }
 
         protected override AccessTokenCategories ConvertFromString(string s)
         {

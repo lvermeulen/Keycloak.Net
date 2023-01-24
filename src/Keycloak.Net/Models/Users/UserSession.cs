@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Users
+﻿namespace Keycloak.Net.Models.Users
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class UserSession
     {
         [JsonProperty("id")]

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Keycloak.Net.Models.Clients;
-
-namespace Keycloak.Net.Common.Converters
+﻿namespace Keycloak.Net.Common.Converters
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Keycloak.Net.Models.Clients;
+
     public class PolicyTypeConverter: JsonEnumConverter<PolicyType>
     {
         private static readonly Dictionary<PolicyType, string> SPairs = new Dictionary<PolicyType, string>
@@ -20,7 +20,10 @@ namespace Keycloak.Net.Common.Converters
 
         protected override string EntityString { get; } = "type";
 
-        protected override string ConvertToString(PolicyType value) => SPairs[value];
+        protected override string ConvertToString(PolicyType value)
+        {
+            return SPairs[value];
+        }
 
         protected override PolicyType ConvertFromString(string s)
         {

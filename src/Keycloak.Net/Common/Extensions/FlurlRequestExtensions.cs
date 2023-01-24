@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Flurl;
-using Flurl.Http;
-
-namespace Keycloak.Net.Common.Extensions
+﻿namespace Keycloak.Net.Common.Extensions
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Flurl;
+    using Flurl.Http;
+
     public static class FlurlRequestExtensions
     {
         private static async Task<string> GetAccessTokenWithUsernameAsync(string url, string realm, string userName, string password, string clientId)

@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.RealmsAdmin
+﻿namespace Keycloak.Net.Models.RealmsAdmin
 {
+    using Newtonsoft.Json;
+
     public class Attributes
     {
         [JsonProperty("_browser_headerxXSSProtection")]

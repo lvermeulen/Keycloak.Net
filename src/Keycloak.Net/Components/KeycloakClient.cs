@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Flurl.Http;
-using Keycloak.Net.Models.Components;
-
 namespace Keycloak.Net
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Flurl.Http;
+    using Keycloak.Net.Models.Components;
+
     public partial class KeycloakClient
     {
         public async Task<bool> CreateComponentAsync(string realm, Component componentRepresentation)
@@ -13,7 +13,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/components")
                 .PostJsonAsync(componentRepresentation)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Component>> GetComponentsAsync(string realm, string name = null, string parent = null, string type = null)
@@ -46,7 +46,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/components/{componentId}")
                 .PutJsonAsync(componentRepresentation)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteComponentAsync(string realm, string componentId)
@@ -55,7 +55,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/components/{componentId}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<ComponentType>> GetSubcomponentTypesAsync(string realm, string componentId, string type = null)

@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.IdentityProviders
+﻿namespace Keycloak.Net.Models.IdentityProviders
 {
+    using Newtonsoft.Json;
+
     public class IdentityProvider
     {
         [JsonProperty("alias")]

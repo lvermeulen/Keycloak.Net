@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.IdentityProviders
+﻿namespace Keycloak.Net.Models.IdentityProviders
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class IdentityProviderMapper
     {
         [JsonProperty("config")]

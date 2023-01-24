@@ -1,13 +1,13 @@
-using System;
-using Flurl;
-using Flurl.Http;
-using Flurl.Http.Configuration;
-using Keycloak.Net.Common.Extensions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-
 namespace Keycloak.Net
 {
+    using System;
+    using Flurl;
+    using Flurl.Http;
+    using Flurl.Http.Configuration;
+    using Keycloak.Net.Common.Extensions;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
+
     public partial class KeycloakClient
     {
         private ISerializer _serializer = new NewtonsoftJsonSerializer(new JsonSerializerSettings

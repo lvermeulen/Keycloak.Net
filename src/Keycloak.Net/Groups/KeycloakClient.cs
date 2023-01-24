@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Flurl.Http;
-using Keycloak.Net.Common.Extensions;
-using Keycloak.Net.Models.Common;
-using Keycloak.Net.Models.Groups;
-using Keycloak.Net.Models.Users;
-
 namespace Keycloak.Net
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Flurl.Http;
+    using Keycloak.Net.Common.Extensions;
+    using Keycloak.Net.Models.Common;
+    using Keycloak.Net.Models.Groups;
+    using Keycloak.Net.Models.Users;
+
     public partial class KeycloakClient
     {
         public async Task<bool> CreateGroupAsync(string realm, Group group)
@@ -17,7 +17,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/groups")
                 .PostJsonAsync(group)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Group>> GetGroupHierarchyAsync(string realm, int? first = null, int? max = null, string search = null)
@@ -70,7 +70,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}")
                 .PutJsonAsync(group)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteGroupAsync(string realm, string groupId)
@@ -79,7 +79,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}")
                 .DeleteAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> SetOrCreateGroupChildAsync(string realm, string groupId, Group group)
@@ -88,20 +88,25 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}/children")
                 .PostJsonAsync(group)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
-        public async Task<ManagementPermission> GetGroupClientAuthorizationPermissionsInitializedAsync(string realm, string groupId) => await GetBaseUrl(realm)
+        public async Task<ManagementPermission> GetGroupClientAuthorizationPermissionsInitializedAsync(string realm, string groupId)
+        {
+            return await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}/management/permissions")
             .GetJsonAsync<ManagementPermission>()
             .ConfigureAwait(false);
+        }
 
-        public async Task<ManagementPermission> SetGroupClientAuthorizationPermissionsInitializedAsync(string realm, string groupId, ManagementPermission managementPermission) =>
-            await GetBaseUrl(realm)
+        public async Task<ManagementPermission> SetGroupClientAuthorizationPermissionsInitializedAsync(string realm, string groupId, ManagementPermission managementPermission)
+        {
+            return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}/management/permissions")
                 .PutJsonAsync(managementPermission)
                 .ReceiveJson<ManagementPermission>()
                 .ConfigureAwait(false);
+        }
 
         public async Task<IEnumerable<User>> GetGroupUsersAsync(string realm, string groupId, int? first = null, int? max = null) 
         {

@@ -1,9 +1,9 @@
-﻿using Keycloak.Net.Models.AuthorizationScopes;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-
-namespace Keycloak.Net.Models.AuthorizationResources
+﻿namespace Keycloak.Net.Models.AuthorizationResources
 {
+    using Keycloak.Net.Models.AuthorizationScopes;
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
+
     public class AuthorizationResource
     {
         [JsonProperty("_id")]

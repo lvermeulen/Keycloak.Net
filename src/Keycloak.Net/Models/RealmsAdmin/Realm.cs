@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.RealmsAdmin
+﻿namespace Keycloak.Net.Models.RealmsAdmin
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class Realm
     {
         [JsonProperty("id")]

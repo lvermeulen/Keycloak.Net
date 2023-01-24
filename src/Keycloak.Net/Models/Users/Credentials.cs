@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Users
+﻿namespace Keycloak.Net.Models.Users
 {
-	public class Credentials
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
+    public class Credentials
 	{
 		[JsonProperty("algorithm")]
 		public string Algorithm { get; set; }

@@ -1,8 +1,8 @@
-﻿using Keycloak.Net.Common.Converters;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Root
+﻿namespace Keycloak.Net.Models.Root
 {
+    using Keycloak.Net.Common.Converters;
+    using Newtonsoft.Json;
+
     [JsonConverter(typeof(ConfigTypeConverter))]
     public enum ConfigType
     {
