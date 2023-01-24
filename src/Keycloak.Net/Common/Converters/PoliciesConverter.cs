@@ -1,9 +1,9 @@
-﻿namespace Keycloak.Net.Common.Converters
+namespace Keycloak.Net.Common.Converters
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Keycloak.Net.Models.RealmsAdmin;
+    using Models.RealmsAdmin;
 
     public class PoliciesConverter : JsonEnumConverter<Policies>
     {

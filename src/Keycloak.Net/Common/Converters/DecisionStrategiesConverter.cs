@@ -1,9 +1,9 @@
-﻿namespace Keycloak.Net.Common.Converters
+namespace Keycloak.Net.Common.Converters
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Keycloak.Net.Models.AuthorizationPermissions;
+    using Models.AuthorizationPermissions;
 
     public class DecisionStrategiesConverter : JsonEnumConverter<DecisionStrategy>
     {

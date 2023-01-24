@@ -1,8 +1,8 @@
-﻿namespace Keycloak.Net
+namespace Keycloak.Net
 {
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Keycloak.Net.Models.OpenIDConfiguration;
+    using Models.OpenIDConfiguration;
 
     public partial class KeycloakClient
     {

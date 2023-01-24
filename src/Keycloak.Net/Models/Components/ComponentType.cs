@@ -1,7 +1,7 @@
-﻿namespace Keycloak.Net.Models.Components
+namespace Keycloak.Net.Models.Components
 {
     using System.Collections.Generic;
-    using Keycloak.Net.Models.Common;
+    using Common;
     using Newtonsoft.Json;
 
     public class ComponentType

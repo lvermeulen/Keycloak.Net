@@ -1,10 +1,10 @@
-﻿namespace Keycloak.Net
+namespace Keycloak.Net
 {
     using System.IO;
     using System.Net.Http;
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Keycloak.Net.Models.ClientAttributeCertificate;
+    using Models.ClientAttributeCertificate;
 
     public partial class KeycloakClient
     {

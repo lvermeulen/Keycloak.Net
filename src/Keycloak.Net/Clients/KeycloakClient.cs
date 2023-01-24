@@ -5,13 +5,13 @@ namespace Keycloak.Net
     using System.Net.Http;
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Keycloak.Net.Common.Extensions;
-    using Keycloak.Net.Models.Clients;
-    using Keycloak.Net.Models.ClientScopes;
+    using Common.Extensions;
+    using Models.Clients;
+    using Models.ClientScopes;
     using Keycloak.Net.Models.Common;
-    using Keycloak.Net.Models.Roles;
-    using Keycloak.Net.Models.Root;
-    using Keycloak.Net.Models.Users;
+    using Models.Roles;
+    using Models.Root;
+    using Models.Users;
 
     public partial class KeycloakClient
     {

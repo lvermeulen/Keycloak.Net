@@ -1,8 +1,8 @@
-﻿namespace Keycloak.Net.Models.Clients
+namespace Keycloak.Net.Models.Clients
 {
     using System.Collections.Generic;
     using Keycloak.Net.Common.Converters;
-    using Keycloak.Net.Models.AuthorizationPermissions;
+    using AuthorizationPermissions;
     using Newtonsoft.Json;
 
     public class Policy

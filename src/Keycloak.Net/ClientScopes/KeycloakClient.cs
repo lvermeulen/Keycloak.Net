@@ -3,7 +3,7 @@ namespace Keycloak.Net
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Keycloak.Net.Models.ClientScopes;
+    using Models.ClientScopes;
 
     public partial class KeycloakClient
     {

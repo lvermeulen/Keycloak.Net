@@ -1,7 +1,7 @@
-﻿namespace Keycloak.Net.Models.AuthenticationManagement
+namespace Keycloak.Net.Models.AuthenticationManagement
 {
     using System.Collections.Generic;
-    using Keycloak.Net.Models.Common;
+    using Common;
     using Newtonsoft.Json;
 
     public class AuthenticatorConfigInfo

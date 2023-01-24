@@ -6,7 +6,7 @@ namespace Keycloak.Net
     using Flurl.Http;
     using Flurl.Http.Content;
     using Keycloak.Net.Models.Common;
-    using Keycloak.Net.Models.Roles;
+    using Models.Roles;
 
     public partial class KeycloakClient
     {

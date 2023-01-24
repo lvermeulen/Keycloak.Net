@@ -4,10 +4,10 @@ namespace Keycloak.Net
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Keycloak.Net.Common.Extensions;
+    using Common.Extensions;
     using Keycloak.Net.Models.Common;
-    using Keycloak.Net.Models.Groups;
-    using Keycloak.Net.Models.Users;
+    using Models.Groups;
+    using Models.Users;
 
     public partial class KeycloakClient
     {

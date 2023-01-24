@@ -1,6 +1,6 @@
-﻿namespace Keycloak.Net.Models.AuthorizationResources
+namespace Keycloak.Net.Models.AuthorizationResources
 {
-    using Keycloak.Net.Models.AuthorizationScopes;
+    using AuthorizationScopes;
     using Newtonsoft.Json;
     using System.Collections.Generic;
 

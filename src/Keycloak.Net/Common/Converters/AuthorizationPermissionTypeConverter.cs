@@ -1,9 +1,9 @@
-﻿namespace Keycloak.Net.Common.Converters
+namespace Keycloak.Net.Common.Converters
 {
     using System;
     using System.Linq;
     using System.Collections.Generic;
-    using Keycloak.Net.Models.AuthorizationPermissions;
+    using Models.AuthorizationPermissions;
 
     public class AuthorizationPermissionTypeConverter: JsonEnumConverter<AuthorizationPermissionType>
     {

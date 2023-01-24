@@ -6,9 +6,9 @@ namespace Keycloak.Net
     using System.Net.Http;
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Keycloak.Net.Common.Extensions;
-    using Keycloak.Net.Models.Groups;
-    using Keycloak.Net.Models.Users;
+    using Common.Extensions;
+    using Models.Groups;
+    using Models.Users;
     using Newtonsoft.Json;
 
     public partial class KeycloakClient

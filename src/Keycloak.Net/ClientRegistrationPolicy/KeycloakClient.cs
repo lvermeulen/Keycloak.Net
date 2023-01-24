@@ -1,9 +1,9 @@
-﻿namespace Keycloak.Net
+namespace Keycloak.Net
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Keycloak.Net.Models.Components;
+    using Models.Components;
 
     public partial class KeycloakClient
     {

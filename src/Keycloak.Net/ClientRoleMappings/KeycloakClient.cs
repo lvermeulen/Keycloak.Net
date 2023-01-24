@@ -4,7 +4,7 @@ namespace Keycloak.Net
     using System.Net.Http;
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Keycloak.Net.Models.Roles;
+    using Models.Roles;
 
     public partial class KeycloakClient
     {

@@ -1,9 +1,9 @@
-﻿namespace Keycloak.Net.Common.Converters
+namespace Keycloak.Net.Common.Converters
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Keycloak.Net.Models.Root;
+    using Models.Root;
 
     public class ProtocolConverter : JsonEnumConverter<Protocol>
     {
