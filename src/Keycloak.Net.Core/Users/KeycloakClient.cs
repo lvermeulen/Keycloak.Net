@@ -101,7 +101,15 @@ namespace Keycloak.Net
 			return response.IsSuccessStatusCode;
 		}
 
-		public async Task<bool> DisableUserCredentialsAsync(string realm, string userId, IEnumerable<string> credentialTypes, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Credentials>> GetUserCredentialsAsync(string realm, string userId, CancellationToken cancellationToken = default)
+        {
+            return await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/credentials")
+                .GetJsonAsync<IEnumerable<Credentials>>(cancellationToken)
+                .ConfigureAwait(false);
+        }
+
+        public async Task<bool> DisableUserCredentialsAsync(string realm, string userId, IEnumerable<string> credentialTypes, CancellationToken cancellationToken = default)
 		{
 			var response = await GetBaseUrl(realm)
 				.AppendPathSegment($"/admin/realms/{realm}/users/{userId}/disable-credential-types")
