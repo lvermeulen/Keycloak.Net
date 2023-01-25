@@ -33,13 +33,14 @@ namespace Keycloak.Net
 			return userId;
 		}
 
-		public async Task<IEnumerable<User>> GetUsersAsync(string realm, bool? briefRepresentation = null, string email = null, int? first = null,
+		public async Task<IEnumerable<User>> GetUsersAsync(string realm, bool? briefRepresentation = null, string email = null, bool? exact = null, int? first = null,
 			string firstName = null, string lastName = null, int? max = null, string search = null, string username = null, CancellationToken cancellationToken = default)
 		{
 			var queryParams = new Dictionary<string, object>
 			{
 				[nameof(briefRepresentation)] = briefRepresentation,
 				[nameof(email)] = email,
+				[nameof(exact)] = exact,
 				[nameof(first)] = first,
 				[nameof(firstName)] = firstName,
 				[nameof(lastName)] = lastName,
