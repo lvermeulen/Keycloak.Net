@@ -33,13 +33,14 @@ namespace Keycloak.Net
 			return userId;
 		}
 
-		public async Task<IEnumerable<User>> GetUsersAsync(string realm, bool? briefRepresentation = null, string email = null, int? first = null,
+		public async Task<IEnumerable<User>> GetUsersAsync(string realm, bool? briefRepresentation = null, string email = null, bool? exact = null, int? first = null,
 			string firstName = null, string lastName = null, int? max = null, string search = null, string username = null, CancellationToken cancellationToken = default)
 		{
 			var queryParams = new Dictionary<string, object>
 			{
 				[nameof(briefRepresentation)] = briefRepresentation,
 				[nameof(email)] = email,
+				[nameof(exact)] = exact,
 				[nameof(first)] = first,
 				[nameof(firstName)] = firstName,
 				[nameof(lastName)] = lastName,
@@ -101,7 +102,15 @@ namespace Keycloak.Net
 			return response.IsSuccessStatusCode;
 		}
 
-		public async Task<bool> DisableUserCredentialsAsync(string realm, string userId, IEnumerable<string> credentialTypes, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Credentials>> GetUserCredentialsAsync(string realm, string userId, CancellationToken cancellationToken = default)
+        {
+            return await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/credentials")
+                .GetJsonAsync<IEnumerable<Credentials>>(cancellationToken)
+                .ConfigureAwait(false);
+        }
+
+        public async Task<bool> DisableUserCredentialsAsync(string realm, string userId, IEnumerable<string> credentialTypes, CancellationToken cancellationToken = default)
 		{
 			var response = await GetBaseUrl(realm)
 				.AppendPathSegment($"/admin/realms/{realm}/users/{userId}/disable-credential-types")
