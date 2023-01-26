@@ -1,15 +1,18 @@
-﻿using System.Threading.Tasks;
-using Flurl.Http;
-using Keycloak.Net.Models.Root;
-
 namespace Keycloak.Net
 {
+    using System.Threading.Tasks;
+    using Flurl.Http;
+    using Models.Root;
+
     public partial class KeycloakClient
     {
-        public async Task<ServerInfo> GetServerInfoAsync(string realm) => await GetBaseUrl(realm)
+        public async Task<ServerInfo> GetServerInfoAsync(string realm)
+        {
+            return await GetBaseUrl(realm)
             .AppendPathSegment("/admin/serverinfo/")
             .GetJsonAsync<ServerInfo>()
             .ConfigureAwait(false);
+        }
 
         public async Task<bool> CorsPreflightAsync(string realm)
         {
@@ -17,7 +20,7 @@ namespace Keycloak.Net
                 .AppendPathSegment("/admin/serverinfo/")
                 .OptionsAsync()
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
     }
 }

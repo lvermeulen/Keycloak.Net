@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Keycloak.Net.Models.RealmsAdmin;
-
 namespace Keycloak.Net.Common.Converters
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Models.RealmsAdmin;
+
     public class PoliciesConverter : JsonEnumConverter<Policies>
     {
         private static readonly Dictionary<Policies, string> s_pairs = new Dictionary<Policies, string>
@@ -16,7 +16,10 @@ namespace Keycloak.Net.Common.Converters
 
         protected override string EntityString { get; } = "policy";
 
-        protected override string ConvertToString(Policies value) => s_pairs[value];
+        protected override string ConvertToString(Policies value)
+        {
+            return s_pairs[value];
+        }
 
         protected override Policies ConvertFromString(string s)
         {

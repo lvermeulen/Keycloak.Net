@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Keycloak.Net.Common.Converters;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Clients
+﻿namespace Keycloak.Net.Models.Clients
 {
+    using System.Collections.Generic;
+    using Keycloak.Net.Common.Converters;
+    using Newtonsoft.Json;
+
     public class AccessToken
     {
         [JsonProperty("acr")]

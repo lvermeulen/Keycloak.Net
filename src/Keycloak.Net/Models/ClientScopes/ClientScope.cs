@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Keycloak.Net.Models.ProtocolMappers;
-using Newtonsoft.Json;
-
 namespace Keycloak.Net.Models.ClientScopes
 {
+    using System.Collections.Generic;
+    using ProtocolMappers;
+    using Newtonsoft.Json;
+
     public class ClientScope
     {
         [JsonProperty("id")]

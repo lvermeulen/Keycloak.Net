@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Key
+﻿namespace Keycloak.Net.Models.Key
 {
+    using Newtonsoft.Json;
+
     public class Active
     {
         [JsonProperty("HS256")]

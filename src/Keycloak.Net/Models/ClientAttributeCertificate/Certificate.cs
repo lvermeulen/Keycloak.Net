@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.ClientAttributeCertificate
+﻿namespace Keycloak.Net.Models.ClientAttributeCertificate
 {
+    using Newtonsoft.Json;
+
     public class Certificate
     {
         [JsonProperty("certificate")]

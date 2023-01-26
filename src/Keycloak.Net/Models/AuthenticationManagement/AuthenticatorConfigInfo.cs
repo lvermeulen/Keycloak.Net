@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Keycloak.Net.Models.Common;
-using Newtonsoft.Json;
-
 namespace Keycloak.Net.Models.AuthenticationManagement
 {
+    using System.Collections.Generic;
+    using Common;
+    using Newtonsoft.Json;
+
     public class AuthenticatorConfigInfo
     {
         [JsonProperty("helpText")]

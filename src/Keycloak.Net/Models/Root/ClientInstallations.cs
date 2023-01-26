@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Root
+﻿namespace Keycloak.Net.Models.Root
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class ClientInstallations
     {
         [JsonProperty("docker-v2")]

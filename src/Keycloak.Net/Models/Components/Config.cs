@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Components
+﻿namespace Keycloak.Net.Models.Components
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class Config
     {
         [JsonProperty("priority")]

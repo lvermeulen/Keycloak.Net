@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Keycloak.Net.Models.AuthorizationPermissions;
-
 namespace Keycloak.Net.Common.Converters
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Models.AuthorizationPermissions;
+
     public class PolicyDecisionLogicConverter : JsonEnumConverter<PolicyDecisionLogic>
     {
         private static readonly Dictionary<PolicyDecisionLogic, string> SPairs = new Dictionary<PolicyDecisionLogic, string>
@@ -15,7 +15,10 @@ namespace Keycloak.Net.Common.Converters
 
         protected override string EntityString { get; } = "logic";
 
-        protected override string ConvertToString(PolicyDecisionLogic value) => SPairs[value];
+        protected override string ConvertToString(PolicyDecisionLogic value)
+        {
+            return SPairs[value];
+        }
 
         protected override PolicyDecisionLogic ConvertFromString(string s)
         {

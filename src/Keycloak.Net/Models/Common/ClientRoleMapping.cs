@@ -1,9 +1,9 @@
-﻿using Keycloak.Net.Models.Roles;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-
 namespace Keycloak.Net.Models.Common
 {
+    using Roles;
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
+
     public class ClientRoleMapping
     {
         [JsonProperty("id")]

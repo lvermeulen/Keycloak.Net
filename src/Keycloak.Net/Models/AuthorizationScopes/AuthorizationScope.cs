@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.AuthorizationScopes
+﻿namespace Keycloak.Net.Models.AuthorizationScopes
 {
+    using Newtonsoft.Json;
+
     public class AuthorizationScope
     {
         [JsonProperty("id")]

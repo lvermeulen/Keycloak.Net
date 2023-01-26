@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Clients
+﻿namespace Keycloak.Net.Models.Clients
 {
+    using Newtonsoft.Json;
+
     public class ClientConfig
     {
         [JsonProperty("userinfotokenclaim")]

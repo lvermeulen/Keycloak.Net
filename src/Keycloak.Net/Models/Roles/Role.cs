@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Roles
+﻿namespace Keycloak.Net.Models.Roles
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class Role
     {
         [JsonProperty("id")]

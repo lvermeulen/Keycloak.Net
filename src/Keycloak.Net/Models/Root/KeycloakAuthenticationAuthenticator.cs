@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Keycloak.Net.Models.Common;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Root
+﻿namespace Keycloak.Net.Models.Root
 {
+    using System.Collections.Generic;
+    using Keycloak.Net.Models.Common;
+    using Newtonsoft.Json;
+
     public class KeycloakAuthenticationAuthenticator
     {
         [JsonProperty("id")]

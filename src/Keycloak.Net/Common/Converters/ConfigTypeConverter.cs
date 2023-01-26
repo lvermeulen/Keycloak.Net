@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Keycloak.Net.Models.Root;
-
 namespace Keycloak.Net.Common.Converters
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Models.Root;
+
     public class ConfigTypeConverter : JsonEnumConverter<ConfigType>
     {
         private static readonly Dictionary<ConfigType, string> s_pairs = new Dictionary<ConfigType, string>
@@ -15,7 +15,10 @@ namespace Keycloak.Net.Common.Converters
 
         protected override string EntityString { get; } = nameof(ConfigType).ToLower();
 
-        protected override string ConvertToString(ConfigType value) => s_pairs[value];
+        protected override string ConvertToString(ConfigType value)
+        {
+            return s_pairs[value];
+        }
 
         protected override ConfigType ConvertFromString(string s)
         {
