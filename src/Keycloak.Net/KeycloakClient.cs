@@ -8,6 +8,7 @@ namespace Keycloak.Net
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
     using System.Net.Http;
+    using Microsoft.Extensions.Logging;
 
     public partial class KeycloakClient
     {
@@ -27,34 +28,40 @@ namespace Keycloak.Net
 
         private bool _initialized = false;
 
-        private KeycloakClient(string url, bool allowInsecure = false)
+        private readonly ILogger _logger;
+
+        private KeycloakClient(string url, bool allowInsecure = false, ILogger logger = null)
         {
             _url = url;
             _allowInsecure = allowInsecure;
+            _logger = logger;
         }
 
-        public KeycloakClient(string url, string clientId, string userName, string password, bool allowInsecure = false)
+        public KeycloakClient(string url, string clientId, string userName, string password, bool allowInsecure = false, ILogger logger = null)
             : this(url)
         {
             _userName = userName;
             _password = password;
-            _allowInsecure = allowInsecure;
             _clientId = clientId;
+            _allowInsecure = allowInsecure;
+            _logger = logger;
         }
 
-        public KeycloakClient(string url, string clientId, string clientSecret, bool allowInsecure = false)
+        public KeycloakClient(string url, string clientId, string clientSecret, bool allowInsecure = false, ILogger logger = null)
             : this(url)
         {
             _clientId = clientId;
             _clientSecret = clientSecret;
             _allowInsecure = allowInsecure;
+            _logger = logger;
         }
 
-        public KeycloakClient(string url, Func<string> getToken, bool allowInsecure = false)
+        public KeycloakClient(string url, Func<string> getToken, bool allowInsecure = false, ILogger logger = null)
             : this(url)
         {
             _getToken = getToken;
             _allowInsecure = allowInsecure;
+            _logger = logger;
         }
 
         public void SetSerializer(ISerializer serializer)
@@ -64,8 +71,9 @@ namespace Keycloak.Net
 
         private IFlurlRequest GetBaseUrl(string authenticationRealm)
         {
-            if (!_initialized)
+            if (!_initialized && _allowInsecure)
             {
+                _logger?.LogWarning("Allowing all certificates");
                 FlurlHttp.ConfigureClient(_url.Root, cli =>
                     cli.Settings.HttpClientFactory = new UntrustedCertClientFactory());
                 _initialized = true;
