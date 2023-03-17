@@ -51,9 +51,10 @@ namespace Keycloak.Net
             _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
         }
 
-        private IFlurlRequest GetBaseUrl(string authenticationRealm) => new Url(_url)
-            .AppendPathSegment("/auth")
-            .ConfigureRequest(settings => settings.JsonSerializer = _serializer)
+        private IFlurlRequest GetBaseUrl(string authenticationRealm) =>  new Url(_url)
+			// `auth` removed, because it is not always there and if it is there it should be included in the baseurl
+			// .AppendPathSegment("/auth")
+			.ConfigureRequest(settings => settings.JsonSerializer = _serializer)
             .WithAuthentication(_getToken, _url, authenticationRealm, _userName, _password, _clientSecret);
     }
 }

@@ -41,7 +41,7 @@ namespace Keycloak.Net
         /// <param name="identityProviderAlias"></param>
         /// <returns></returns>
         public async Task<IdentityProviderToken> GetIdentityProviderTokenAsync(string realm, string identityProviderAlias) => await GetBaseUrl(realm)
-            .AppendPathSegment($"/auth/realms/{realm}/broker/{identityProviderAlias}/token")
+            .AppendPathSegment($"/realms/{realm}/broker/{identityProviderAlias}/token")
             .GetJsonAsync<IdentityProviderToken>()
             .ConfigureAwait(false);
 
