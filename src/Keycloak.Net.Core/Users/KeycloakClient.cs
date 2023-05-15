@@ -33,20 +33,25 @@ namespace Keycloak.Net
 			return userId;
 		}
 
-		public async Task<IEnumerable<User>> GetUsersAsync(string realm, bool? briefRepresentation = null, string email = null, bool? exact = null, int? first = null,
-			string firstName = null, string lastName = null, int? max = null, string search = null, string username = null, CancellationToken cancellationToken = default)
+		public async Task<IEnumerable<User>> GetUsersAsync(string realm, bool? briefRepresentation = null, string email = null, bool? emailVerified = null, bool? enabled = null, bool? exact = null, int? first = null,
+			string firstName = null, string idpAlias = null, string idpUserId = null, string lastName = null, int? max = null, string q = null, string search = null, string username = null, CancellationToken cancellationToken = default)
 		{
 			var queryParams = new Dictionary<string, object>
 			{
 				[nameof(briefRepresentation)] = briefRepresentation,
 				[nameof(email)] = email,
+				[nameof(emailVerified)] = emailVerified,
+				[nameof(enabled)] = enabled,
 				[nameof(exact)] = exact,
 				[nameof(first)] = first,
 				[nameof(firstName)] = firstName,
+				[nameof(idpAlias)] = idpAlias,
+				[nameof(idpUserId)] = idpUserId,
 				[nameof(lastName)] = lastName,
 				[nameof(max)] = max,
+				[nameof(q)] = q,
 				[nameof(search)] = search,
-				[nameof(username)] = username
+				[nameof(username)] = username,
 			};
 
 			return await GetBaseUrl(realm)
