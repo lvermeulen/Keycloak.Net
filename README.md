@@ -1,4 +1,4 @@
-![Icon](https://github.com/silentpartnersoftware/Keycloak.Net/blob/01f1654e44065409726b417e26b2dfc913e03c7f/docs/icon.png)
+![Icon](https://raw.github.com/silentpartnersoftware/Keycloak.Net/01f1654e44065409726b417e26b2dfc913e03c7f/docs/icon.png)
 # Keycloak.Net.Core
 [![license](https://img.shields.io/github/license/AnderssonPeter/Keycloak.Net.svg?maxAge=2592000)](https://github.com/AnderssonPeter/Keycloak.Net/blob/master/LICENSE) [![NuGet](https://img.shields.io/nuget/v/Keycloak.Net.Core?maxAge=2592000)](https://www.nuget.org/packages/Keycloak.Net.Core/) [![downloads](https://img.shields.io/nuget/dt/Keycloak.Net.Core)](https://www.nuget.org/packages/Keycloak.Net.Core/)
 
