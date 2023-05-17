@@ -4,20 +4,21 @@
     <TargetFramework>net6.0</TargetFramework>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>Luk Vermeulen, Peter Andersson, Galip Tolga Erdem</Authors>
-    <Copyright>Copyright 2022 by Luk Vermeulen, Peter Andersson. All rights reserved.</Copyright>
-    <PackageLicenseUrl>https://github.com/AnderssonPeter/Keycloak.Net/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/AnderssonPeter/Keycloak.Net</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/AnderssonPeter/Keycloak.Net</RepositoryUrl>
+    <Authors>Luk Vermeulen, Peter Andersson, Galip Tolga Erdem, Silent Partner Software</Authors>
+    <Copyright>Copyright 2023 by Luk Vermeulen, Peter Andersson, Silent Partner Software. All rights reserved.</Copyright>
+	<PackageProjectUrl>https://github.com/silentpartnersoftware/Keycloak.Net</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/silentpartnersoftware/Keycloak.Net</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>keycloak</PackageTags>
-    <PackageIconUrl>https://i.imgur.com/eEjfRLz.jpg?2</PackageIconUrl>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageIcon>icon.png</PackageIcon>
     <Description>C# client for Keycloak</Description>
     <SignAssembly>true</SignAssembly>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Version>1.0.20</Version>
+    <Version>1.0.21</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,6 +32,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\..\docs\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
