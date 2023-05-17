@@ -142,5 +142,13 @@ namespace Keycloak.Net.Models.RealmsAdmin
         public string? DisplayNameHtml { get; set; }
         [JsonProperty("defaultLocale")]
         public string? DefaultLocale { get; set; }
+        [JsonProperty("accountTheme")]
+        public string? AccountTheme { get; set; }
+        [JsonProperty("adminTheme")]
+        public string? AdminTheme { get; set; }
+        [JsonProperty("emailTheme")]
+        public string? EmailTheme { get; set; }
+        [JsonProperty("loginTheme")]
+        public string? LoginTheme { get; set; }
     }
 }
