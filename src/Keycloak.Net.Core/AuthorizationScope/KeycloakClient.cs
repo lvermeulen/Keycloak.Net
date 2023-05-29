@@ -14,10 +14,10 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{resourceServerId}/authz/resource-server/scope")
                 .PostJsonAsync(scope, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<AuthorizationScope>> GetAuthorizationScopesAsync(string realm, string resourceServerId = null, 
+        public async Task<IEnumerable<AuthorizationScope>> GetAuthorizationScopesAsync(string realm, string resourceServerId = null,
             bool deep = false, int? first = null, int? max = null, string name = null, CancellationToken cancellationToken = default)
         {
             var queryParams = new Dictionary<string, object>
@@ -27,7 +27,7 @@ namespace Keycloak.Net
                 [nameof(max)] = max,
                 [nameof(name)] = name,
             };
-            
+
             return await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{resourceServerId}/authz/resource-server/scope")
                 .SetQueryParams(queryParams)
@@ -46,7 +46,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{resourceServerId}/authz/resource-server/scope/{scopeId}")
                 .PutJsonAsync(scope, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteAuthorizationScopeAsync(string realm, string resourceServerId, string scopeId, CancellationToken cancellationToken = default)
@@ -55,7 +55,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{resourceServerId}/authz/resource-server/scope/{scopeId}")
                 .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
     }
 }

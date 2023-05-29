@@ -1,10 +1,10 @@
-﻿using System;
-using Flurl;
+﻿using Flurl;
 using Flurl.Http;
 using Flurl.Http.Configuration;
 using Keycloak.Net.Common.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System;
 
 namespace Keycloak.Net
 {
@@ -29,7 +29,7 @@ namespace Keycloak.Net
             _options = options ?? new KeycloakOptions();
         }
 
-        public KeycloakClient(string url, string userName, string password, KeycloakOptions options = null) 
+        public KeycloakClient(string url, string userName, string password, KeycloakOptions options = null)
             : this(url, options)
         {
             _userName = userName;

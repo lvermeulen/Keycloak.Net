@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
-using Flurl.Http;
+﻿using Flurl.Http;
 using Flurl.Http.Content;
 using Keycloak.Net.Models.Common;
 using Keycloak.Net.Models.Roles;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Keycloak.Net
 {
@@ -22,7 +22,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/roles-by-id/{roleId}")
                 .PutJsonAsync(role, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteRoleByIdAsync(string realm, string roleId, CancellationToken cancellationToken = default)
@@ -31,7 +31,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/roles-by-id/{roleId}")
                 .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> MakeRoleCompositeAsync(string realm, string roleId, IEnumerable<Role> roles, CancellationToken cancellationToken = default)
@@ -40,7 +40,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/roles-by-id/{roleId}/composites")
                 .PostJsonAsync(roles, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Role>> GetRoleChildrenAsync(string realm, string roleId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
@@ -54,7 +54,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/roles-by-id/{roleId}/composites")
                 .SendJsonAsync(HttpMethod.Delete, new CapturedJsonContent(_serializer.Serialize(roles)), cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Role>> GetClientRolesForCompositeByIdAsync(string realm, string roleId, string clientId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)

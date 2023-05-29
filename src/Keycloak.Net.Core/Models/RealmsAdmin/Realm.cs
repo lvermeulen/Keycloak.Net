@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Keycloak.Net.Models.RealmsAdmin
 {
@@ -135,7 +135,7 @@ namespace Keycloak.Net.Models.RealmsAdmin
         [JsonProperty("userManagedAccessAllowed")]
         public bool? UserManagedAccessAllowed { get; set; }
         [JsonProperty("passwordPolicy")]
-        public string PasswordPolicy{ get; set; }
+        public string PasswordPolicy { get; set; }
         [JsonProperty("displayName")]
         public string? DisplayName { get; set; }
         [JsonProperty("displayNameHtml")]

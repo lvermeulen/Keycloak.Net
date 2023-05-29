@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Keycloak.Net.Models.Root;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Keycloak.Net.Models.Root;
 
 namespace Keycloak.Net.Common.Converters
 {

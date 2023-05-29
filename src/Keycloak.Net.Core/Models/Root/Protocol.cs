@@ -6,8 +6,8 @@ namespace Keycloak.Net.Models.Root
     [JsonConverter(typeof(ProtocolConverter))]
     public enum Protocol
     {
-        DockerV2, 
-        OpenIdConnect, 
+        DockerV2,
+        OpenIdConnect,
         Saml
     }
 }

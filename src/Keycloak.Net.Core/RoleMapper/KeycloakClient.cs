@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Flurl.Http;
+using Keycloak.Net.Models.Common;
+using Keycloak.Net.Models.Roles;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Flurl.Http;
-using Keycloak.Net.Models.Common;
-using Keycloak.Net.Models.Roles;
 
 namespace Keycloak.Net
 {
@@ -21,7 +21,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}/role-mappings/realm")
                 .PostJsonAsync(roles, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Role>> GetRealmRoleMappingsForGroupAsync(string realm, string groupId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
@@ -35,7 +35,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/groups/{groupId}/role-mappings/realm")
                 .SendJsonAsync(HttpMethod.Delete, roles, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Role>> GetAvailableRealmRoleMappingsForGroupAsync(string realm, string groupId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
@@ -59,7 +59,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/role-mappings/realm")
                 .PostJsonAsync(roles, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Role>> GetRealmRoleMappingsForUserAsync(string realm, string userId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
@@ -73,7 +73,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/users/{userId}/role-mappings/realm")
                 .SendJsonAsync(HttpMethod.Delete, roles, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<Role>> GetAvailableRealmRoleMappingsForUserAsync(string realm, string userId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)

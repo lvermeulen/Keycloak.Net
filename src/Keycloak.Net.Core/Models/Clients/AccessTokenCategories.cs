@@ -2,10 +2,10 @@
 {
     public enum AccessTokenCategories
     {
-        Internal, 
-        Access, 
-        Id, 
-        Admin, 
+        Internal,
+        Access,
+        Id,
+        Admin,
         Userinfo
     }
 }

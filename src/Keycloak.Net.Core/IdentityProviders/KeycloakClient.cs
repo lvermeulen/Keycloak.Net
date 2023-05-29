@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Flurl.Http;
+using Keycloak.Net.Models.Common;
+using Keycloak.Net.Models.IdentityProviders;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Flurl.Http;
-using Keycloak.Net.Models.Common;
-using Keycloak.Net.Models.IdentityProviders;
 
 namespace Keycloak.Net
 {
@@ -22,7 +22,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/identity-provider/instances")
                 .PostJsonAsync(identityProvider, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<IdentityProvider>> GetIdentityProviderInstancesAsync(string realm, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
@@ -53,7 +53,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}")
                 .PutJsonAsync(identityProvider, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteIdentityProviderAsync(string realm, string identityProviderAlias, CancellationToken cancellationToken = default)
@@ -62,7 +62,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}")
                 .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> ExportIdentityProviderPublicBrokerConfigurationAsync(string realm, string identityProviderAlias, CancellationToken cancellationToken = default)
@@ -71,21 +71,21 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/export")
                 .GetAsync(cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
-        
+
         public async Task<ManagementPermission> GetIdentityProviderAuthorizationPermissionsInitializedAsync(string realm, string identityProviderAlias, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/management/permissions")
             .GetJsonAsync<ManagementPermission>(cancellationToken)
             .ConfigureAwait(false);
 
-        public async Task<ManagementPermission> SetIdentityProviderAuthorizationPermissionsInitializedAsync(string realm, string identityProviderAlias, ManagementPermission managementPermission, CancellationToken cancellationToken = default) => 
+        public async Task<ManagementPermission> SetIdentityProviderAuthorizationPermissionsInitializedAsync(string realm, string identityProviderAlias, ManagementPermission managementPermission, CancellationToken cancellationToken = default) =>
             await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/management/permissions")
                 .PutJsonAsync(managementPermission, cancellationToken)
                 .ReceiveJson<ManagementPermission>()
                 .ConfigureAwait(false);
-        
+
         public async Task<IDictionary<string, object>> GetIdentityProviderMapperTypesAsync(string realm, string identityProviderAlias, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/mapper-types")
             .GetJsonAsync<IDictionary<string, object>>(cancellationToken)
@@ -97,14 +97,14 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/mappers")
                 .PostJsonAsync(identityProviderMapper, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
-        
+
         public async Task<IEnumerable<IdentityProviderMapper>> GetIdentityProviderMappersAsync(string realm, string identityProviderAlias, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/mappers")
             .GetJsonAsync<IEnumerable<IdentityProviderMapper>>(cancellationToken)
             .ConfigureAwait(false);
-        
+
         public async Task<IdentityProviderMapper> GetIdentityProviderMapperByIdAsync(string realm, string identityProviderAlias, string mapperId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
             .AppendPathSegment($"/admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/mappers/{mapperId}")
             .GetJsonAsync<IdentityProviderMapper>(cancellationToken)
@@ -116,7 +116,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/mappers/{mapperId}")
                 .PutJsonAsync(identityProviderMapper, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteIdentityProviderMapperAsync(string realm, string identityProviderAlias, string mapperId, CancellationToken cancellationToken = default)
@@ -125,7 +125,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/mappers/{mapperId}")
                 .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IdentityProviderInfo> GetIdentityProviderByProviderIdAsync(string realm, string providerId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)

@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Keycloak.Net.Common.Converters;
+﻿using Keycloak.Net.Common.Converters;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Keycloak.Net.Models.AuthorizationPermissions
 {
@@ -19,7 +19,7 @@ namespace Keycloak.Net.Models.AuthorizationPermissions
         public AuthorizationPermissionType Type { get; set; }
 
         [JsonConverter(typeof(PolicyDecisionLogicConverter))]
-        public PolicyDecisionLogic Logic { get; set; } 
+        public PolicyDecisionLogic Logic { get; set; }
 
         [JsonConverter(typeof(DecisionStrategiesConverter))]
         public DecisionStrategy DecisionStrategy { get; set; }
@@ -39,20 +39,20 @@ namespace Keycloak.Net.Models.AuthorizationPermissions
 
     public enum PolicyDecisionLogic
     {
-        Positive, 
+        Positive,
         Negative
     }
 
     public enum AuthorizationPermissionType
-    {   
-        Scope, 
+    {
+        Scope,
         Resource
     }
 
     public enum DecisionStrategy
     {
-        Unanimous, 
-        Affirmative, 
+        Unanimous,
+        Affirmative,
         Consensus
     }
 }

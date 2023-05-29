@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Keycloak.Net.Common.Converters;
+﻿using Keycloak.Net.Common.Converters;
 using Keycloak.Net.Models.AuthorizationPermissions;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Keycloak.Net.Models.Clients
 {
@@ -20,7 +20,7 @@ namespace Keycloak.Net.Models.Clients
         public PolicyType Type { get; set; }
 
         [JsonConverter(typeof(PolicyDecisionLogicConverter))]
-        public PolicyDecisionLogic Logic { get; set; } 
+        public PolicyDecisionLogic Logic { get; set; }
 
         [JsonConverter(typeof(DecisionStrategiesConverter))]
         public DecisionStrategy DecisionStrategy { get; set; }
@@ -44,7 +44,7 @@ namespace Keycloak.Net.Models.Clients
         public PolicyType Type { get; set; } = PolicyType.Role;
 
         [JsonConverter(typeof(PolicyDecisionLogicConverter))]
-        public PolicyDecisionLogic Logic { get; set; } 
+        public PolicyDecisionLogic Logic { get; set; }
 
         [JsonConverter(typeof(DecisionStrategiesConverter))]
         public DecisionStrategy DecisionStrategy { get; set; }

@@ -34,7 +34,7 @@ namespace Keycloak.Net.Tests
                 Assert.NotNull(result);
             }
         }
-        
+
         [Theory]
         [InlineData("master")]
         public async Task GetGroupClientAuthorizationPermissionsInitializedAsync(string realm)
