@@ -19,6 +19,6 @@ namespace Keycloak.Net.Models.RealmsAdmin
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
         [JsonProperty("time")]
-        public int? Time { get; set; }
+        public long? Time { get; set; }
     }
 }
