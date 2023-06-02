@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Flurl.Http;
+using Keycloak.Net.Models.ClientInitialAccess;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Flurl.Http;
-using Keycloak.Net.Models.ClientInitialAccess;
 
 namespace Keycloak.Net
 {
@@ -25,7 +25,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/clients-initial-access/{clientInitialAccessTokenId}")
                 .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
     }
 }

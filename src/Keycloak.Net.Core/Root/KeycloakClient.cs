@@ -1,7 +1,7 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Flurl.Http;
+﻿using Flurl.Http;
 using Keycloak.Net.Models.Root;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Keycloak.Net
 {
@@ -18,7 +18,7 @@ namespace Keycloak.Net
                 .AppendPathSegment("/admin/serverinfo/")
                 .OptionsAsync(cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
     }
 }

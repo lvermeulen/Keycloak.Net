@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Flurl.Http;
+using Keycloak.Net.Models.ClientScopes;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Flurl.Http;
-using Keycloak.Net.Models.ClientScopes;
 
 namespace Keycloak.Net
 {
@@ -14,7 +14,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/client-scopes")
                 .PostJsonAsync(clientScope, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<ClientScope>> GetClientScopesAsync(string realm, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
@@ -33,7 +33,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}")
                 .PutJsonAsync(clientScope, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteClientScopeAsync(string realm, string clientScopeId, CancellationToken cancellationToken = default)
@@ -42,7 +42,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}")
                 .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
     }
 }

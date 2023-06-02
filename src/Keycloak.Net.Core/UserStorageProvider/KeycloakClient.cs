@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Flurl.Http;
+using Keycloak.Net.Models.UserStorageProvider;
+using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Flurl.Http;
-using Keycloak.Net.Models.UserStorageProvider;
 
 namespace Keycloak.Net
 {
@@ -16,7 +16,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/user-storage/{storageProviderId}/remove-imported-users")
                 .PostAsync(new StringContent(""), cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         [Obsolete("Not working yet")]
@@ -34,7 +34,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/user-storage/{storageProviderId}/unlink-users")
                 .PostAsync(new StringContent(""), cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         [Obsolete("Not working yet")]

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Keycloak.Net.Models.Clients;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Keycloak.Net.Models.Clients;
 
 namespace Keycloak.Net.Common.Converters
 {
@@ -9,10 +9,10 @@ namespace Keycloak.Net.Common.Converters
     {
         private static readonly Dictionary<AccessTokenCategories, string> s_pairs = new Dictionary<AccessTokenCategories, string>
         {
-            [AccessTokenCategories.Internal] = "INTERNAL", 
-            [AccessTokenCategories.Access] = "ACCESS", 
-            [AccessTokenCategories.Id] = "ID", 
-            [AccessTokenCategories.Admin] = "ADMIN", 
+            [AccessTokenCategories.Internal] = "INTERNAL",
+            [AccessTokenCategories.Access] = "ACCESS",
+            [AccessTokenCategories.Id] = "ID",
+            [AccessTokenCategories.Admin] = "ADMIN",
             [AccessTokenCategories.Userinfo] = "USERINFO"
         };
 

@@ -2,7 +2,6 @@
 using Keycloak.Net.Models.AuthorizationPermissions;
 using Keycloak.Net.Models.AuthorizationScopes;
 using Keycloak.Net.Models.Clients;
-using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,7 +28,7 @@ namespace Keycloak.Net
             .GetJsonAsync<AuthorizationPermission>(cancellationToken)
             .ConfigureAwait(false);
 
-        public async Task<IEnumerable<AuthorizationPermission>> GetAuthorizationPermissionsAsync(string realm, string clientId, AuthorizationPermissionType? ofPermissionType = null, 
+        public async Task<IEnumerable<AuthorizationPermission>> GetAuthorizationPermissionsAsync(string realm, string clientId, AuthorizationPermissionType? ofPermissionType = null,
             int? first = null, int? max = null, string name = null, string resource = null, string scope = null, CancellationToken cancellationToken = default)
         {
             var queryParams = new Dictionary<string, object>
@@ -46,7 +45,7 @@ namespace Keycloak.Net
 
             if (ofPermissionType.HasValue)
                 request.AppendPathSegment(ofPermissionType.Value == AuthorizationPermissionType.Scope ? "/scope" : "/resource");
-            
+
             return await request
                 .SetQueryParams(queryParams)
                 .GetJsonAsync<IEnumerable<AuthorizationPermission>>(cancellationToken)
@@ -61,7 +60,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/{permission.Id}")
                 .PutJsonAsync(permission, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteAuthorizationPermissionAsync(string realm, string clientId, AuthorizationPermissionType permissionType,
@@ -73,9 +72,9 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/{permissionId}")
                 .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
-        
+
         public async Task<IEnumerable<Policy>> GetAuthorizationPermissionAssociatedPoliciesAsync(string realm, string clientId, string permissionId, CancellationToken cancellationToken = default)
         {
             return await GetBaseUrl(realm)
@@ -104,13 +103,13 @@ namespace Keycloak.Net
         #region Policy
         public async Task<RolePolicy> CreateRolePolicyAsync(string realm, string clientId, RolePolicy policy, CancellationToken cancellationToken = default)
         {
-                var response = await GetBaseUrl(realm)
-                    .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/policy")
-                    .AppendPathSegment(policy.Type == PolicyType.Role ? "/role" : string.Empty)
-                    .PostJsonAsync(policy, cancellationToken)
-                    .ReceiveJson<RolePolicy>()
-                    .ConfigureAwait(false);
-                return response;
+            var response = await GetBaseUrl(realm)
+                .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/authz/resource-server/policy")
+                .AppendPathSegment(policy.Type == PolicyType.Role ? "/role" : string.Empty)
+                .PostJsonAsync(policy, cancellationToken)
+                .ReceiveJson<RolePolicy>()
+                .ConfigureAwait(false);
+            return response;
         }
 
         public async Task<RolePolicy> GetRolePolicyByIdAsync(string realm, string clientId, PolicyType policyType, string rolePolicyId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
@@ -120,8 +119,8 @@ namespace Keycloak.Net
             .GetJsonAsync<RolePolicy>(cancellationToken)
             .ConfigureAwait(false);
 
-        public async Task<IEnumerable<Policy>> GetAuthorizationPoliciesAsync(string realm, string clientId, 
-            int? first = null, int? max = null, 
+        public async Task<IEnumerable<Policy>> GetAuthorizationPoliciesAsync(string realm, string clientId,
+            int? first = null, int? max = null,
             string name = null, string resource = null,
             string scope = null, bool? permission = null, CancellationToken cancellationToken = default)
         {
@@ -142,8 +141,8 @@ namespace Keycloak.Net
                 .ConfigureAwait(false);
         }
 
-        public async Task<IEnumerable<RolePolicy>> GetRolePoliciesAsync(string realm, string clientId, 
-            int? first = null, int? max = null, 
+        public async Task<IEnumerable<RolePolicy>> GetRolePoliciesAsync(string realm, string clientId,
+            int? first = null, int? max = null,
             string name = null, string resource = null,
             string scope = null, bool? permission = null, CancellationToken cancellationToken = default)
         {
@@ -172,7 +171,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/{policy.Id}")
                 .PutJsonAsync(policy, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteRolePolicyAsync(string realm, string clientId, PolicyType policyType, string rolePolicyId, CancellationToken cancellationToken = default)
@@ -183,7 +182,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/{rolePolicyId}")
                 .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
         #endregion
     }

@@ -6,8 +6,8 @@ namespace Keycloak.Net.Models.Root
     [JsonConverter(typeof(NameConverter))]
     public enum Name
     {
-        Base, 
-        Keycloak, 
+        Base,
+        Keycloak,
         RhSso
     }
 }

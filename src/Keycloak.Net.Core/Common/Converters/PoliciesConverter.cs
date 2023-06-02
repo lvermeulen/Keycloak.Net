@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Keycloak.Net.Models.RealmsAdmin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Keycloak.Net.Models.RealmsAdmin;
 
 namespace Keycloak.Net.Common.Converters
 {

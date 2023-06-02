@@ -6,10 +6,10 @@ namespace Keycloak.Net.Models.Root
     [JsonConverter(typeof(CategoryConverter))]
     public enum Category
     {
-        AttributeStatementMapper, 
-        DockerAuthMapper, 
-        GroupMapper, 
-        RoleMapper, 
+        AttributeStatementMapper,
+        DockerAuthMapper,
+        GroupMapper,
+        RoleMapper,
         TokenMapper
     }
 }

@@ -1,7 +1,7 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Flurl.Http;
+﻿using Flurl.Http;
 using Keycloak.Net.Models.AttackDetection;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Keycloak.Net
 {
@@ -13,7 +13,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/attack-detection/brute-force/users")
                 .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> ClearUserLoginFailuresAsync(string realm, string userId, CancellationToken cancellationToken = default)
@@ -22,7 +22,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/attack-detection/brute-force/users/{userId}")
                 .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<UserNameStatus> GetUserNameStatusInBruteForceDetectionAsync(string realm, string userId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)

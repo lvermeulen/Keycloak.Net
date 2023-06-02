@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Flurl;
+using Flurl.Http;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Flurl;
-using Flurl.Http;
 
 namespace Keycloak.Net.Common.Extensions
 {
@@ -77,17 +77,17 @@ namespace Keycloak.Net.Common.Extensions
         {
             if (!string.IsNullOrEmpty(forwardedHeaders?.forwardedFor))
             {
-	            request = request.WithHeader("X-Forwarded-For", forwardedHeaders.forwardedFor);
+                request = request.WithHeader("X-Forwarded-For", forwardedHeaders.forwardedFor);
             }
 
             if (!string.IsNullOrEmpty(forwardedHeaders?.forwardedProto))
             {
-	            request = request.WithHeader("X-Forwarded-Proto", forwardedHeaders.forwardedProto);
+                request = request.WithHeader("X-Forwarded-Proto", forwardedHeaders.forwardedProto);
             }
 
             if (!string.IsNullOrEmpty(forwardedHeaders?.forwardedHost))
             {
-	            request = request.WithHeader("X-Forwarded-Host", forwardedHeaders.forwardedHost);
+                request = request.WithHeader("X-Forwarded-Host", forwardedHeaders.forwardedHost);
             }
 
             return request;

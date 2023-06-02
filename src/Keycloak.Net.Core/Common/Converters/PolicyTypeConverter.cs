@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Keycloak.Net.Models.Clients;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Keycloak.Net.Models.Clients;
 
 namespace Keycloak.Net.Common.Converters
 {
-    public class PolicyTypeConverter: JsonEnumConverter<PolicyType>
+    public class PolicyTypeConverter : JsonEnumConverter<PolicyType>
     {
         private static readonly Dictionary<PolicyType, string> SPairs = new Dictionary<PolicyType, string>
         {

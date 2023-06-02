@@ -1,7 +1,7 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Flurl.Http;
+﻿using Flurl.Http;
 using Keycloak.Net.Models.Key;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Keycloak.Net
 {

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using Keycloak.Net.Models.AuthorizationPermissions;
+using System;
 using System.Collections.Generic;
-using Keycloak.Net.Models.AuthorizationPermissions;
+using System.Linq;
 
 namespace Keycloak.Net.Common.Converters
 {
-    public class AuthorizationPermissionTypeConverter: JsonEnumConverter<AuthorizationPermissionType>
+    public class AuthorizationPermissionTypeConverter : JsonEnumConverter<AuthorizationPermissionType>
     {
         private static readonly Dictionary<AuthorizationPermissionType, string> SPairs = new Dictionary<AuthorizationPermissionType, string>
         {

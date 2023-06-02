@@ -6,7 +6,7 @@ namespace Keycloak.Net.Models.Root
     [JsonConverter(typeof(GroupNameConverter))]
     public enum GroupName
     {
-        Social, 
+        Social,
         UserDefined
     }
 }

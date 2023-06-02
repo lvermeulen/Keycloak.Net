@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Flurl.Http;
+using Keycloak.Net.Models.ProtocolMappers;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Flurl.Http;
-using Keycloak.Net.Models.ProtocolMappers;
 
 namespace Keycloak.Net
 {
@@ -14,7 +14,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}/protocol-mappers/add-models")
                 .PostJsonAsync(protocolMapperRepresentations, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> CreateProtocolMapperAsync(string realm, string clientScopeId, ProtocolMapper protocolMapperRepresentation, CancellationToken cancellationToken = default)
@@ -23,7 +23,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}/protocol-mappers/models")
                 .PostJsonAsync(protocolMapperRepresentation, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<ProtocolMapper>> GetProtocolMappersAsync(string realm, string clientScopeId, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)
@@ -42,7 +42,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}/protocol-mappers/models/{protocolMapperId}")
                 .PutJsonAsync(protocolMapperRepresentation, cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteProtocolMapperAsync(string realm, string clientScopeId, string protocolMapperId, CancellationToken cancellationToken = default)
@@ -51,7 +51,7 @@ namespace Keycloak.Net
                 .AppendPathSegment($"/admin/realms/{realm}/client-scopes/{clientScopeId}/protocol-mappers/models/{protocolMapperId}")
                 .DeleteAsync(cancellationToken)
                 .ConfigureAwait(false);
-            return response.IsSuccessStatusCode;
+            return response.ResponseMessage.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<ProtocolMapper>> GetProtocolMappersByNameAsync(string realm, string clientScopeId, string protocol, CancellationToken cancellationToken = default) => await GetBaseUrl(realm)

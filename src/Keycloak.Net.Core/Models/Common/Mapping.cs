@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Keycloak.Net.Models.Roles;
+﻿using Keycloak.Net.Models.Roles;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Keycloak.Net.Models.Common
 {

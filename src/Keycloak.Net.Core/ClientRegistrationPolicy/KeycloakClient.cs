@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Flurl.Http;
+using Keycloak.Net.Models.Components;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Flurl.Http;
-using Keycloak.Net.Models.Components;
 
 namespace Keycloak.Net
 {
