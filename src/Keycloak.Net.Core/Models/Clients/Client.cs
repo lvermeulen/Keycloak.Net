@@ -11,8 +11,10 @@ namespace Keycloak.Net.Models.Clients
         public string ClientId { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
+        [JsonProperty("rootUrl")]
+        public string RootUrl { get; set; } 
         [JsonProperty("baseUrl")]
-        public string BaseUrl { get; set; }
+        public string BaseUrl { get; set; } //Home Url
         [JsonProperty("surrogateAuthRequired")]
         public bool? SurrogateAuthRequired { get; set; }
         [JsonProperty("enabled")]
