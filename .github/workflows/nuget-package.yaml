@@ -16,8 +16,7 @@ jobs:
     name: Calculate Version
     runs-on: ubuntu-latest
     outputs:
-      versionFull: ${{ steps.determineVersion.outputs.SemVer }}
-      version: ${{ steps.determineVersion.outputs.MajorMinorPatch }}
+      version: ${{ steps.determineVersion.outputs.SemVer }}
       isProduction: ${{ steps.determineVersion.outputs.PreReleaseLabel == '' }}
       isReleaseCandidate: ${{ steps.determineVersion.outputs.PreReleaseLabel == 'rc' }}
 
@@ -69,3 +68,17 @@ jobs:
       - name: Push generated package to GitHub registry
         if: ${{ needs.calculate-version.outputs.isProduction == 'true' || needs.calculate-version.outputs.isReleaseCandidate == 'true' }}
         run: dotnet nuget push ./artifacts/*.nupkg --skip-duplicate -n
+
+      - name: "Push tag"
+        if: ${{ needs.calculate-version.outputs.isProduction == 'true' || needs.calculate-version.outputs.isReleaseCandidate == 'true' }}
+        uses: thejeff77/action-push-tag@v1.0.0
+        with:
+          tag: ${{ needs.calculate-version.outputs.version }}
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        if: ${{ needs.calculate-version.outputs.isProduction == 'true' || needs.calculate-version.outputs.isReleaseCandidate == 'true' }}
+        with:
+          allowUpdates: ${{ needs.calculate-version.outputs.isProduction != 'true' }}
+          prerelease: ${{ needs.calculate-version.outputs.isProduction != 'true' }}
+          tag: ${{ needs.calculate-version.outputs.version }}
