@@ -4,9 +4,12 @@ on:
   push:
     branches:
       - main
+      - release/*
+
   pull_request:
     branches:
       - main
+      - release/*
 
 jobs:
   calculate-version:
@@ -16,6 +19,7 @@ jobs:
       versionFull: ${{ steps.determineVersion.outputs.SemVer }}
       version: ${{ steps.determineVersion.outputs.MajorMinorPatch }}
       isProduction: ${{ steps.determineVersion.outputs.PreReleaseLabel == '' }}
+      isReleaseCandidate: ${{ steps.determineVersion.outputs.PreReleaseLabel == 'rc' }}
 
     steps:
       - name: Checkout
@@ -44,12 +48,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup .NET Core @ Latest
+      - name: Setup .Net 7
         uses: actions/setup-dotnet@v3
         with:
-          source-url: https://nuget.pkg.github.com/neothor/Keycloak.Net/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          dotnet-version: '7.0.x'        
 
       - name: Build solution and generate NuGet package
         run: |
@@ -57,6 +59,13 @@ jobs:
           dotnet restore
           dotnet pack -c Release --include-symbols -o ../../artifacts --no-build /p:PackageVersion=${{ env.VERSION }}
 
+      - name: Update NuGet Source to GitHub
+        uses: actions/setup-dotnet@v3
+        with:
+          source-url: https://nuget.pkg.github.com/neothor/Keycloak.Net/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
       - name: Push generated package to GitHub registry
-        if: ${{ needs.calculate-version.outputs.isProduction == 'true' }}
+        if: ${{ needs.calculate-version.outputs.isProduction == 'true' || needs.calculate-version.outputs.isReleaseCandidate == 'true' }}
         run: dotnet nuget push ./artifacts/*.nupkg --skip-duplicate --no-symbols true
