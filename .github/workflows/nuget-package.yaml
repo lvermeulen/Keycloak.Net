@@ -62,11 +62,10 @@ jobs:
       - name: Update NuGet Source to GitHub
         uses: actions/setup-dotnet@v3
         with:
-          #source-url: https://nuget.pkg.github.com/neothor/Keycloak.Net/index.json
           source-url: https://nuget.pkg.github.com/neothor/index.json
         env:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Push generated package to GitHub registry
         if: ${{ needs.calculate-version.outputs.isProduction == 'true' || needs.calculate-version.outputs.isReleaseCandidate == 'true' }}
-        run: dotnet nuget push ./artifacts/*.nupkg --skip-duplicate --no-symbols true
+        run: dotnet nuget push ./artifacts/*.nupkg --skip-duplicate -n
