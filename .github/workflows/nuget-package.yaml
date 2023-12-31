@@ -1,0 +1,61 @@
+name: NuGet Generation
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  calculate-version:
+    name: Calculate Version
+    runs-on: ubuntu-latest
+    outputs:
+      versionFull: ${{ steps.determineVersion.outputs.SemVer }}
+      version: ${{ steps.determineVersion.outputs.MajorMinorPatch }}
+      isProduction: ${{ steps.determineVersion.outputs.PreReleaseLabel == '' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.10.2
+        with:
+          versionSpec: "5.x"
+
+      - name: Determine Version
+        id: determineVersion
+        uses: gittools/actions/gitversion/execute@v0.10.2
+        with:
+          useConfigFile: true
+
+  build:
+    name: Update NuGet package
+    needs: calculate-version
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.calculate-version.outputs.version }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET Core @ Latest
+        uses: actions/setup-dotnet@v3
+        with:
+          source-url: https://nuget.pkg.github.com/neothor/Keycloak.Net/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Build solution and generate NuGet package
+        run: |
+          cd src\Keycloak.Net
+          dotnet pack -c Release --include-symbols -o ..\..\artifacts --no-build /p:PackageVersion=${{ env.VERSION }}
+
+      - name: Push generated package to GitHub registry
+        if: ${{ needs.calculate-version.outputs.isProduction == 'true' }}
+        run: dotnet nuget push ./artifacts/*.nupkg --skip-duplicate --no-symbols true
