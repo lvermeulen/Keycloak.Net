@@ -57,7 +57,7 @@ jobs:
         run: |
           cd ./src/Keycloak.Net
           dotnet restore
-          dotnet pack -c Release --include-symbols -o ../../artifacts --no-build /p:PackageVersion=${{ env.VERSION }}
+          dotnet pack -c Release --include-symbols -o ../../artifacts /p:PackageVersion=${{ env.VERSION }}
 
       - name: Update NuGet Source to GitHub
         uses: actions/setup-dotnet@v3
