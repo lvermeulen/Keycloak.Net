@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Keycloak.Net.Models.Root;
-
 namespace Keycloak.Net.Common.Converters
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Models.Root;
+
     public class JsonTypeLabelConverter : JsonEnumConverter<JsonTypeLabel>
     {
         private static readonly Dictionary<JsonTypeLabel, string> s_pairs = new Dictionary<JsonTypeLabel, string>
@@ -24,7 +24,10 @@ namespace Keycloak.Net.Common.Converters
 
         protected override string EntityString { get; } = nameof(JsonTypeLabel).ToLower();
 
-        protected override string ConvertToString(JsonTypeLabel value) => s_pairs[value];
+        protected override string ConvertToString(JsonTypeLabel value)
+        {
+            return s_pairs[value];
+        }
 
         protected override JsonTypeLabel ConvertFromString(string s)
         {

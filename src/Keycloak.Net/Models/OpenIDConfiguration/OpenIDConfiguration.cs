@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Keycloak.Net.Models.OpenIDConfiguration
+﻿namespace Keycloak.Net.Models.OpenIDConfiguration
 {
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class OpenIDConfiguration
     {
         [JsonProperty("issuer")]

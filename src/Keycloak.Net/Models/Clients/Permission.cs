@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Clients
+﻿namespace Keycloak.Net.Models.Clients
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class Permission : Resource
     {
         [JsonProperty("claims")]

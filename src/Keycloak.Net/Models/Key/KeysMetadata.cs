@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Key
+﻿namespace Keycloak.Net.Models.Key
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class KeysMetadata
     {
         [JsonProperty("active")]

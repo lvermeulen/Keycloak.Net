@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.ProtocolMappers
+﻿namespace Keycloak.Net.Models.ProtocolMappers
 {
+    using Newtonsoft.Json;
+
     public class Config
     {
         [JsonProperty("single")]

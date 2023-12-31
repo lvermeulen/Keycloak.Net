@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Common
+﻿namespace Keycloak.Net.Models.Common
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class GlobalRequestResult
     {
         [JsonProperty("failedRequests")]

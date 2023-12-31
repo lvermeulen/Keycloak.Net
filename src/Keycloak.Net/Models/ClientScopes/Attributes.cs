@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.ClientScopes
+﻿namespace Keycloak.Net.Models.ClientScopes
 {
+    using Newtonsoft.Json;
+
     public class Attributes
     {
         [JsonProperty("consentscreentext")]

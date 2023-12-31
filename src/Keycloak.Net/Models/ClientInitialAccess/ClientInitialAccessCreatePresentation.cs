@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.ClientInitialAccess
+﻿namespace Keycloak.Net.Models.ClientInitialAccess
 {
+    using Newtonsoft.Json;
+
     public class ClientInitialAccessCreatePresentation
     {
         [JsonProperty("count")]

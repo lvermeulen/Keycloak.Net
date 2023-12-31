@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Keycloak.Net.Common.Converters;
-using Keycloak.Net.Models.AuthorizationPermissions;
-using Newtonsoft.Json;
-
 namespace Keycloak.Net.Models.Clients
 {
+    using System.Collections.Generic;
+    using Keycloak.Net.Common.Converters;
+    using AuthorizationPermissions;
+    using Newtonsoft.Json;
+
     public class Policy
     {
         [JsonProperty("id")]

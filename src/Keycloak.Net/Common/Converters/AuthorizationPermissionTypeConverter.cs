@@ -1,10 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using Keycloak.Net.Models.AuthorizationPermissions;
-
 namespace Keycloak.Net.Common.Converters
 {
+    using System;
+    using System.Linq;
+    using System.Collections.Generic;
+    using Models.AuthorizationPermissions;
+
     public class AuthorizationPermissionTypeConverter: JsonEnumConverter<AuthorizationPermissionType>
     {
         private static readonly Dictionary<AuthorizationPermissionType, string> SPairs = new Dictionary<AuthorizationPermissionType, string>
@@ -15,7 +15,10 @@ namespace Keycloak.Net.Common.Converters
 
         protected override string EntityString { get; } = "type";
 
-        protected override string ConvertToString(AuthorizationPermissionType value) => SPairs[value];
+        protected override string ConvertToString(AuthorizationPermissionType value)
+        {
+            return SPairs[value];
+        }
 
         protected override AuthorizationPermissionType ConvertFromString(string s)
         {

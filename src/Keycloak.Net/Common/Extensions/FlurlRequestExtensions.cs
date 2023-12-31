@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Flurl;
-using Flurl.Http;
-
-namespace Keycloak.Net.Common.Extensions
+﻿namespace Keycloak.Net.Common.Extensions
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Flurl;
+    using Flurl.Http;
+
     public static class FlurlRequestExtensions
     {
-        private static async Task<string> GetAccessTokenAsync(string url, string realm, string userName, string password)
+        private static async Task<string> GetAccessTokenWithUsernameAsync(string url, string realm, string userName, string password, string clientId)
         {
             var result = await url
                 .AppendPathSegment($"/auth/realms/{realm}/protocol/openid-connect/token")
@@ -18,7 +18,7 @@ namespace Keycloak.Net.Common.Extensions
                     new KeyValuePair<string, string>("grant_type", "password"),
                     new KeyValuePair<string, string>("username", userName),
                     new KeyValuePair<string, string>("password", password),
-                    new KeyValuePair<string, string>("client_id", "admin-cli")
+                    new KeyValuePair<string, string>("client_id", clientId)
                 })
                 .ReceiveJson().ConfigureAwait(false);
 
@@ -28,9 +28,11 @@ namespace Keycloak.Net.Common.Extensions
             return accessToken;
         }
 
-        private static string GetAccessToken(string url, string realm, string userName, string password) => GetAccessTokenAsync(url, realm, userName, password).GetAwaiter().GetResult();
+        private static string GetAccessTokenWithUsername(string url, string realm, string userName, string password, string clientId) {
+            return GetAccessTokenWithUsernameAsync(url, realm, userName, password, clientId).GetAwaiter().GetResult();
+        } 
 
-        private static async Task<string> GetAccessTokenAsync(string url, string realm, string clientSecret)
+        private static async Task<string> GetAccessTokenWithClientCredentialsAsync(string url, string realm, string clientId, string clientSecret)
         {
             var result = await url
                 .AppendPathSegment($"/auth/realms/{realm}/protocol/openid-connect/token")
@@ -39,7 +41,7 @@ namespace Keycloak.Net.Common.Extensions
                 {
                     new KeyValuePair<string, string>("grant_type", "client_credentials"),
                     new KeyValuePair<string, string>("client_secret", clientSecret),
-                    new KeyValuePair<string, string>("client_id", "admin-cli")
+                    new KeyValuePair<string, string>("client_id", clientId)
                 })
                 .ReceiveJson().ConfigureAwait(false);
 
@@ -49,9 +51,11 @@ namespace Keycloak.Net.Common.Extensions
             return accessToken;
         }
 
-        private static string GetAccessToken(string url, string realm, string clientSecret) => GetAccessTokenAsync(url, realm, clientSecret).GetAwaiter().GetResult();
+        private static string GetAccessTokenWithClientCredentials(string url, string realm, string clientId, string clientSecret) {
+            return GetAccessTokenWithClientCredentialsAsync(url, realm, clientId, clientSecret).GetAwaiter().GetResult();
+        }
 
-        public static IFlurlRequest WithAuthentication(this IFlurlRequest request, Func<string> getToken, string url, string realm, string userName, string password, string clientSecret)
+        public static IFlurlRequest WithAuthentication(this IFlurlRequest request, Func<string> getToken, string url, string realm, string userName, string password, string clientId, string clientSecret)
         {
             string token = null;
 
@@ -59,13 +63,13 @@ namespace Keycloak.Net.Common.Extensions
             {
                 token = getToken();
             }
-            else if (clientSecret != null)
+            else if (clientId != null && clientSecret != null)
             {
-                token = GetAccessToken(url, realm, clientSecret);
+                token = GetAccessTokenWithClientCredentials(url, realm, clientId, clientSecret);
             }
             else
             {
-                token = GetAccessToken(url, realm, userName, password);
+                token = GetAccessTokenWithUsername(url, realm, userName, password, clientId);
             }
 
             return request.WithOAuthBearerToken(token);

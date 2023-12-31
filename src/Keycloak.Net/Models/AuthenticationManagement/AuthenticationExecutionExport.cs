@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.AuthenticationManagement
+﻿namespace Keycloak.Net.Models.AuthenticationManagement
 {
+    using Newtonsoft.Json;
+
     public class AuthenticationExecutionExport : AuthenticationExecutionBase
     {
         [JsonProperty("flowAlias")]

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Groups
+﻿namespace Keycloak.Net.Models.Groups
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class Group
     {
         [JsonProperty("id")]

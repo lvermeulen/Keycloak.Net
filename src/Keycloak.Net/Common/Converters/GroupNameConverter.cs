@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Keycloak.Net.Models.Root;
-
 namespace Keycloak.Net.Common.Converters
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Models.Root;
+
     public class GroupNameConverter : JsonEnumConverter<GroupName>
     {
         private static readonly Dictionary<GroupName, string> s_pairs = new Dictionary<GroupName, string>
@@ -15,7 +15,10 @@ namespace Keycloak.Net.Common.Converters
 
         protected override string EntityString { get; } = nameof(GroupName).ToLower();
 
-        protected override string ConvertToString(GroupName value) => s_pairs[value];
+        protected override string ConvertToString(GroupName value)
+        {
+            return s_pairs[value];
+        }
 
         protected override GroupName ConvertFromString(string s)
         {

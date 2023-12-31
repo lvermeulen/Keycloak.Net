@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.AuthenticationManagement
+﻿namespace Keycloak.Net.Models.AuthenticationManagement
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class AuthenticationExecutionInfo
     {
         [JsonProperty("alias")]

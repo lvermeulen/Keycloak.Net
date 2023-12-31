@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Keycloak.Net.Common.Converters;
-using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.AuthorizationPermissions
+﻿namespace Keycloak.Net.Models.AuthorizationPermissions
 {
+    using System.Collections.Generic;
+    using Keycloak.Net.Common.Converters;
+    using Newtonsoft.Json;
+
     public class AuthorizationPermission
     {
         [JsonProperty("id")]

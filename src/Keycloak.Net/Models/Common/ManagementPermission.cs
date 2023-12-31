@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Common
+﻿namespace Keycloak.Net.Models.Common
 {
+    using Newtonsoft.Json;
+
     public class ManagementPermission
     {
         [JsonProperty("enabled")]

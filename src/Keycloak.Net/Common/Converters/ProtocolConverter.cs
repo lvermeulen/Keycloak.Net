@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Keycloak.Net.Models.Root;
-
 namespace Keycloak.Net.Common.Converters
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Models.Root;
+
     public class ProtocolConverter : JsonEnumConverter<Protocol>
     {
         private static readonly Dictionary<Protocol, string> s_pairs = new Dictionary<Protocol, string>
@@ -16,7 +16,10 @@ namespace Keycloak.Net.Common.Converters
 
         protected override string EntityString { get; } = nameof(Protocol).ToLower();
 
-        protected override string ConvertToString(Protocol value) => s_pairs[value];
+        protected override string ConvertToString(Protocol value)
+        {
+            return s_pairs[value];
+        }
 
         protected override Protocol ConvertFromString(string s)
         {

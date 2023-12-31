@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Users
+﻿namespace Keycloak.Net.Models.Users
 {
+    using Newtonsoft.Json;
+
     public class UserAccess
     {
         [JsonProperty("manageGroupMembership")]

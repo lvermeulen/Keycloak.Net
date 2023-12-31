@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Components
+﻿namespace Keycloak.Net.Models.Components
 {
+    using Newtonsoft.Json;
+
     public class Component
     {
         [JsonProperty("id")]

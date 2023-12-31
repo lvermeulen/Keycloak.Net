@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Keycloak.Net.Models.Root
+﻿namespace Keycloak.Net.Models.Root
 {
+    using Newtonsoft.Json;
+
     public class LdapMapperProviders
     {
         [JsonProperty("msad-lds-user-account-control-mapper")]
