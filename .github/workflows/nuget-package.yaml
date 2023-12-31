@@ -3,10 +3,10 @@ name: NuGet Generation
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   calculate-version:
