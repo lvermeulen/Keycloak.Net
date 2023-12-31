@@ -54,6 +54,7 @@ jobs:
       - name: Build solution and generate NuGet package
         run: |
           cd ./src/Keycloak.Net
+          dotnet restore
           dotnet pack -c Release --include-symbols -o ../../artifacts --no-build /p:PackageVersion=${{ env.VERSION }}
 
       - name: Push generated package to GitHub registry
