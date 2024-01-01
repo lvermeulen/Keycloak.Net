@@ -1,28 +1,28 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ClientInstallation
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("protocol")]
+        [JsonPropertyName("protocol")]
         public Protocol Protocol { get; set; }
 
-        [JsonProperty("downloadOnly")]
+        [JsonPropertyName("downloadOnly")]
         public bool? DownloadOnly { get; set; }
 
-        [JsonProperty("displayType")]
+        [JsonPropertyName("displayType")]
         public string DisplayType { get; set; }
 
-        [JsonProperty("helpText")]
+        [JsonPropertyName("helpText")]
         public string HelpText { get; set; }
 
-        [JsonProperty("filename")]
+        [JsonPropertyName("filename")]
         public string FileName { get; set; }
 
-        [JsonProperty("mediaType")]
+        [JsonPropertyName("mediaType")]
         public string MediaType { get; set; }
     }
 }

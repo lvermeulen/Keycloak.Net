@@ -2,17 +2,18 @@
 {
     using System.Collections.Generic;
     using Keycloak.Net.Common.Converters;
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class AuthorizationPermission
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         [JsonConverter(typeof(AuthorizationPermissionTypeConverter))]
@@ -24,16 +25,16 @@
         [JsonConverter(typeof(DecisionStrategiesConverter))]
         public DecisionStrategy DecisionStrategy { get; set; }
 
-        [JsonProperty("resourceType")]
+        [JsonPropertyName("resourceType")]
         public string ResourceType { get; set; }
 
-        [JsonProperty("resources")]
+        [JsonPropertyName("resources")]
         public IEnumerable<string> ResourceIds { get; set; }
 
-        [JsonProperty("scopes")]
+        [JsonPropertyName("scopes")]
         public IEnumerable<string> ScopeIds { get; set; }
 
-        [JsonProperty("policies")]
+        [JsonPropertyName("policies")]
         public IEnumerable<string> PolicyIds { get; set; }
     }
 

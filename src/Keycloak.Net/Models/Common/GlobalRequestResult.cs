@@ -1,13 +1,14 @@
-﻿namespace Keycloak.Net.Models.Common
+namespace Keycloak.Net.Models.Common
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class GlobalRequestResult
     {
-        [JsonProperty("failedRequests")]
+        [JsonPropertyName("failedRequests")]
         public IEnumerable<string> FailedRequests { get; set; }
-        [JsonProperty("successRequests")]
+        [JsonPropertyName("successRequests")]
         public IEnumerable<string> SuccessRequests { get; set; }
     }
 }
+

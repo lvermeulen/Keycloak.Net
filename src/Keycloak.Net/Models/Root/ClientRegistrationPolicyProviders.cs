@@ -1,28 +1,28 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ClientRegistrationPolicyProviders
     {
-        [JsonProperty("allowed-client-templates")]
+        [JsonPropertyName("allowed-client-templates")]
         public HasOrder AllowedClientTemplates { get; set; }
 
-        [JsonProperty("client-disabled")]
+        [JsonPropertyName("client-disabled")]
         public HasOrder ClientDisabled { get; set; }
 
-        [JsonProperty("max-clients")]
+        [JsonPropertyName("max-clients")]
         public HasOrder MaxClients { get; set; }
 
-        [JsonProperty("scope")]
+        [JsonPropertyName("scope")]
         public HasOrder Scope { get; set; }
 
-        [JsonProperty("allowed-protocol-mappers")]
+        [JsonPropertyName("allowed-protocol-mappers")]
         public HasOrder AllowedProtocolMappers { get; set; }
 
-        [JsonProperty("trusted-hosts")]
+        [JsonPropertyName("trusted-hosts")]
         public HasOrder TrustedHosts { get; set; }
 
-        [JsonProperty("consent-required")]
+        [JsonPropertyName("consent-required")]
         public HasOrder ConsentRequired { get; set; }
     }
 }

@@ -1,19 +1,19 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ClientRegistrationProviders
     {
-        [JsonProperty("default")]
+        [JsonPropertyName("default")]
         public HasOrder Default { get; set; }
 
-        [JsonProperty("install")]
+        [JsonPropertyName("install")]
         public HasOrder Install { get; set; }
 
-        [JsonProperty("saml2-entity-descriptor")]
+        [JsonPropertyName("saml2-entity-descriptor")]
         public HasOrder Saml2EntityDescriptor { get; set; }
 
-        [JsonProperty("openid-connect")]
+        [JsonPropertyName("openid-connect")]
         public HasOrder OpenIdConnect { get; set; }
     }
 }

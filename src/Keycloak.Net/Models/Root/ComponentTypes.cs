@@ -1,38 +1,38 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ComponentTypes
     {
-        [JsonProperty("org.keycloak.authentication.ClientAuthenticator")]
+        [JsonPropertyName("org.keycloak.authentication.ClientAuthenticator")]
         public List<KeycloakAuthenticationAuthenticator> OrgKeycloakAuthenticationClientAuthenticator { get; set; }
 
-        [JsonProperty("org.keycloak.services.clientregistration.policy.ClientRegistrationPolicy")]
+        [JsonPropertyName("org.keycloak.services.clientregistration.policy.ClientRegistrationPolicy")]
         public List<KeycloakAuthenticationAuthenticator> OrgKeycloakServicesClientregistrationPolicyClientRegistrationPolicy { get; set; }
 
-        [JsonProperty("org.keycloak.authentication.FormAction")]
+        [JsonPropertyName("org.keycloak.authentication.FormAction")]
         public List<KeycloakAuthenticationFormAction> OrgKeycloakAuthenticationFormAction { get; set; }
 
-        [JsonProperty("org.keycloak.authentication.Authenticator")]
+        [JsonPropertyName("org.keycloak.authentication.Authenticator")]
         public List<KeycloakAuthenticationAuthenticator> OrgKeycloakAuthenticationAuthenticator { get; set; }
 
-        [JsonProperty("org.keycloak.storage.UserStorageProvider")]
+        [JsonPropertyName("org.keycloak.storage.UserStorageProvider")]
         public List<KeycloakStorageUserStorageProvider> OrgKeycloakStorageUserStorageProvider { get; set; }
 
-        [JsonProperty("org.keycloak.keys.KeyProvider")]
+        [JsonPropertyName("org.keycloak.keys.KeyProvider")]
         public List<KeycloakAuthenticationFormAction> OrgKeycloakKeysKeyProvider { get; set; }
 
-        [JsonProperty("org.keycloak.storage.ldap.mappers.LDAPStorageMapper")]
+        [JsonPropertyName("org.keycloak.storage.ldap.mappers.LDAPStorageMapper")]
         public List<KeycloakStorageLdapMappersLdapStorageMapper> OrgKeycloakStorageLdapMappersLdapStorageMapper { get; set; }
 
-        [JsonProperty("org.keycloak.authentication.FormAuthenticator")]
+        [JsonPropertyName("org.keycloak.authentication.FormAuthenticator")]
         public List<KeycloakAuthenticationAuthenticator> OrgKeycloakAuthenticationFormAuthenticator { get; set; }
 
-        [JsonProperty("org.keycloak.protocol.ProtocolMapper")]
+        [JsonPropertyName("org.keycloak.protocol.ProtocolMapper")]
         public List<KeycloakAuthenticationAuthenticator> OrgKeycloakProtocolProtocolMapper { get; set; }
 
-        [JsonProperty("org.keycloak.broker.provider.IdentityProviderMapper")]
+        [JsonPropertyName("org.keycloak.broker.provider.IdentityProviderMapper")]
         public List<KeycloakAuthenticationFormAction> OrgKeycloakBrokerProviderIdentityProviderMapper { get; set; }
     }
 }

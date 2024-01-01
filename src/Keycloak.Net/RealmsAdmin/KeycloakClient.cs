@@ -4,11 +4,11 @@ namespace Keycloak.Net
     using System.Net.Http;
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Models.Clients;
-    using Models.ClientScopes;
+    using Keycloak.Net.Models.Clients;
+    using Keycloak.Net.Models.ClientScopes;
     using Keycloak.Net.Models.Common;
-    using Models.Groups;
-    using Models.RealmsAdmin;
+    using Keycloak.Net.Models.Groups;
+    using Keycloak.Net.Models.RealmsAdmin;
 
     public partial class KeycloakClient
     {

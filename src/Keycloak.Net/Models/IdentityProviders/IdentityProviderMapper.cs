@@ -1,20 +1,21 @@
-﻿namespace Keycloak.Net.Models.IdentityProviders
+namespace Keycloak.Net.Models.IdentityProviders
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class IdentityProviderMapper
     {
-        [JsonProperty("config")]
+        [JsonPropertyName("config")]
         public IDictionary<string, object> Config { get; set; }
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("identityProviderAlias")]
+        [JsonPropertyName("identityProviderAlias")]
         public string IdentityProviderAlias { get; set; }
-        [JsonProperty("identityProviderMapper")]
+        [JsonPropertyName("identityProviderMapper")]
         // ReSharper disable once InconsistentNaming
         public string _IdentityProviderMapper { get; set; }
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
     }
 }
+

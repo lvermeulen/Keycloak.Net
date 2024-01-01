@@ -1,20 +1,20 @@
-﻿namespace Keycloak.Net.Models.Clients
+namespace Keycloak.Net.Models.Clients
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ClientConfig
     {
-        [JsonProperty("userinfotokenclaim")]
+        [JsonPropertyName("userinfotokenclaim")]
         public string UserInfoTokenClaim { get; set; }
-        [JsonProperty("userattribute")]
+        [JsonPropertyName("userattribute")]
         public string UserAttribute { get; set; }
-        [JsonProperty("idtokenclaim")]
+        [JsonPropertyName("idtokenclaim")]
         public string IdTokenClaim { get; set; }
-        [JsonProperty("accesstokenclaim")]
+        [JsonPropertyName("accesstokenclaim")]
         public string AccessTokenClaim { get; set; }
-        [JsonProperty("claimname")]
+        [JsonPropertyName("claimname")]
         public string ClaimName { get; set; }
-        [JsonProperty("jsonTypelabel")]
+        [JsonPropertyName("jsonTypelabel")]
         public string JsonTypelabel { get; set; }
     }
 }

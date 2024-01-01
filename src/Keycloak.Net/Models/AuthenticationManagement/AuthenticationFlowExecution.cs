@@ -1,29 +1,30 @@
 ﻿namespace Keycloak.Net.Models.AuthenticationManagement
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class AuthenticationFlowExecution
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("requirement")]
+        [JsonPropertyName("requirement")]
         public string Requirement { get; set; }
-        [JsonProperty("displayName")]
+        [JsonPropertyName("displayName")]
         public string DisplayName { get; set; }
-        [JsonProperty("requirementChoices")]
+        [JsonPropertyName("requirementChoices")]
         public IEnumerable<string> RequirementChoices { get; set; }
-        [JsonProperty("configurable")]
+        [JsonPropertyName("configurable")]
         public bool? Configurable { get; set; }
-        [JsonProperty("providerId")]
+        [JsonPropertyName("providerId")]
         public string ProviderId { get; set; }
-        [JsonProperty("level")]
+        [JsonPropertyName("level")]
         public int? Level { get; set; }
-        [JsonProperty("index")]
+        [JsonPropertyName("index")]
         public int? Index { get; set; }
-        [JsonProperty("authenticationFlow")]
+        [JsonPropertyName("authenticationFlow")]
         public bool? AuthenticationFlow { get; set; }
-        [JsonProperty("flowId")]
+        [JsonPropertyName("flowId")]
         public string FlowId { get; set; }
     }
 }

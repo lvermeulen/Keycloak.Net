@@ -1,14 +1,19 @@
-namespace Keycloak.Net.Models.IdentityProviders
+﻿namespace Keycloak.Net.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
     using System.Text.Json.Serialization;
+    using System.Threading.Tasks;
 
-    public class IdentityProviderToken
+    public class Token
     {
         [JsonPropertyName("access_token")]
         public string AccessToken { get; set; }
 
         [JsonPropertyName("token_type")]
-        public string RequestingPartyToken { get; set; }
+        public string TokenType { get; set; }
 
         [JsonPropertyName("expires_in")]
         public int ExpiresIn { get; set; }
@@ -16,10 +21,7 @@ namespace Keycloak.Net.Models.IdentityProviders
         [JsonPropertyName("refresh_token")]
         public string RefreshToken { get; set; }
 
-        [JsonPropertyName("scope")]
-        public string Scope { get; set; }
-
-        [JsonPropertyName("created_at")]
-        public long CreatedAt { get; set; }
+        [JsonPropertyName("id_token")]
+        public string IdToken { get; set; }
     }
 }

@@ -1,21 +1,21 @@
-﻿namespace Keycloak.Net.Models.ProtocolMappers
+namespace Keycloak.Net.Models.ProtocolMappers
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ProtocolMapper
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
-        [JsonProperty("protocol")]
+        [JsonPropertyName("protocol")]
         public string Protocol { get; set; }
-        [JsonProperty("protocolMapper")]
+        [JsonPropertyName("protocolMapper")]
         // ReSharper disable once InconsistentNaming
         public string _ProtocolMapper { get; set; }
-        [JsonProperty("consentRequired")]
+        [JsonPropertyName("consentRequired")]
         public bool? ConsentRequired { get; set; }
-        [JsonProperty("config")]
+        [JsonPropertyName("config")]
         public Config Config { get; set; }
     }
 }

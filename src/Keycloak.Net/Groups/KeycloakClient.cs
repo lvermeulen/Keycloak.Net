@@ -4,10 +4,10 @@ namespace Keycloak.Net
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Common.Extensions;
+    using Keycloak.Net.Common.Extensions;
     using Keycloak.Net.Models.Common;
-    using Models.Groups;
-    using Models.Users;
+    using Keycloak.Net.Models.Groups;
+    using Keycloak.Net.Models.Users;
 
     public partial class KeycloakClient
     {
@@ -48,10 +48,10 @@ namespace Keycloak.Net
             var result = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/groups/count")
                 .SetQueryParams(queryParams)
-                .GetJsonAsync()
+                .GetJsonAsync<GenericCount>()
                 .ConfigureAwait(false);
 
-            return Convert.ToInt32(DynamicExtensions.GetFirstPropertyValue(result));
+            return result.Count;
         }
 
         public async Task<Group> GetGroupAsync(string realm, string groupId)

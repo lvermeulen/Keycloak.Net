@@ -1,18 +1,19 @@
 namespace Keycloak.Net.Models.Components
 {
     using System.Collections.Generic;
-    using Common;
-    using Newtonsoft.Json;
+    using Keycloak.Net.Models.Common;
+    using System.Text.Json.Serialization;
 
     public class ComponentType
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("helpText")]
+        [JsonPropertyName("helpText")]
         public string HelpText { get; set; }
-        [JsonProperty("properties")]
+        [JsonPropertyName("properties")]
         public IEnumerable<ConfigProperty> Properties { get; set; }
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public IDictionary<string, object> Metadata { get; set; }
     }
 }
+

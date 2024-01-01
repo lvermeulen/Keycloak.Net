@@ -1,61 +1,61 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SystemInfo
     {
-        [JsonProperty("version")]
+        [JsonPropertyName("version")]
         public string Version { get; set; }
 
-        [JsonProperty("serverTime")]
+        [JsonPropertyName("serverTime")]
         public string ServerTime { get; set; }
 
-        [JsonProperty("uptime")]
+        [JsonPropertyName("uptime")]
         public string Uptime { get; set; }
 
-        [JsonProperty("uptimeMillis")]
+        [JsonPropertyName("uptimeMillis")]
         public long UptimeMillis { get; set; }
 
-        [JsonProperty("javaVersion")]
+        [JsonPropertyName("javaVersion")]
         public string JavaVersion { get; set; }
 
-        [JsonProperty("javaVendor")]
+        [JsonPropertyName("javaVendor")]
         public string JavaVendor { get; set; }
 
-        [JsonProperty("javaVm")]
+        [JsonPropertyName("javaVm")]
         public string JavaVm { get; set; }
 
-        [JsonProperty("javaVmVersion")]
+        [JsonPropertyName("javaVmVersion")]
         public string JavaVmVersion { get; set; }
 
-        [JsonProperty("javaRuntime")]
+        [JsonPropertyName("javaRuntime")]
         public string JavaRuntime { get; set; }
 
-        [JsonProperty("javaHome")]
+        [JsonPropertyName("javaHome")]
         public string JavaHome { get; set; }
 
-        [JsonProperty("osName")]
+        [JsonPropertyName("osName")]
         public string OsName { get; set; }
 
-        [JsonProperty("osArchitecture")]
+        [JsonPropertyName("osArchitecture")]
         public string OsArchitecture { get; set; }
 
-        [JsonProperty("osVersion")]
+        [JsonPropertyName("osVersion")]
         public string OsVersion { get; set; }
 
-        [JsonProperty("fileEncoding")]
+        [JsonPropertyName("fileEncoding")]
         public string FileEncoding { get; set; }
 
-        [JsonProperty("userName")]
+        [JsonPropertyName("userName")]
         public string UserName { get; set; }
 
-        [JsonProperty("userDir")]
+        [JsonPropertyName("userDir")]
         public string UserDir { get; set; }
 
-        [JsonProperty("userTimezone")]
+        [JsonPropertyName("userTimezone")]
         public string UserTimezone { get; set; }
 
-        [JsonProperty("userLocale")]
+        [JsonPropertyName("userLocale")]
         public string UserLocale { get; set; }
     }
 }

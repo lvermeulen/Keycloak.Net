@@ -2,10 +2,10 @@ namespace Keycloak.Net.Models.RealmsAdmin
 {
     using System.Collections.Generic;
     using Keycloak.Net.Common.Converters;
-    using Clients;
-    using Groups;
-    using Users;
-    using Newtonsoft.Json;
+    using Keycloak.Net.Models.Clients;
+    using Keycloak.Net.Models.Groups;
+    using Keycloak.Net.Models.Users;
+    using System.Text.Json.Serialization;
 
     public class PartialImport
     {
@@ -19,3 +19,4 @@ namespace Keycloak.Net.Models.RealmsAdmin
         public IEnumerable<User> Users { get; set; }
     }
 }
+

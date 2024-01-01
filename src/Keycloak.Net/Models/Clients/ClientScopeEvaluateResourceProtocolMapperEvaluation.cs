@@ -1,20 +1,21 @@
-﻿namespace Keycloak.Net.Models.Clients
+namespace Keycloak.Net.Models.Clients
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ClientScopeEvaluateResourceProtocolMapperEvaluation
     {
-        [JsonProperty("containerId")]
+        [JsonPropertyName("containerId")]
         public string ContainerId { get; set; }
-        [JsonProperty("containerName")]
+        [JsonPropertyName("containerName")]
         public string ContainerName { get; set; }
-        [JsonProperty("containerType")]
+        [JsonPropertyName("containerType")]
         public string ContainerType { get; set; }
-        [JsonProperty("mapperId")]
+        [JsonPropertyName("mapperId")]
         public string MapperId { get; set; }
-        [JsonProperty("mapperName")]
+        [JsonPropertyName("mapperName")]
         public string MapperName { get; set; }
-        [JsonProperty("protocolMapper")]
+        [JsonPropertyName("protocolMapper")]
         public string ProtocolMapper { get; set; }
     }
 }
+

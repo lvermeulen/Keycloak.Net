@@ -1,30 +1,31 @@
 namespace Keycloak.Net.Models.Common
 {
     using System.Collections.Generic;
-    using Root;
-    using Newtonsoft.Json;
+    using Keycloak.Net.Models.Root;
+    using System.Text.Json.Serialization;
 
     public class ConfigProperty
     {
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("label")]
+        [JsonPropertyName("label")]
         public string Label { get; set; }
 
-        [JsonProperty("helpText")]
+        [JsonPropertyName("helpText")]
         public string HelpText { get; set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public JsonTypeLabel Type { get; set; }
 
-        [JsonProperty("secret")]
+        [JsonPropertyName("secret")]
         public bool? Secret { get; set; }
 
-        [JsonProperty("defaultValue")]
+        [JsonPropertyName("defaultValue")]
         public string DefaultValue { get; set; }
 
-        [JsonProperty("options")]
+        [JsonPropertyName("options")]
         public List<string> Options { get; set; }
     }
 }
+

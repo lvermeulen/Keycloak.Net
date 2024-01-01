@@ -1,23 +1,24 @@
 ﻿namespace Keycloak.Net.Models.AuthenticationManagement
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class RequiredActionProvider
     {
-        [JsonProperty("alias")]
+        [JsonPropertyName("alias")]
         public string Alias { get; set; }
-        [JsonProperty("config")]
+        [JsonPropertyName("config")]
         public IDictionary<string, object> Config { get; set; }
-        [JsonProperty("defaultAction")]
+        [JsonPropertyName("defaultAction")]
         public bool? DefaultAction { get; set; }
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
-        [JsonProperty("priority")]
+        [JsonPropertyName("priority")]
         public int? Priority { get; set; }
-        [JsonProperty("providerId")]
+        [JsonPropertyName("providerId")]
         public string ProviderId { get; set; }
     }
 }

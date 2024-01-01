@@ -1,19 +1,19 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ThemeProviders
     {
-        [JsonProperty("folder")]
+        [JsonPropertyName("folder")]
         public HasOrder Folder { get; set; }
 
-        [JsonProperty("module")]
+        [JsonPropertyName("module")]
         public HasOrder Module { get; set; }
 
-        [JsonProperty("jar")]
+        [JsonPropertyName("jar")]
         public HasOrder Jar { get; set; }
 
-        [JsonProperty("extending")]
+        [JsonPropertyName("extending")]
         public HasOrder Extending { get; set; }
     }
 }

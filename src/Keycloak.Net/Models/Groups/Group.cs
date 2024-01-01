@@ -1,23 +1,24 @@
-﻿namespace Keycloak.Net.Models.Groups
+namespace Keycloak.Net.Models.Groups
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Group
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
-        [JsonProperty("path")]
+        [JsonPropertyName("path")]
         public string Path { get; set; }
-        [JsonProperty("subGroups")]
+        [JsonPropertyName("subGroups")]
         public IEnumerable<Group> Subgroups { get; set; }
-        [JsonProperty("realmRoles")]
+        [JsonPropertyName("realmRoles")]
         public IEnumerable<string> RealmRoles { get; set; }
-        [JsonProperty("clientRoles")]
+        [JsonPropertyName("clientRoles")]
         public IDictionary<string, IEnumerable<string>> ClientRoles { get; set; }
-        [JsonProperty("attributes")]
+        [JsonPropertyName("attributes")]
         public IDictionary<string, IEnumerable<string>> Attributes { get; set; }
     }
 }
+

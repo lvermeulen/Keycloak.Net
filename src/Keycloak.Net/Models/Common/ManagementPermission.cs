@@ -1,10 +1,11 @@
-﻿namespace Keycloak.Net.Models.Common
+namespace Keycloak.Net.Models.Common
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ManagementPermission
     {
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
     }
 }
+

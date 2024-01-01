@@ -1,30 +1,31 @@
 ﻿namespace Keycloak.Net.Models.AuthenticationManagement
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class AuthenticationExecutionById
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("authenticator")]
+        [JsonPropertyName("authenticator")]
         public string Authenticator { get; set; }
-        [JsonProperty("authenticatorFlow")]
+        [JsonPropertyName("authenticatorFlow")]
         public bool? AuthenticatorFlow { get; set; }
-        [JsonProperty("requirement")]
+        [JsonPropertyName("requirement")]
         public string Requirement { get; set; }
-        [JsonProperty("priority")]
+        [JsonPropertyName("priority")]
         public int? Priority { get; set; }
-        [JsonProperty("parentFlow")]
+        [JsonPropertyName("parentFlow")]
         public string ParentFlow { get; set; }
-        [JsonProperty("optional")]
+        [JsonPropertyName("optional")]
         public bool? Optional { get; set; }
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
-        [JsonProperty("required")]
+        [JsonPropertyName("required")]
         public bool? Required { get; set; }
-        [JsonProperty("alternative")]
+        [JsonPropertyName("alternative")]
         public bool? Alternative { get; set; }
-        [JsonProperty("disabled")]
+        [JsonPropertyName("disabled")]
         public bool? Disabled { get; set; }
     }
 }

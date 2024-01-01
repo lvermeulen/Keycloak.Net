@@ -2,7 +2,7 @@ namespace Keycloak.Net
 {
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Models.Key;
+    using Keycloak.Net.Models.Key;
 
     public partial class KeycloakClient
     {

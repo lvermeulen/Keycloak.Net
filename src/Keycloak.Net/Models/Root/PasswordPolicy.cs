@@ -1,22 +1,22 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PasswordPolicy
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("displayName")]
+        [JsonPropertyName("displayName")]
         public string DisplayName { get; set; }
 
-        [JsonProperty("configType")]
+        [JsonPropertyName("configType")]
         public ConfigType? ConfigType { get; set; }
 
-        [JsonProperty("defaultValue")]
+        [JsonPropertyName("defaultValue")]
         public string DefaultValue { get; set; }
 
-        [JsonProperty("multipleSupported")]
+        [JsonPropertyName("multipleSupported")]
         public bool? MultipleSupported { get; set; }
     }
 }

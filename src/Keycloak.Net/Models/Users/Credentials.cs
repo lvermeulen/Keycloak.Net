@@ -1,35 +1,36 @@
-﻿namespace Keycloak.Net.Models.Users
+namespace Keycloak.Net.Models.Users
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Credentials
 	{
-		[JsonProperty("algorithm")]
+		[JsonPropertyName("algorithm")]
 		public string Algorithm { get; set; }
-		[JsonProperty("config")]
+		[JsonPropertyName("config")]
 		public IDictionary<string, string> Config { get; set; }
-		[JsonProperty("counter")]
+		[JsonPropertyName("counter")]
 		public int? Counter { get; set; }
-		[JsonProperty("createdDate")]
+		[JsonPropertyName("createdDate")]
 		public long? CreatedDate { get; set; }
-		[JsonProperty("device")]
+		[JsonPropertyName("device")]
 		public string Device { get; set; }
-		[JsonProperty("digits")]
+		[JsonPropertyName("digits")]
 		public int? Digits { get; set; }
-		[JsonProperty("hashIterations")]
+		[JsonPropertyName("hashIterations")]
 		public int? HashIterations { get; set; }
-		[JsonProperty("hashSaltedValue")]
+		[JsonPropertyName("hashSaltedValue")]
 		public string HashSaltedValue { get; set; }
-		[JsonProperty("period")]
+		[JsonPropertyName("period")]
 		public int? Period { get; set; }
-		[JsonProperty("salt")]
+		[JsonPropertyName("salt")]
 		public string Salt { get; set; }
-		[JsonProperty("temporary")]
+		[JsonPropertyName("temporary")]
 		public bool? Temporary { get; set; }
-		[JsonProperty("type")]
+		[JsonPropertyName("type")]
 		public string Type { get; set; }
-		[JsonProperty("value")]
+		[JsonPropertyName("value")]
 		public string Value { get; set; }
 	}
 }
+

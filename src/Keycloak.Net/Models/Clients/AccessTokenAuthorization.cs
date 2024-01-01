@@ -1,11 +1,12 @@
-﻿namespace Keycloak.Net.Models.Clients
+namespace Keycloak.Net.Models.Clients
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccessTokenAuthorization
     {
-        [JsonProperty("permissions")]
+        [JsonPropertyName("permissions")]
         public IEnumerable<Permission> Permissions { get; set; }
     }
 }
+

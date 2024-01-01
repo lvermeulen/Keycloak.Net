@@ -1,32 +1,32 @@
-﻿namespace Keycloak.Net.Models.RealmsAdmin
+namespace Keycloak.Net.Models.RealmsAdmin
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class IdentityProvider
     {
-        [JsonProperty("alias")]
+        [JsonPropertyName("alias")]
         public string Alias { get; set; }
-        [JsonProperty("internalId")]
+        [JsonPropertyName("internalId")]
         public string InternalId { get; set; }
-        [JsonProperty("providerId")]
+        [JsonPropertyName("providerId")]
         public string ProviderId { get; set; }
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
-        [JsonProperty("updateProfileFirstLoginMode")]
+        [JsonPropertyName("updateProfileFirstLoginMode")]
         public string UpdateProfileFirstLoginMode { get; set; }
-        [JsonProperty("trustEmail")]
+        [JsonPropertyName("trustEmail")]
         public bool? TrustEmail { get; set; }
-        [JsonProperty("storeToken")]
+        [JsonPropertyName("storeToken")]
         public bool? StoreToken { get; set; }
-        [JsonProperty("addReadTokenRoleOnCreate")]
+        [JsonPropertyName("addReadTokenRoleOnCreate")]
         public bool? AddReadTokenRoleOnCreate { get; set; }
-        [JsonProperty("authenticateByDefault")]
+        [JsonPropertyName("authenticateByDefault")]
         public bool? AuthenticateByDefault { get; set; }
-        [JsonProperty("linkOnly")]
+        [JsonPropertyName("linkOnly")]
         public bool? LinkOnly { get; set; }
-        [JsonProperty("firstBrokerLoginFlowAlias")]
+        [JsonPropertyName("firstBrokerLoginFlowAlias")]
         public string FirstBrokerLoginFlowAlias { get; set; }
-        [JsonProperty("config")]
+        [JsonPropertyName("config")]
         public Config Config { get; set; }
     }
 }

@@ -1,24 +1,25 @@
-﻿namespace Keycloak.Net.Models.RealmsAdmin
+namespace Keycloak.Net.Models.RealmsAdmin
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AdminEvent
     {
-        [JsonProperty("authDetails")]
+        [JsonPropertyName("authDetails")]
         public AuthDetails AuthDetails { get; set; }
-        [JsonProperty("error")]
+        [JsonPropertyName("error")]
         public string Error { get; set; }
-        [JsonProperty("operationType")]
+        [JsonPropertyName("operationType")]
         public string OperationType { get; set; }
-        [JsonProperty("realmId")]
+        [JsonPropertyName("realmId")]
         public string RealmId { get; set; }
-        [JsonProperty("representation")]
+        [JsonPropertyName("representation")]
         public string Representation { get; set; }
-        [JsonProperty("resourcePath")]
+        [JsonPropertyName("resourcePath")]
         public string ResourcePath { get; set; }
-        [JsonProperty("resourceType")]
+        [JsonPropertyName("resourceType")]
         public string ResourceType { get; set; }
-        [JsonProperty("time")]
+        [JsonPropertyName("time")]
         public int? Time { get; set; }
     }
 }
+

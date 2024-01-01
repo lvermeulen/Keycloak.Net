@@ -1,26 +1,26 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Themes
     {
-        [JsonProperty("common")]
+        [JsonPropertyName("common")]
         public List<Common> Common { get; set; }
 
-        [JsonProperty("admin")]
+        [JsonPropertyName("admin")]
         public List<Account> Admin { get; set; }
 
-        [JsonProperty("login")]
+        [JsonPropertyName("login")]
         public List<Account> Login { get; set; }
 
-        [JsonProperty("welcome")]
+        [JsonPropertyName("welcome")]
         public List<Common> Welcome { get; set; }
 
-        [JsonProperty("account")]
+        [JsonPropertyName("account")]
         public List<Account> Account { get; set; }
 
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public List<Account> Email { get; set; }
     }
 }

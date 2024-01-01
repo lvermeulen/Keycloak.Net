@@ -1,13 +1,14 @@
 ﻿namespace Keycloak.Net.Models.Clients
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class AccessTokenAccess
     {
-        [JsonProperty("roles")] 
+        [JsonPropertyName("roles")] 
         public IEnumerable<string> Roles  { get; set; }
-        [JsonProperty("verify_caller")] 
+        [JsonPropertyName("verify_caller")] 
         public bool? VerifyCaller { get; set; }
     }
 }

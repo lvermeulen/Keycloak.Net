@@ -2,18 +2,18 @@ namespace Keycloak.Net.Models.Clients
 {
     using System.Collections.Generic;
     using Keycloak.Net.Common.Converters;
-    using AuthorizationPermissions;
-    using Newtonsoft.Json;
+    using Keycloak.Net.Models.AuthorizationPermissions;
+    using System.Text.Json.Serialization;
 
     public class Policy
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         [JsonConverter(typeof(PolicyTypeConverter))]
@@ -25,19 +25,19 @@ namespace Keycloak.Net.Models.Clients
         [JsonConverter(typeof(DecisionStrategiesConverter))]
         public DecisionStrategy DecisionStrategy { get; set; }
 
-        [JsonProperty("config")]
+        [JsonPropertyName("config")]
         public PolicyConfig Config { get; set; }
     }
 
     public class RolePolicy
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         [JsonConverter(typeof(PolicyTypeConverter))]
@@ -49,16 +49,16 @@ namespace Keycloak.Net.Models.Clients
         [JsonConverter(typeof(DecisionStrategiesConverter))]
         public DecisionStrategy DecisionStrategy { get; set; }
 
-        [JsonProperty("roles")]
+        [JsonPropertyName("roles")]
         public IEnumerable<RoleConfig> RoleConfigs { get; set; }
     }
 
     public class RoleConfig
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("required")]
+        [JsonPropertyName("required")]
         public bool Required { get; set; }
     }
 
@@ -75,7 +75,8 @@ namespace Keycloak.Net.Models.Clients
 
     public class PolicyConfig
     {
-        [JsonProperty("roles")]
+        [JsonPropertyName("roles")]
         public IEnumerable<RoleConfig> RoleConfigs { get; set; }
     }
 }
+

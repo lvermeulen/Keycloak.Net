@@ -1,40 +1,40 @@
-﻿namespace Keycloak.Net.Models.ProtocolMappers
+namespace Keycloak.Net.Models.ProtocolMappers
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Config
     {
-        [JsonProperty("single")]
+        [JsonPropertyName("single")]
         public string Single { get; set; }
-        [JsonProperty("attributenameformat")]
+        [JsonPropertyName("attributenameformat")]
         public string AttributeNameFormat { get; set; }
-        [JsonProperty("attributename")]
+        [JsonPropertyName("attributename")]
         public string AttributeName { get; set; }
-        [JsonProperty("userinfotokenclaim")]
+        [JsonPropertyName("userinfotokenclaim")]
         public string UserInfoTokenClaim { get; set; }
-        [JsonProperty("userattribute")]
+        [JsonPropertyName("userattribute")]
         public string UserAttribute { get; set; }
-        [JsonProperty("idtokenclaim")]
+        [JsonPropertyName("idtokenclaim")]
         public string IdTokenClaim { get; set; }
-        [JsonProperty("accesstokenclaim")]
+        [JsonPropertyName("accesstokenclaim")]
         public string AccessTokenClaim { get; set; }
-        [JsonProperty("claimname")]
+        [JsonPropertyName("claimname")]
         public string ClaimName { get; set; }
-        [JsonProperty("jsonTypelabel")]
+        [JsonPropertyName("jsonTypelabel")]
         public string JsonTypelabel { get; set; }
-        [JsonProperty("userattributeformatted")]
+        [JsonPropertyName("userattributeformatted")]
         public string UserAttributeFormatted { get; set; }
-        [JsonProperty("userattributecountry")]
+        [JsonPropertyName("userattributecountry")]
         public string UserAttributeCountry { get; set; }
-        [JsonProperty("userattributepostal_code")]
+        [JsonPropertyName("userattributepostal_code")]
         public string UserAttributePostalCode { get; set; }
-        [JsonProperty("userattributestreet")]
+        [JsonPropertyName("userattributestreet")]
         public string UserAttributeStreet { get; set; }
-        [JsonProperty("userattributeregion")]
+        [JsonPropertyName("userattributeregion")]
         public string UserAttributeRegion { get; set; }
-        [JsonProperty("userattributelocality")]
+        [JsonPropertyName("userattributelocality")]
         public string UserAttributeLocality { get; set; }
-        [JsonProperty("multivalued")]
+        [JsonPropertyName("multivalued")]
         public string Multivalued { get; set; }
     }
 }

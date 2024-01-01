@@ -1,28 +1,28 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class MemoryInfo
     {
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public long Total { get; set; }
 
-        [JsonProperty("totalFormated")]
+        [JsonPropertyName("totalFormated")]
         public string TotalFormatted { get; set; }
 
-        [JsonProperty("used")]
+        [JsonPropertyName("used")]
         public long Used { get; set; }
 
-        [JsonProperty("usedFormated")]
+        [JsonPropertyName("usedFormated")]
         public string UsedFormatted { get; set; }
 
-        [JsonProperty("free")]
+        [JsonPropertyName("free")]
         public long Free { get; set; }
 
-        [JsonProperty("freePercentage")]
+        [JsonPropertyName("freePercentage")]
         public long FreePercentage { get; set; }
 
-        [JsonProperty("freeFormated")]
+        [JsonPropertyName("freeFormated")]
         public string FreeFormatted { get; set; }
     }
 }

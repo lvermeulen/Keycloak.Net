@@ -2,11 +2,10 @@ namespace Keycloak.Net.Common.Converters
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
-    public abstract class JsonEnumConverter<TEnum> : JsonConverter
+    public abstract class JsonEnumConverter<TEnum> : JsonConverter<TEnum>
         where TEnum : struct, IConvertible
     {
         protected abstract string EntityString { get; }
@@ -15,30 +14,27 @@ namespace Keycloak.Net.Common.Converters
 
         protected abstract TEnum ConvertFromString(string s);
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override TEnum Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var actualValue = (TEnum)value;
-            writer.WriteValue(ConvertToString(actualValue));
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.StartArray)
+            if (reader.TokenType == JsonTokenType.StartArray)
             {
                 var items = new List<TEnum>();
-                var array = JArray.Load(reader);
-                items.AddRange(array.Select(x => ConvertFromString(x.ToString())));
-
-                return items;
+                using (JsonDocument doc = JsonDocument.ParseValue(ref reader))
+                {
+                    foreach (JsonElement element in doc.RootElement.EnumerateArray())
+                    {
+                        items.Add(ConvertFromString(element.ToString()));
+                    }
+                }
+                return items.Count > 0 ? items[0] : default(TEnum);
             }
 
-            var s = (string)reader.Value;
-            return ConvertFromString(s);
+            return ConvertFromString(reader.GetString());
         }
 
-        public override bool CanConvert(Type objectType)
+        public override void Write(Utf8JsonWriter writer, TEnum value, JsonSerializerOptions options)
         {
-            return objectType == typeof(string);
+            writer.WriteStringValue(ConvertToString(value));
         }
     }
 }

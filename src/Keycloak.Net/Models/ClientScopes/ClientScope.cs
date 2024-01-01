@@ -1,22 +1,23 @@
 namespace Keycloak.Net.Models.ClientScopes
 {
     using System.Collections.Generic;
-    using ProtocolMappers;
-    using Newtonsoft.Json;
+    using Keycloak.Net.Models.ProtocolMappers;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class ClientScope
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
-        [JsonProperty("protocol")]
+        [JsonPropertyName("protocol")]
         public string Protocol { get; set; }
-        [JsonProperty("attributes")]
+        [JsonPropertyName("attributes")]
         public Attributes Attributes { get; set; }
-        [JsonProperty("protocolMappers")]
+        [JsonPropertyName("protocolMappers")]
         public IEnumerable<ProtocolMapper> ProtocolMappers { get; set; }
     }
 }

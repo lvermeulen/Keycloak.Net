@@ -1,8 +1,8 @@
-﻿using System.IO;
-using Microsoft.Extensions.Configuration;
-
-namespace Keycloak.Net.Tests
+﻿namespace Keycloak.Net.Tests
 {
+    using System.IO;
+    using Microsoft.Extensions.Configuration;
+
     public partial class KeycloakClientShould
     {
         private readonly KeycloakClient _client;

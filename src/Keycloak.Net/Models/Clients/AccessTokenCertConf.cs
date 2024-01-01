@@ -1,10 +1,11 @@
-﻿namespace Keycloak.Net.Models.Clients
+namespace Keycloak.Net.Models.Clients
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AccessTokenCertConf
     {
-        [JsonProperty("x5t#S256")]
+        [JsonPropertyName("x5t#S256")]
         public string X5Ts256 { get; set; }
     }
 }
+

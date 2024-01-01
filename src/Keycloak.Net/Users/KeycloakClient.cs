@@ -6,10 +6,13 @@ namespace Keycloak.Net
     using System.Net.Http;
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Common.Extensions;
-    using Models.Groups;
-    using Models.Users;
-    using Newtonsoft.Json;
+    using Keycloak.Net.Common.Extensions;
+    using Keycloak.Net.Models.Groups;
+    using Keycloak.Net.Models.Users;
+    using System.Text.Json.Serialization;
+    using System.Text.Json;
+    using Keycloak.Net.Models.Clients;
+    using Keycloak.Net.Models.Common;
 
     public partial class KeycloakClient
 	{
@@ -176,9 +179,10 @@ namespace Keycloak.Net
 		{
 			var result = await GetBaseUrl(realm)
 				.AppendPathSegment($"/admin/realms/{realm}/users/{userId}/groups/count")
-				.GetJsonAsync()
+				.GetJsonAsync<GenericCount>()
 				.ConfigureAwait(false);
-			return Convert.ToInt32(DynamicExtensions.GetFirstPropertyValue(result));
+
+			return result.Count;
 		}
 
 		public async Task<bool> UpdateUserGroupAsync(string realm, string userId, string groupId, Group group)
@@ -274,7 +278,7 @@ namespace Keycloak.Net
             }
 
             var jsonString = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<SetPasswordResponse>(jsonString);
+            return JsonSerializer.Deserialize<SetPasswordResponse>(jsonString);
         }
 
         public async Task<bool> VerifyUserEmailAddressAsync(string realm, string userId, string clientId = null, string redirectUri = null)
@@ -307,3 +311,4 @@ namespace Keycloak.Net
         }
     }
 }
+

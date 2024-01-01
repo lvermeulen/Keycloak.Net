@@ -1,13 +1,13 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ActionToken
     {
-        [JsonProperty("internal")]
+        [JsonPropertyName("internal")]
         public bool? Internal { get; set; }
 
-        [JsonProperty("providers")]
+        [JsonPropertyName("providers")]
         public ActionTokenProviders Providers { get; set; }
     }
 }

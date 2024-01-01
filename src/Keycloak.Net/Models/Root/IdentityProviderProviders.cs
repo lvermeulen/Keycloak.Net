@@ -1,16 +1,16 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class IdentityProviderProviders
     {
-        [JsonProperty("saml")]
+        [JsonPropertyName("saml")]
         public HasOrder Saml { get; set; }
 
-        [JsonProperty("oidc")]
+        [JsonPropertyName("oidc")]
         public HasOrder Oidc { get; set; }
 
-        [JsonProperty("keycloak-oidc")]
+        [JsonPropertyName("keycloak-oidc")]
         public HasOrder KeycloakOidc { get; set; }
     }
 }

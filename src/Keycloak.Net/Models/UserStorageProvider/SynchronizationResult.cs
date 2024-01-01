@@ -1,20 +1,21 @@
-﻿namespace Keycloak.Net.Models.UserStorageProvider
+namespace Keycloak.Net.Models.UserStorageProvider
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SynchronizationResult
     {
-        [JsonProperty("added")]
+        [JsonPropertyName("added")]
         public int? Added { get; set; }
-        [JsonProperty("failed")]
+        [JsonPropertyName("failed")]
         public int? Failed { get; set; }
-        [JsonProperty("ignored")]
+        [JsonPropertyName("ignored")]
         public bool? Ignored { get; set; }
-        [JsonProperty("removed")]
+        [JsonPropertyName("removed")]
         public int? Removed { get; set; }
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
-        [JsonProperty("updated")]
+        [JsonPropertyName("updated")]
         public int? Updated { get; set; }
     }
 }
+

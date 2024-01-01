@@ -1,16 +1,17 @@
-﻿namespace Keycloak.Net.Models.RealmsAdmin
+namespace Keycloak.Net.Models.RealmsAdmin
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class AuthDetails
     {
-        [JsonProperty("clientId")]
+        [JsonPropertyName("clientId")]
         public string ClientId { get; set; }
-        [JsonProperty("ipAddress")]
+        [JsonPropertyName("ipAddress")]
         public string IpAddress { get; set; }
-        [JsonProperty("realmId")]
+        [JsonPropertyName("realmId")]
         public string RealmId { get; set; }
-        [JsonProperty("userId")]
+        [JsonPropertyName("userId")]
         public string UserId { get; set; }
     }
 }
+

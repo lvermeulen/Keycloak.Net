@@ -1,58 +1,59 @@
-﻿namespace Keycloak.Net.Models.Users
+namespace Keycloak.Net.Models.Users
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class User
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("createdTimestamp")]
+        [JsonPropertyName("createdTimestamp")]
         public long CreatedTimestamp { get; set; }
-        [JsonProperty("username")]
+        [JsonPropertyName("username")]
         public string UserName { get; set; }
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
-        [JsonProperty("totp")]
+        [JsonPropertyName("totp")]
         public bool? Totp { get; set; }
-        [JsonProperty("emailVerified")]
+        [JsonPropertyName("emailVerified")]
         public bool? EmailVerified { get; set; }
-        [JsonProperty("firstName")]
+        [JsonPropertyName("firstName")]
         public string FirstName { get; set; }
-        [JsonProperty("lastName")]
+        [JsonPropertyName("lastName")]
         public string LastName { get; set; }
-        [JsonProperty("email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
-        [JsonProperty("disableableCredentialTypes")]
+        [JsonPropertyName("disableableCredentialTypes")]
         public ReadOnlyCollection<string> DisableableCredentialTypes { get; set; }
-        [JsonProperty("requiredActions")]
+        [JsonPropertyName("requiredActions")]
         public ReadOnlyCollection<string> RequiredActions { get; set; }
-        [JsonProperty("notBefore")]
+        [JsonPropertyName("notBefore")]
         public int? NotBefore { get; set; }
-        [JsonProperty("access")]
+        [JsonPropertyName("access")]
         public UserAccess Access { get; set; }
-        [JsonProperty("attributes")]
+        [JsonPropertyName("attributes")]
         public Dictionary<string, IEnumerable<string>> Attributes { get; set; }
-        [JsonProperty("clientConsents")]
+        [JsonPropertyName("clientConsents")]
         public IEnumerable<UserConsent> ClientConsents { get; set; }
-        [JsonProperty("clientRoles")]
+        [JsonPropertyName("clientRoles")]
         public IDictionary<string, object> ClientRoles { get; set; }
-        [JsonProperty("credentials")]
+        [JsonPropertyName("credentials")]
         public IEnumerable<Credentials> Credentials { get; set; }
-        [JsonProperty("federatedIdentities")]
+        [JsonPropertyName("federatedIdentities")]
         public IEnumerable<FederatedIdentity> FederatedIdentities { get; set; }
-        [JsonProperty("federationLink")]
+        [JsonPropertyName("federationLink")]
         public string FederationLink { get; set; }
-        [JsonProperty("groups")]
+        [JsonPropertyName("groups")]
         public IEnumerable<string> Groups { get; set; }
-        [JsonProperty("origin")]
+        [JsonPropertyName("origin")]
         public string Origin { get; set; }
-        [JsonProperty("realmRoles")]
+        [JsonPropertyName("realmRoles")]
         public IEnumerable<string> RealmRoles { get; set; }
-        [JsonProperty("self")]
+        [JsonPropertyName("self")]
         public string Self { get; set; }
-        [JsonProperty("serviceAccountClientId")]
+        [JsonPropertyName("serviceAccountClientId")]
         public string ServiceAccountClientId { get; set; }
     }
 }
+

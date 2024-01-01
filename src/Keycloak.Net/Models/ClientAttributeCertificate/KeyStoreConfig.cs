@@ -1,20 +1,21 @@
 ﻿namespace Keycloak.Net.Models.ClientAttributeCertificate
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class KeyStoreConfig
     {
-        [JsonProperty("format")]
+        [JsonPropertyName("format")]
         public string Format { get; set; }
-        [JsonProperty("keyAlias")]
+        [JsonPropertyName("keyAlias")]
         public string KeyAlias { get; set; }
-        [JsonProperty("keyPassword")]
+        [JsonPropertyName("keyPassword")]
         public string KeyPassword { get; set; }
-        [JsonProperty("realmAlias")]
+        [JsonPropertyName("realmAlias")]
         public string RealmAlias { get; set; }
-        [JsonProperty("realmCertificate")]
+        [JsonPropertyName("realmCertificate")]
         public string RealmCertificate { get; set; }
-        [JsonProperty("storePassword")]
+        [JsonPropertyName("storePassword")]
         public string StorePassword { get; set; }
     }
 }

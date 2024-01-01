@@ -1,20 +1,21 @@
 ﻿namespace Keycloak.Net.Models.Clients
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class AddressClaimSet
     {
-        [JsonProperty("country")]
+        [JsonPropertyName("country")]
         public string Country { get; set; }
-        [JsonProperty("formatted")]
+        [JsonPropertyName("formatted")]
         public string Formatted { get; set; }
-        [JsonProperty("locality")]
+        [JsonPropertyName("locality")]
         public string Locality { get; set; }
-        [JsonProperty("postal_code")]
+        [JsonPropertyName("postal_code")]
         public string PostalCode { get; set; }
-        [JsonProperty("region")]
+        [JsonPropertyName("region")]
         public string Region { get; set; }
-        [JsonProperty("street_address")]
+        [JsonPropertyName("street_address")]
         public string StreetAddress { get; set; }
     }
 }
