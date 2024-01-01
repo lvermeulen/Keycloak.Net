@@ -1,13 +1,13 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ClientDescriptionConverter
     {
-        [JsonProperty("internal")]
+        [JsonPropertyName("internal")]
         public bool? Internal { get; set; }
 
-        [JsonProperty("providers")]
+        [JsonPropertyName("providers")]
         public ClientDescriptionConverterProviders Providers { get; set; }
     }
 }

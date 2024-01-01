@@ -20,12 +20,9 @@
                     new KeyValuePair<string, string>("password", password),
                     new KeyValuePair<string, string>("client_id", clientId)
                 })
-                .ReceiveJson().ConfigureAwait(false);
+                .ReceiveJson<Token>().ConfigureAwait(false);
 
-            string accessToken = result
-                .access_token.ToString();
-
-            return accessToken;
+            return result.AccessToken;
         }
 
         private static string GetAccessTokenWithUsername(string url, string realm, string userName, string password, string clientId) {
@@ -43,16 +40,18 @@
                     new KeyValuePair<string, string>("client_secret", clientSecret),
                     new KeyValuePair<string, string>("client_id", clientId)
                 })
-                .ReceiveJson().ConfigureAwait(false);
+                .ReceiveJson<Token>().ConfigureAwait(false);
 
-            string accessToken = result
-                .access_token.ToString();
-
-            return accessToken;
+            return result.AccessToken;
         }
 
         private static string GetAccessTokenWithClientCredentials(string url, string realm, string clientId, string clientSecret) {
             return GetAccessTokenWithClientCredentialsAsync(url, realm, clientId, clientSecret).GetAwaiter().GetResult();
+        }
+
+        public static IFlurlRequest WithAuthentication(this Url request, Func<string> getToken, string url, string realm, string userName, string password, string clientId, string clientSecret)
+        {
+            return new FlurlRequest(request).WithAuthentication(getToken, url, realm, userName, password, clientId, clientSecret);
         }
 
         public static IFlurlRequest WithAuthentication(this IFlurlRequest request, Func<string> getToken, string url, string realm, string userName, string password, string clientId, string clientSecret)

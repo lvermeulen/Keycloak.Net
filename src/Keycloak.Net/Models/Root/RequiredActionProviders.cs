@@ -1,22 +1,22 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class RequiredActionProviders
     {
-        [JsonProperty("terms_and_conditions")]
+        [JsonPropertyName("terms_and_conditions")]
         public HasOrder TermsAndConditions { get; set; }
 
-        [JsonProperty("CONFIGURE_TOTP")]
+        [JsonPropertyName("CONFIGURE_TOTP")]
         public HasOrder ConfigureTotp { get; set; }
 
-        [JsonProperty("VERIFY_EMAIL")]
+        [JsonPropertyName("VERIFY_EMAIL")]
         public HasOrder VerifyEmail { get; set; }
 
-        [JsonProperty("UPDATE_PASSWORD")]
+        [JsonPropertyName("UPDATE_PASSWORD")]
         public HasOrder UpdatePassword { get; set; }
 
-        [JsonProperty("UPDATE_PROFILE")]
+        [JsonPropertyName("UPDATE_PROFILE")]
         public HasOrder UpdateProfile { get; set; }
     }
 }

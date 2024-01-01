@@ -1,14 +1,15 @@
-﻿namespace Keycloak.Net.Models.RealmsAdmin
+namespace Keycloak.Net.Models.RealmsAdmin
 {
     using System.Collections.Generic;
     using Keycloak.Net.Models.Roles;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Roles
     {
-        [JsonProperty("client")]
+        [JsonPropertyName("client")]
         public IDictionary<string, object> Client { get; set; }
-        [JsonProperty("realm")]
+        [JsonPropertyName("realm")]
         public IEnumerable<Role> Realm { get; set; }
     }
 }
+

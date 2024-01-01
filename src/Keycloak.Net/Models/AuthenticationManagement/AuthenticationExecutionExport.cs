@@ -1,12 +1,13 @@
 ﻿namespace Keycloak.Net.Models.AuthenticationManagement
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class AuthenticationExecutionExport : AuthenticationExecutionBase
     {
-        [JsonProperty("flowAlias")]
+        [JsonPropertyName("flowAlias")]
         public string FlowAlias { get; set; }
-        [JsonProperty("userSetupAllowed")]
+        [JsonPropertyName("userSetupAllowed")]
         public bool? UserSetupAllowed { get; set; }
     }
 }

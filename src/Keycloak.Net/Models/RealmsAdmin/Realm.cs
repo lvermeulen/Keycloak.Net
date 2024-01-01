@@ -1,140 +1,141 @@
-﻿namespace Keycloak.Net.Models.RealmsAdmin
+namespace Keycloak.Net.Models.RealmsAdmin
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Realm
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("realm")]
+        [JsonPropertyName("realm")]
         // ReSharper disable once InconsistentNaming
         public string _Realm { get; set; }
-        [JsonProperty("notBefore")]
+        [JsonPropertyName("notBefore")]
         public int? NotBefore { get; set; }
-        [JsonProperty("revokeRefreshToken")]
+        [JsonPropertyName("revokeRefreshToken")]
         public bool? RevokeRefreshToken { get; set; }
-        [JsonProperty("refreshTokenMaxReuse")]
+        [JsonPropertyName("refreshTokenMaxReuse")]
         public int? RefreshTokenMaxReuse { get; set; }
-        [JsonProperty("accessTokenLifespan")]
+        [JsonPropertyName("accessTokenLifespan")]
         public int? AccessTokenLifespan { get; set; }
-        [JsonProperty("accessTokenLifespanForImplicitFlow")]
+        [JsonPropertyName("accessTokenLifespanForImplicitFlow")]
         public int? AccessTokenLifespanForImplicitFlow { get; set; }
-        [JsonProperty("ssoSessionIdleTimeout")]
+        [JsonPropertyName("ssoSessionIdleTimeout")]
         public int? SsoSessionIdleTimeout { get; set; }
-        [JsonProperty("ssoSessionMaxLifespan")]
+        [JsonPropertyName("ssoSessionMaxLifespan")]
         public int? SsoSessionMaxLifespan { get; set; }
-        [JsonProperty("ssoSessionIdleTimeoutRememberMe")]
+        [JsonPropertyName("ssoSessionIdleTimeoutRememberMe")]
         public int? SsoSessionIdleTimeoutRememberMe { get; set; }
-        [JsonProperty("ssoSessionMaxLifespanRememberMe")]
+        [JsonPropertyName("ssoSessionMaxLifespanRememberMe")]
         public int? SsoSessionMaxLifespanRememberMe { get; set; }
-        [JsonProperty("offlineSessionIdleTimeout")]
+        [JsonPropertyName("offlineSessionIdleTimeout")]
         public int? OfflineSessionIdleTimeout { get; set; }
-        [JsonProperty("offlineSessionMaxLifespanEnabled")]
+        [JsonPropertyName("offlineSessionMaxLifespanEnabled")]
         public bool? OfflineSessionMaxLifespanEnabled { get; set; }
-        [JsonProperty("offlineSessionMaxLifespan")]
+        [JsonPropertyName("offlineSessionMaxLifespan")]
         public int? OfflineSessionMaxLifespan { get; set; }
-        [JsonProperty("accessCodeLifespan")]
+        [JsonPropertyName("accessCodeLifespan")]
         public int? AccessCodeLifespan { get; set; }
-        [JsonProperty("accessCodeLifespanUserAction")]
+        [JsonPropertyName("accessCodeLifespanUserAction")]
         public int? AccessCodeLifespanUserAction { get; set; }
-        [JsonProperty("accessCodeLifespanLogin")]
+        [JsonPropertyName("accessCodeLifespanLogin")]
         public int? AccessCodeLifespanLogin { get; set; }
-        [JsonProperty("actionTokenGeneratedByAdminLifespan")]
+        [JsonPropertyName("actionTokenGeneratedByAdminLifespan")]
         public int? ActionTokenGeneratedByAdminLifespan { get; set; }
-        [JsonProperty("actionTokenGeneratedByUserLifespan")]
+        [JsonPropertyName("actionTokenGeneratedByUserLifespan")]
         public int? ActionTokenGeneratedByUserLifespan { get; set; }
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
-        [JsonProperty("sslRequired")]
+        [JsonPropertyName("sslRequired")]
         public string SslRequired { get; set; }
-        [JsonProperty("registrationAllowed")]
+        [JsonPropertyName("registrationAllowed")]
         public bool? RegistrationAllowed { get; set; }
-        [JsonProperty("registrationEmailAsUsername")]
+        [JsonPropertyName("registrationEmailAsUsername")]
         public bool? RegistrationEmailAsUsername { get; set; }
-        [JsonProperty("rememberMe")]
+        [JsonPropertyName("rememberMe")]
         public bool? RememberMe { get; set; }
-        [JsonProperty("verifyEmail")]
+        [JsonPropertyName("verifyEmail")]
         public bool? VerifyEmail { get; set; }
-        [JsonProperty("loginWithEmailAllowed")]
+        [JsonPropertyName("loginWithEmailAllowed")]
         public bool? LoginWithEmailAllowed { get; set; }
-        [JsonProperty("duplicateEmailsAllowed")]
+        [JsonPropertyName("duplicateEmailsAllowed")]
         public bool? DuplicateEmailsAllowed { get; set; }
-        [JsonProperty("resetPasswordAllowed")]
+        [JsonPropertyName("resetPasswordAllowed")]
         public bool? ResetPasswordAllowed { get; set; }
-        [JsonProperty("editUsernameAllowed")]
+        [JsonPropertyName("editUsernameAllowed")]
         public bool? EditUsernameAllowed { get; set; }
-        [JsonProperty("bruteForceProtected")]
+        [JsonPropertyName("bruteForceProtected")]
         public bool? BruteForceProtected { get; set; }
-        [JsonProperty("permanentLockout")]
+        [JsonPropertyName("permanentLockout")]
         public bool? PermanentLockout { get; set; }
-        [JsonProperty("maxFailureWaitSeconds")]
+        [JsonPropertyName("maxFailureWaitSeconds")]
         public int? MaxFailureWaitSeconds { get; set; }
-        [JsonProperty("minimumQuickLoginWaitSeconds")]
+        [JsonPropertyName("minimumQuickLoginWaitSeconds")]
         public int? MinimumQuickLoginWaitSeconds { get; set; }
-        [JsonProperty("waitIncrementSeconds")]
+        [JsonPropertyName("waitIncrementSeconds")]
         public int? WaitIncrementSeconds { get; set; }
-        [JsonProperty("quickLoginCheckMilliSeconds")]
+        [JsonPropertyName("quickLoginCheckMilliSeconds")]
         public int? QuickLoginCheckMilliSeconds { get; set; }
-        [JsonProperty("maxDeltaTimeSeconds")]
+        [JsonPropertyName("maxDeltaTimeSeconds")]
         public int? MaxDeltaTimeSeconds { get; set; }
-        [JsonProperty("failureFactor")]
+        [JsonPropertyName("failureFactor")]
         public int? FailureFactor { get; set; }
-        [JsonProperty("defaultRoles")]
+        [JsonPropertyName("defaultRoles")]
         public IEnumerable<string> DefaultRoles { get; set; }
-        [JsonProperty("requiredCredentials")]
+        [JsonPropertyName("requiredCredentials")]
         public IEnumerable<string> RequiredCredentials { get; set; }
-        [JsonProperty("otpPolicyType")]
+        [JsonPropertyName("otpPolicyType")]
         public string OtpPolicyType { get; set; }
-        [JsonProperty("otpPolicyAlgorithm")]
+        [JsonPropertyName("otpPolicyAlgorithm")]
         public string OtpPolicyAlgorithm { get; set; }
-        [JsonProperty("otpPolicyInitialCounter")]
+        [JsonPropertyName("otpPolicyInitialCounter")]
         public int? OtpPolicyInitialCounter { get; set; }
-        [JsonProperty("otpPolicyDigits")]
+        [JsonPropertyName("otpPolicyDigits")]
         public int? OtpPolicyDigits { get; set; }
-        [JsonProperty("otpPolicyLookAheadWindow")]
+        [JsonPropertyName("otpPolicyLookAheadWindow")]
         public int? OtpPolicyLookAheadWindow { get; set; }
-        [JsonProperty("otpPolicyPeriod")]
+        [JsonPropertyName("otpPolicyPeriod")]
         public int? OtpPolicyPeriod { get; set; }
-        [JsonProperty("otpSupportedApplications")]
+        [JsonPropertyName("otpSupportedApplications")]
         public IEnumerable<string> OtpSupportedApplications { get; set; }
-        [JsonProperty("browserSecurityHeaders")]
+        [JsonPropertyName("browserSecurityHeaders")]
         public BrowserSecurityHeaders BrowserSecurityHeaders { get; set; }
-        [JsonProperty("smtpServer")]
+        [JsonPropertyName("smtpServer")]
         public SmtpServer SmtpServer { get; set; }
-        [JsonProperty("eventsEnabled")]
+        [JsonPropertyName("eventsEnabled")]
         public bool? EventsEnabled { get; set; }
-        [JsonProperty("eventsListeners")]
+        [JsonPropertyName("eventsListeners")]
         public IEnumerable<string> EventsListeners { get; set; }
-        [JsonProperty("enabledEventTypes")]
+        [JsonPropertyName("enabledEventTypes")]
         public IEnumerable<object> EnabledEventTypes { get; set; }
-        [JsonProperty("adminEventsEnabled")]
+        [JsonPropertyName("adminEventsEnabled")]
         public bool? AdminEventsEnabled { get; set; }
-        [JsonProperty("adminEventsDetailsEnabled")]
+        [JsonPropertyName("adminEventsDetailsEnabled")]
         public bool? AdminEventsDetailsEnabled { get; set; }
-        [JsonProperty("identityProviders")]
+        [JsonPropertyName("identityProviders")]
         public IEnumerable<IdentityProvider> IdentityProviders { get; set; }
-        [JsonProperty("internationalizationEnabled")]
+        [JsonPropertyName("internationalizationEnabled")]
         public bool? InternationalizationEnabled { get; set; }
-        [JsonProperty("supportedLocales")]
+        [JsonPropertyName("supportedLocales")]
         public IEnumerable<object> SupportedLocales { get; set; }
-        [JsonProperty("browserFlow")]
+        [JsonPropertyName("browserFlow")]
         public string BrowserFlow { get; set; }
-        [JsonProperty("registrationFlow")]
+        [JsonPropertyName("registrationFlow")]
         public string RegistrationFlow { get; set; }
-        [JsonProperty("directGrantFlow")]
+        [JsonPropertyName("directGrantFlow")]
         public string DirectGrantFlow { get; set; }
-        [JsonProperty("resetCredentialsFlow")]
+        [JsonPropertyName("resetCredentialsFlow")]
         public string ResetCredentialsFlow { get; set; }
-        [JsonProperty("clientAuthenticationFlow")]
+        [JsonPropertyName("clientAuthenticationFlow")]
         public string ClientAuthenticationFlow { get; set; }
-        [JsonProperty("dockerAuthenticationFlow")]
+        [JsonPropertyName("dockerAuthenticationFlow")]
         public string DockerAuthenticationFlow { get; set; }
-        [JsonProperty("attributes")]
+        [JsonPropertyName("attributes")]
         public Attributes Attributes { get; set; }
-        [JsonProperty("userManagedAccessAllowed")]
+        [JsonPropertyName("userManagedAccessAllowed")]
         public bool? UserManagedAccessAllowed { get; set; }
-        [JsonProperty("passwordPolicy")]
+        [JsonPropertyName("passwordPolicy")]
         public string PasswordPolicy{ get; set; }
     }
 }
+

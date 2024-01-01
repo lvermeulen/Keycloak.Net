@@ -1,14 +1,15 @@
 ﻿namespace Keycloak.Net.Models.ClientScopes
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class Attributes
     {
-        [JsonProperty("consentscreentext")]
+        [JsonPropertyName("consentscreentext")]
         public string ConsentScreenText { get; set; }
-        [JsonProperty("displayonconsentscreen")]
+        [JsonPropertyName("displayonconsentscreen")]
         public string DisplayOnConsentScreen { get; set; }
-        [JsonProperty("includeintokenscope")]
+        [JsonPropertyName("includeintokenscope")]
         public string IncludeInTokenScope { get; set; }
     }
 }

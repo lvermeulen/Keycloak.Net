@@ -1,22 +1,22 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class OpenIdConnect
     {
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("protocol")]
+        [JsonPropertyName("protocol")]
         public Protocol Protocol { get; set; }
 
-        [JsonProperty("protocolMapper")]
+        [JsonPropertyName("protocolMapper")]
         public string ProtocolMapper { get; set; }
 
-        [JsonProperty("consentRequired")]
+        [JsonPropertyName("consentRequired")]
         public bool? ConsentRequired { get; set; }
 
-        [JsonProperty("config")]
+        [JsonPropertyName("config")]
         public OpenIdConnectConfig Config { get; set; }
     }
 }

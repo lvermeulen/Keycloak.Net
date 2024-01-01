@@ -3,7 +3,7 @@ namespace Keycloak.Net.Common.Converters
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Models.Root;
+    using Keycloak.Net.Models.Root;
 
     public class CategoryConverter : JsonEnumConverter<Category>
     {

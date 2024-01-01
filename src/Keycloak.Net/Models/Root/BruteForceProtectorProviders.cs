@@ -1,10 +1,10 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class BruteForceProtectorProviders
     {
-        [JsonProperty("default-brute-force-detector")]
+        [JsonPropertyName("default-brute-force-detector")]
         public HasOrder DefaultBruteForceDetector { get; set; }
     }
 }

@@ -1,47 +1,48 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ServerInfo
     {
-        [JsonProperty("systemInfo")]
+        [JsonPropertyName("systemInfo")]
         public SystemInfo SystemInfo { get; set; }
 
-        [JsonProperty("memoryInfo")]
+        [JsonPropertyName("memoryInfo")]
         public MemoryInfo MemoryInfo { get; set; }
 
-        [JsonProperty("profileInfo")]
+        [JsonPropertyName("profileInfo")]
         public ProfileInfo ProfileInfo { get; set; }
 
-        [JsonProperty("themes")]
+        [JsonPropertyName("themes")]
         public Themes Themes { get; set; }
 
-        [JsonProperty("socialProviders")]
+        [JsonPropertyName("socialProviders")]
         public List<Provider> SocialProviders { get; set; }
 
-        [JsonProperty("identityProviders")]
+        [JsonPropertyName("identityProviders")]
         public List<Provider> IdentityProviders { get; set; }
 
-        [JsonProperty("providers")]
+        [JsonPropertyName("providers")]
         public ServerInfoProviders Providers { get; set; }
 
-        [JsonProperty("protocolMapperTypes")]
+        [JsonPropertyName("protocolMapperTypes")]
         public ProtocolMapperTypes ProtocolMapperTypes { get; set; }
 
-        [JsonProperty("builtinProtocolMappers")]
+        [JsonPropertyName("builtinProtocolMappers")]
         public BuiltinProtocolMappers BuiltinProtocolMappers { get; set; }
 
-        [JsonProperty("clientInstallations")]
+        [JsonPropertyName("clientInstallations")]
         public ClientInstallations ClientInstallations { get; set; }
 
-        [JsonProperty("componentTypes")]
+        [JsonPropertyName("componentTypes")]
         public ComponentTypes ComponentTypes { get; set; }
 
-        [JsonProperty("passwordPolicies")]
+        [JsonPropertyName("passwordPolicies")]
         public List<PasswordPolicy> PasswordPolicies { get; set; }
 
-        [JsonProperty("enums")]
+        [JsonPropertyName("enums")]
         public Enums Enums { get; set; }
     }
 }
+

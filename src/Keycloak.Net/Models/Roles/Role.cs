@@ -1,25 +1,26 @@
-﻿namespace Keycloak.Net.Models.Roles
+namespace Keycloak.Net.Models.Roles
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Role
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
-        [JsonProperty("composite")]
+        [JsonPropertyName("composite")]
         public bool? Composite { get; set; }
-        [JsonProperty("composites")]
+        [JsonPropertyName("composites")]
         public RoleComposite Composites { get; set; }
-        [JsonProperty("clientRole")]
+        [JsonPropertyName("clientRole")]
         public bool? ClientRole { get; set; }
-        [JsonProperty("containerId")]
+        [JsonPropertyName("containerId")]
         public string ContainerId { get; set; }
-        [JsonProperty("attributes")]
+        [JsonPropertyName("attributes")]
         public IDictionary<string, object> Attributes { get; set; }
     }
 }
+

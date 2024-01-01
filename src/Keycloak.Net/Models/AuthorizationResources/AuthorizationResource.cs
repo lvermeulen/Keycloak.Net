@@ -1,26 +1,27 @@
 namespace Keycloak.Net.Models.AuthorizationResources
 {
-    using AuthorizationScopes;
-    using Newtonsoft.Json;
+    using Keycloak.Net.Models.AuthorizationScopes;
+    using System.Text.Json;
     using System.Collections.Generic;
+    using System.Text.Json.Serialization;
 
     public class AuthorizationResource
     {
-        [JsonProperty("_id")]
+        [JsonPropertyName("_id")]
         public string Id { get; set; }
-        [JsonProperty("scopes")]
+        [JsonPropertyName("scopes")]
         public IEnumerable<AuthorizationScope> Scopes { get; set; }
-        [JsonProperty("attributes")]
+        [JsonPropertyName("attributes")]
         public Dictionary<string, IEnumerable<string>> Attributes { get; set; }
-        [JsonProperty("uris")]
+        [JsonPropertyName("uris")]
         public IEnumerable<string> Uris { get; set; }
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
-        [JsonProperty("ownerManagedAccess")]
+        [JsonPropertyName("ownerManagedAccess")]
         public bool? OwnerManagedAccess { get; set; }
-        [JsonProperty("displayName")]
+        [JsonPropertyName("displayName")]
         public string DisplayName { get; set; }
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; } 
     }
 }

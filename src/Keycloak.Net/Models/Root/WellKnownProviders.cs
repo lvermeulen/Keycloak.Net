@@ -1,13 +1,13 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class WellKnownProviders
     {
-        [JsonProperty("openid-configuration")]
+        [JsonPropertyName("openid-configuration")]
         public HasOrder OpenIdConfiguration { get; set; }
 
-        [JsonProperty("uma2-configuration")]
+        [JsonPropertyName("uma2-configuration")]
         public HasOrder Uma2Configuration { get; set; }
     }
 }

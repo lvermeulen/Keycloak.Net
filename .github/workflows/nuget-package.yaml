@@ -9,7 +9,6 @@ on:
   pull_request:
     branches:
       - main
-      - release/*
 
 jobs:
   calculate-version:
@@ -50,7 +49,7 @@ jobs:
       - name: Setup .Net 7
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'        
+          dotnet-version: '8.0.x'        
 
       - name: Build solution and generate NuGet package
         run: |

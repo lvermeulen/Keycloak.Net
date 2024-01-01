@@ -1,37 +1,37 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PolicyProviders
     {
-        [JsonProperty("role")]
+        [JsonPropertyName("role")]
         public HasOrder Role { get; set; }
 
-        [JsonProperty("resource")]
+        [JsonPropertyName("resource")]
         public HasOrder Resource { get; set; }
 
-        [JsonProperty("scope")]
+        [JsonPropertyName("scope")]
         public HasOrder Scope { get; set; }
 
-        [JsonProperty("uma")]
+        [JsonPropertyName("uma")]
         public HasOrder Uma { get; set; }
 
-        [JsonProperty("client")]
+        [JsonPropertyName("client")]
         public HasOrder Client { get; set; }
 
-        [JsonProperty("js")]
+        [JsonPropertyName("js")]
         public HasOrder Js { get; set; }
 
-        [JsonProperty("time")]
+        [JsonPropertyName("time")]
         public HasOrder Time { get; set; }
 
-        [JsonProperty("user")]
+        [JsonPropertyName("user")]
         public HasOrder User { get; set; }
 
-        [JsonProperty("aggregate")]
+        [JsonPropertyName("aggregate")]
         public HasOrder Aggregate { get; set; }
 
-        [JsonProperty("group")]
+        [JsonPropertyName("group")]
         public HasOrder Group { get; set; }
     }
 }

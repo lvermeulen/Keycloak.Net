@@ -1,13 +1,13 @@
 namespace Keycloak.Net.Models.Roles
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class RoleComposite
     {
-        [JsonProperty("client")]        
+        [JsonPropertyName("client")]        
         public IDictionary<string, string> Client { get; set; }
-        [JsonProperty("realm")]
+        [JsonPropertyName("realm")]
         public IEnumerable<string> Realm { get; set; }
     }
 }

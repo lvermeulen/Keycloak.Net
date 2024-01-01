@@ -1,19 +1,19 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class OperationalInfo
     {
-        [JsonProperty("databaseUrl")]
+        [JsonPropertyName("databaseUrl")]
         public string DatabaseUrl { get; set; }
 
-        [JsonProperty("databaseUser")]
+        [JsonPropertyName("databaseUser")]
         public string DatabaseUser { get; set; }
 
-        [JsonProperty("databaseProduct")]
+        [JsonPropertyName("databaseProduct")]
         public string DatabaseProduct { get; set; }
 
-        [JsonProperty("databaseDriver")]
+        [JsonPropertyName("databaseDriver")]
         public string DatabaseDriver { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 namespace Keycloak.Net
 {
     using Flurl.Http;
-    using Models.AuthorizationScopes;
+    using Keycloak.Net.Models.AuthorizationScopes;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 

@@ -1,14 +1,15 @@
 ﻿namespace Keycloak.Net.Models.AuthenticationManagement
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class AuthenticationExecution : AuthenticationExecutionBase
     {
-        [JsonProperty("flowId")]
+        [JsonPropertyName("flowId")]
         public string FlowId { get; set; }
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("parentFlow")]
+        [JsonPropertyName("parentFlow")]
         public string ParentFlow { get; set; }
     }
 }

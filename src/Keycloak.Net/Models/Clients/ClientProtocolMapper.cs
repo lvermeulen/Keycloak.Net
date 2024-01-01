@@ -1,20 +1,20 @@
-﻿namespace Keycloak.Net.Models.Clients
+namespace Keycloak.Net.Models.Clients
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ClientProtocolMapper
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
-        [JsonProperty("protocol")]
+        [JsonPropertyName("protocol")]
         public string Protocol { get; set; }
-        [JsonProperty("protocolMapper")]
+        [JsonPropertyName("protocolMapper")]
         public string ProtocolMapper { get; set; }
-        [JsonProperty("consentRequired")]
+        [JsonPropertyName("consentRequired")]
         public bool? ConsentRequired { get; set; }
-        [JsonProperty("config")]
+        [JsonPropertyName("config")]
         public ClientConfig Config { get; set; }
     }
 }

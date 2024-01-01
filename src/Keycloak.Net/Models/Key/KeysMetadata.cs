@@ -1,13 +1,14 @@
-﻿namespace Keycloak.Net.Models.Key
+namespace Keycloak.Net.Models.Key
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class KeysMetadata
     {
-        [JsonProperty("active")]
+        [JsonPropertyName("active")]
         public Active Active { get; set; }
-        [JsonProperty("keys")]
+        [JsonPropertyName("keys")]
         public IEnumerable<Key> Keys { get; set; }
     }
 }
+

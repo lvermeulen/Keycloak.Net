@@ -1,14 +1,14 @@
-﻿namespace Keycloak.Net.Models.Clients
+namespace Keycloak.Net.Models.Clients
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ClientAccess
     {
-        [JsonProperty("view")]
+        [JsonPropertyName("view")]
         public bool? View { get; set; }
-        [JsonProperty("configure")]
+        [JsonPropertyName("configure")]
         public bool? Configure { get; set; }
-        [JsonProperty("manage")]
+        [JsonPropertyName("manage")]
         public bool? Manage { get; set; }
     }
 }

@@ -5,7 +5,7 @@ namespace Keycloak.Net
     using System.Threading.Tasks;
     using Flurl.Http;
     using Keycloak.Net.Models.Common;
-    using Models.IdentityProviders;
+    using Keycloak.Net.Models.IdentityProviders;
 
     public partial class KeycloakClient
     {

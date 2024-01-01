@@ -1,16 +1,16 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class HashProviders
     {
-        [JsonProperty("SHA-384")]
+        [JsonPropertyName("SHA-384")]
         public HasOrder Sha384 { get; set; }
 
-        [JsonProperty("SHA-256")]
+        [JsonPropertyName("SHA-256")]
         public HasOrder Sha256 { get; set; }
 
-        [JsonProperty("SHA-512")]
+        [JsonPropertyName("SHA-512")]
         public HasOrder Sha512 { get; set; }
     }
 }

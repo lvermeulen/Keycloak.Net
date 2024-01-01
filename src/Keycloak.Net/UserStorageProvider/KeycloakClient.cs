@@ -4,7 +4,7 @@ namespace Keycloak.Net
     using System.Net.Http;
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Models.UserStorageProvider;
+    using Keycloak.Net.Models.UserStorageProvider;
 
     public partial class KeycloakClient
     {

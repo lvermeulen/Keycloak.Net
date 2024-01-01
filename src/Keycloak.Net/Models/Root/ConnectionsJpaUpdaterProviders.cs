@@ -1,10 +1,10 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ConnectionsJpaUpdaterProviders
     {
-        [JsonProperty("liquibase")]
+        [JsonPropertyName("liquibase")]
         public HasOrder Liquibase { get; set; }
     }
 }

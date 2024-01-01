@@ -1,18 +1,18 @@
-﻿namespace Keycloak.Net.Models.IdentityProviders
+namespace Keycloak.Net.Models.IdentityProviders
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Config
     {
-        [JsonProperty("hideOnLoginPage")]
+        [JsonPropertyName("hideOnLoginPage")]
         public string HideOnLoginPage { get; set; }
-        [JsonProperty("clientSecret")]
+        [JsonPropertyName("clientSecret")]
         public string ClientSecret { get; set; }
-        [JsonProperty("clientId")]
+        [JsonPropertyName("clientId")]
         public string ClientId { get; set; }
-        [JsonProperty("disableUserInfo")]
+        [JsonPropertyName("disableUserInfo")]
         public string DisableUserInfo { get; set; }
-        [JsonProperty("useJwksUrl")]
+        [JsonPropertyName("useJwksUrl")]
         public string UseJwksUrl { get; set; }
     }
 }

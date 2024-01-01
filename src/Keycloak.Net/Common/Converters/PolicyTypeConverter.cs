@@ -3,7 +3,7 @@ namespace Keycloak.Net.Common.Converters
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Models.Clients;
+    using Keycloak.Net.Models.Clients;
 
     public class PolicyTypeConverter: JsonEnumConverter<PolicyType>
     {

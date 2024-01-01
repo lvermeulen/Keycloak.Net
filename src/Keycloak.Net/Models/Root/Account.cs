@@ -1,14 +1,14 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Account
     {
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public Name Name { get; set; }
 
-        [JsonProperty("locales")]
+        [JsonPropertyName("locales")]
         public List<Locale> Locales { get; set; }
     }
 }

@@ -1,13 +1,13 @@
 namespace Keycloak.Net
 {
     using Flurl.Http;
-    using Models.AuthorizationPermissions;
-    using Models.AuthorizationScopes;
-    using Models.Clients;
+    using Keycloak.Net.Models.AuthorizationPermissions;
+    using Keycloak.Net.Models.AuthorizationScopes;
+    using Keycloak.Net.Models.Clients;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using AuthorizationResource = Models.AuthorizationResources.AuthorizationResource;
+    using AuthorizationResource = Keycloak.Net.Models.AuthorizationResources.AuthorizationResource;
 
     public partial class KeycloakClient
     {

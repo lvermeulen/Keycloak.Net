@@ -1,23 +1,24 @@
-﻿namespace Keycloak.Net.Models.Users
+namespace Keycloak.Net.Models.Users
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class UserSession
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("username")]
+        [JsonPropertyName("username")]
         public string UserName { get; set; }
-        [JsonProperty("userId")]
+        [JsonPropertyName("userId")]
         public string UserId { get; set; }
-        [JsonProperty("ipAddress")]
+        [JsonPropertyName("ipAddress")]
         public string IpAddress { get; set; }
-        [JsonProperty("start")]
+        [JsonPropertyName("start")]
         public long Start { get; set; }
-        [JsonProperty("lastAccess")]
+        [JsonPropertyName("lastAccess")]
         public long LastAccess { get; set; }
-        [JsonProperty("clients")]
+        [JsonPropertyName("clients")]
         public IDictionary<string, string> Clients { get; set; }
     }
 }
+

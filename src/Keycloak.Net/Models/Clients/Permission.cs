@@ -1,11 +1,12 @@
-﻿namespace Keycloak.Net.Models.Clients
+namespace Keycloak.Net.Models.Clients
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Permission : Resource
     {
-        [JsonProperty("claims")]
+        [JsonPropertyName("claims")]
         public IDictionary<string, object> Claims { get; set; }
     }
 }
+

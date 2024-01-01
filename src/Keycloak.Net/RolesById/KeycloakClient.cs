@@ -2,11 +2,12 @@ namespace Keycloak.Net
 {
     using System.Collections.Generic;
     using System.Net.Http;
+    using System.Text.Json;
     using System.Threading.Tasks;
     using Flurl.Http;
     using Flurl.Http.Content;
     using Keycloak.Net.Models.Common;
-    using Models.Roles;
+    using Keycloak.Net.Models.Roles;
 
     public partial class KeycloakClient
     {
@@ -57,7 +58,7 @@ namespace Keycloak.Net
         {
             var response = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/roles-by-id/{roleId}/composites")
-                .SendJsonAsync(HttpMethod.Delete, new CapturedJsonContent(_serializer.Serialize(roles)))
+                .SendJsonAsync(HttpMethod.Delete, new CapturedJsonContent(JsonSerializer.Serialize(roles)))
                 .ConfigureAwait(false);
             return response.ResponseMessage.IsSuccessStatusCode;
         }

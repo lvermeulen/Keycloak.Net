@@ -1,16 +1,16 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Oauth2TokenIntrospectionProviders
     {
-        [JsonProperty("access_token")]
+        [JsonPropertyName("access_token")]
         public HasOrder AccessToken { get; set; }
 
-        [JsonProperty("refresh_token")]
+        [JsonPropertyName("refresh_token")]
         public HasOrder RefreshToken { get; set; }
 
-        [JsonProperty("requesting_party_token")]
+        [JsonPropertyName("requesting_party_token")]
         public HasOrder RequestingPartyToken { get; set; }
     }
 }

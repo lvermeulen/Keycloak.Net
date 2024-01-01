@@ -1,27 +1,27 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
     using System.Collections.Generic;
     using Keycloak.Net.Models.Common;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ProtocolMapperType
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("category")]
+        [JsonPropertyName("category")]
         public Category Category { get; set; }
 
-        [JsonProperty("helpText")]
+        [JsonPropertyName("helpText")]
         public string HelpText { get; set; }
 
-        [JsonProperty("priority")]
+        [JsonPropertyName("priority")]
         public long Priority { get; set; }
 
-        [JsonProperty("properties")]
+        [JsonPropertyName("properties")]
         public List<ConfigProperty> Properties { get; set; }
     }
 }

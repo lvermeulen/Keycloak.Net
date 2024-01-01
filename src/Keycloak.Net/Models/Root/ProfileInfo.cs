@@ -1,20 +1,20 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ProfileInfo
     {
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("disabledFeatures")]
+        [JsonPropertyName("disabledFeatures")]
         public List<string> DisabledFeatures { get; set; }
 
-        [JsonProperty("previewFeatures")]
+        [JsonPropertyName("previewFeatures")]
         public List<string> PreviewFeatures { get; set; }
 
-        [JsonProperty("experimentalFeatures")]
+        [JsonPropertyName("experimentalFeatures")]
         public List<string> ExperimentalFeatures { get; set; }
     }
 }

@@ -1,23 +1,23 @@
-﻿namespace Keycloak.Net.Models.Components
+namespace Keycloak.Net.Models.Components
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Config
     {
-        [JsonProperty("priority")]
+        [JsonPropertyName("priority")]
         public IEnumerable<string> Priority { get; set; }
-        [JsonProperty("allowdefaultscopes")]
+        [JsonPropertyName("allowdefaultscopes")]
         public IEnumerable<string> AllowDefaultScopes { get; set; }
-        [JsonProperty("maxclients")]
+        [JsonPropertyName("maxclients")]
         public IEnumerable<string> MaxClients { get; set; }
-        [JsonProperty("allowedprotocolmappertypes")]
+        [JsonPropertyName("allowedprotocolmappertypes")]
         public IEnumerable<string> AllowedProtocolMapperTypes { get; set; }
-        [JsonProperty("algorithm")]
+        [JsonPropertyName("algorithm")]
         public IEnumerable<string> Algorithm { get; set; }
-        [JsonProperty("hostsendingregistrationrequestmustmatch")]
+        [JsonPropertyName("hostsendingregistrationrequestmustmatch")]
         public IEnumerable<string> HostSendingRegistrationRequestMustMatch { get; set; }
-        [JsonProperty("clienturismustmatch")]
+        [JsonPropertyName("clienturismustmatch")]
         public IEnumerable<string> ClientUrisMustMatch { get; set; }
     }
 }

@@ -1,238 +1,238 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ServerInfoProviders
     {
-        [JsonProperty("account")]
+        [JsonPropertyName("account")]
         public EmailTemplateClass Account { get; set; }
 
-        [JsonProperty("actionToken")]
+        [JsonPropertyName("actionToken")]
         public ActionToken ActionToken { get; set; }
 
-        [JsonProperty("actionTokenHandler")]
+        [JsonPropertyName("actionTokenHandler")]
         public ActionTokenHandler ActionTokenHandler { get; set; }
 
-        [JsonProperty("authenticationSessions")]
+        [JsonPropertyName("authenticationSessions")]
         public ActionToken AuthenticationSessions { get; set; }
 
-        [JsonProperty("authenticator")]
+        [JsonPropertyName("authenticator")]
         public Authenticator Authenticator { get; set; }
 
-        [JsonProperty("authorization")]
+        [JsonPropertyName("authorization")]
         public Authorization Authorization { get; set; }
 
-        [JsonProperty("authorizationCache")]
+        [JsonPropertyName("authorizationCache")]
         public AuthorizationCache AuthorizationCache { get; set; }
 
-        [JsonProperty("authorizationPersister")]
+        [JsonPropertyName("authorizationPersister")]
         public AuthorizationPersister AuthorizationPersister { get; set; }
 
-        [JsonProperty("bruteForceProtector")]
+        [JsonPropertyName("bruteForceProtector")]
         public BruteForceProtector BruteForceProtector { get; set; }
 
-        [JsonProperty("client-authenticator")]
+        [JsonPropertyName("client-authenticator")]
         public ClientAuthenticator ClientAuthenticator { get; set; }
 
-        [JsonProperty("client-description-converter")]
+        [JsonPropertyName("client-description-converter")]
         public ClientDescriptionConverter ClientDescriptionConverter { get; set; }
 
-        [JsonProperty("client-installation")]
+        [JsonPropertyName("client-installation")]
         public Authenticator ClientInstallation { get; set; }
 
-        [JsonProperty("client-registration")]
+        [JsonPropertyName("client-registration")]
         public ClientRegistration ClientRegistration { get; set; }
 
-        [JsonProperty("client-registration-policy")]
+        [JsonPropertyName("client-registration-policy")]
         public ClientRegistrationPolicy ClientRegistrationPolicy { get; set; }
 
-        [JsonProperty("client-storage")]
+        [JsonPropertyName("client-storage")]
         public ClientStorage ClientStorage { get; set; }
 
-        [JsonProperty("clientSignature")]
+        [JsonPropertyName("clientSignature")]
         public Authenticator ClientSignature { get; set; }
 
-        [JsonProperty("cluster")]
+        [JsonPropertyName("cluster")]
         public ActionToken Cluster { get; set; }
 
-        [JsonProperty("codeToTokenStore")]
+        [JsonPropertyName("codeToTokenStore")]
         public ActionToken CodeToTokenStore { get; set; }
 
-        [JsonProperty("connectionsHttpClient")]
+        [JsonPropertyName("connectionsHttpClient")]
         public AuthorizationCache ConnectionsHttpClient { get; set; }
 
-        [JsonProperty("connectionsInfinispan")]
+        [JsonPropertyName("connectionsInfinispan")]
         public AuthorizationCache ConnectionsInfinispan { get; set; }
 
-        [JsonProperty("connectionsJpa")]
+        [JsonPropertyName("connectionsJpa")]
         public ConnectionsJpa ConnectionsJpa { get; set; }
 
-        [JsonProperty("connectionsJpaUpdater")]
+        [JsonPropertyName("connectionsJpaUpdater")]
         public ConnectionsJpaUpdater ConnectionsJpaUpdater { get; set; }
 
-        [JsonProperty("connectionsLiquibase")]
+        [JsonPropertyName("connectionsLiquibase")]
         public AuthorizationCache ConnectionsLiquibase { get; set; }
 
-        [JsonProperty("credential")]
+        [JsonPropertyName("credential")]
         public Credential Credential { get; set; }
 
-        [JsonProperty("dblock")]
+        [JsonPropertyName("dblock")]
         public AuthorizationPersister Dblock { get; set; }
 
-        [JsonProperty("emailSender")]
+        [JsonPropertyName("emailSender")]
         public AuthorizationCache EmailSender { get; set; }
 
-        [JsonProperty("emailTemplate")]
+        [JsonPropertyName("emailTemplate")]
         public EmailTemplateClass EmailTemplate { get; set; }
 
-        [JsonProperty("eventsListener")]
+        [JsonPropertyName("eventsListener")]
         public EventsListener EventsListener { get; set; }
 
-        [JsonProperty("eventsStore")]
+        [JsonPropertyName("eventsStore")]
         public AuthorizationPersister EventsStore { get; set; }
 
-        [JsonProperty("exception-converter")]
+        [JsonPropertyName("exception-converter")]
         public AuthorizationPersister ExceptionConverter { get; set; }
 
-        [JsonProperty("executors")]
+        [JsonPropertyName("executors")]
         public AuthorizationCache Executors { get; set; }
 
-        [JsonProperty("export")]
+        [JsonPropertyName("export")]
         public Port Export { get; set; }
 
-        [JsonProperty("form-action")]
+        [JsonPropertyName("form-action")]
         public FormAction FormAction { get; set; }
 
-        [JsonProperty("form-authenticator")]
+        [JsonPropertyName("form-authenticator")]
         public FormAuthenticator FormAuthenticator { get; set; }
 
-        [JsonProperty("hash")]
+        [JsonPropertyName("hash")]
         public Hash Hash { get; set; }
 
-        [JsonProperty("hostname")]
+        [JsonPropertyName("hostname")]
         public Hostname Hostname { get; set; }
 
-        [JsonProperty("identity-provider-mapper")]
+        [JsonPropertyName("identity-provider-mapper")]
         public Authenticator IdentityProviderMapper { get; set; }
 
-        [JsonProperty("identity_provider")]
+        [JsonPropertyName("identity_provider")]
         public IdentityProvider IdentityProvider { get; set; }
 
-        [JsonProperty("import")]
+        [JsonPropertyName("import")]
         public Port Import { get; set; }
 
-        [JsonProperty("jpa-entity-provider")]
+        [JsonPropertyName("jpa-entity-provider")]
         public ClientStorage JpaEntityProvider { get; set; }
 
-        [JsonProperty("jta-lookup")]
+        [JsonPropertyName("jta-lookup")]
         public JtaLookup JtaLookup { get; set; }
 
-        [JsonProperty("keys")]
+        [JsonPropertyName("keys")]
         public Keys Keys { get; set; }
 
-        [JsonProperty("ldap-mapper")]
+        [JsonPropertyName("ldap-mapper")]
         public LdapMapper LdapMapper { get; set; }
 
-        [JsonProperty("localeSelector")]
+        [JsonPropertyName("localeSelector")]
         public AuthorizationCache LocaleSelector { get; set; }
 
-        [JsonProperty("login")]
+        [JsonPropertyName("login")]
         public EmailTemplateClass Login { get; set; }
 
-        [JsonProperty("login-protocol")]
+        [JsonPropertyName("login-protocol")]
         public LoginProtocol LoginProtocol { get; set; }
 
-        [JsonProperty("migration")]
+        [JsonPropertyName("migration")]
         public AuthorizationCache Migration { get; set; }
 
-        [JsonProperty("oauth2-token-introspection")]
+        [JsonPropertyName("oauth2-token-introspection")]
         public Oauth2TokenIntrospection Oauth2TokenIntrospection { get; set; }
 
-        [JsonProperty("openid-connect-ext")]
+        [JsonPropertyName("openid-connect-ext")]
         public ClientStorage OpenIdConnectExt { get; set; }
 
-        [JsonProperty("password-hashing")]
+        [JsonPropertyName("password-hashing")]
         public Authenticator PasswordHashing { get; set; }
 
-        [JsonProperty("password-policy")]
+        [JsonPropertyName("password-policy")]
         public Authenticator PasswordPolicy { get; set; }
 
-        [JsonProperty("password-policy-manager")]
+        [JsonPropertyName("password-policy-manager")]
         public AuthorizationCache PasswordPolicyManager { get; set; }
 
-        [JsonProperty("policy")]
+        [JsonPropertyName("policy")]
         public Policy Policy { get; set; }
 
-        [JsonProperty("protocol-mapper")]
+        [JsonPropertyName("protocol-mapper")]
         public Authenticator ProtocolMapper { get; set; }
 
-        [JsonProperty("publicKeyStorage")]
+        [JsonPropertyName("publicKeyStorage")]
         public ActionToken PublicKeyStorage { get; set; }
 
-        [JsonProperty("realm")]
+        [JsonPropertyName("realm")]
         public AuthorizationPersister Realm { get; set; }
 
-        [JsonProperty("realm-restapi-extension")]
+        [JsonPropertyName("realm-restapi-extension")]
         public ClientStorage RealmRestapiExtension { get; set; }
 
-        [JsonProperty("realmCache")]
+        [JsonPropertyName("realmCache")]
         public AuthorizationCache RealmCache { get; set; }
 
-        [JsonProperty("required-action")]
+        [JsonPropertyName("required-action")]
         public RequiredAction RequiredAction { get; set; }
 
-        [JsonProperty("scripting")]
+        [JsonPropertyName("scripting")]
         public Scripting Scripting { get; set; }
 
-        [JsonProperty("signature")]
+        [JsonPropertyName("signature")]
         public Authenticator Signature { get; set; }
 
-        [JsonProperty("singleUseTokenStore")]
+        [JsonPropertyName("singleUseTokenStore")]
         public ActionToken SingleUseTokenStore { get; set; }
 
-        [JsonProperty("social")]
+        [JsonPropertyName("social")]
         public Authenticator Social { get; set; }
 
-        [JsonProperty("stickySessionEncoder")]
+        [JsonPropertyName("stickySessionEncoder")]
         public ActionToken StickySessionEncoder { get; set; }
 
-        [JsonProperty("storage")]
+        [JsonPropertyName("storage")]
         public Storage Storage { get; set; }
 
-        [JsonProperty("theme")]
+        [JsonPropertyName("theme")]
         public Theme Theme { get; set; }
 
-        [JsonProperty("themeResource")]
+        [JsonPropertyName("themeResource")]
         public ClientStorage ThemeResource { get; set; }
 
-        [JsonProperty("themeSelector")]
+        [JsonPropertyName("themeSelector")]
         public AuthorizationCache ThemeSelector { get; set; }
 
-        [JsonProperty("timer")]
+        [JsonPropertyName("timer")]
         public Timer Timer { get; set; }
 
-        [JsonProperty("truststore")]
+        [JsonPropertyName("truststore")]
         public Truststore Truststore { get; set; }
 
-        [JsonProperty("user")]
+        [JsonPropertyName("user")]
         public AuthorizationPersister User { get; set; }
 
-        [JsonProperty("userCache")]
+        [JsonPropertyName("userCache")]
         public AuthorizationCache UserCache { get; set; }
 
-        [JsonProperty("userFederatedStorage")]
+        [JsonPropertyName("userFederatedStorage")]
         public AuthorizationPersister UserFederatedStorage { get; set; }
 
-        [JsonProperty("userSessionPersister")]
+        [JsonPropertyName("userSessionPersister")]
         public AuthorizationPersister UserSessionPersister { get; set; }
 
-        [JsonProperty("userSessions")]
+        [JsonPropertyName("userSessions")]
         public ActionToken UserSessions { get; set; }
 
-        [JsonProperty("well-known")]
+        [JsonPropertyName("well-known")]
         public WellKnown WellKnown { get; set; }
 
-        [JsonProperty("x509cert-lookup")]
+        [JsonPropertyName("x509cert-lookup")]
         public AuthorizationCache X509CertLookup { get; set; }
     }
 }

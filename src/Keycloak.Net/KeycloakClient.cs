@@ -4,18 +4,17 @@ namespace Keycloak.Net
     using Flurl;
     using Flurl.Http;
     using Flurl.Http.Configuration;
-    using Common.Extensions;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Serialization;
-    using System.Net.Http;
+    using Keycloak.Net.Common.Extensions;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
     using Microsoft.Extensions.Logging;
 
     public partial class KeycloakClient
     {
-        private ISerializer _serializer = new NewtonsoftJsonSerializer(new JsonSerializerSettings
+        private static readonly ISerializer JsonSerializer = new DefaultJsonSerializer(new()
         {
-            ContractResolver = new CamelCasePropertyNamesContractResolver(),
-            NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
         });
 
         private readonly Url _url;
@@ -64,36 +63,33 @@ namespace Keycloak.Net
             _logger = logger;
         }
 
-        public void SetSerializer(ISerializer serializer)
-        {
-            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
-        }
-
         private IFlurlRequest GetBaseUrl(string authenticationRealm)
         {
-            if (!_initialized && _allowInsecure)
+            if (!_initialized)
             {
-                _logger?.LogWarning("Allowing all certificates");
-                FlurlHttp.ConfigureClient(_url.Root, cli =>
-                    cli.Settings.HttpClientFactory = new UntrustedCertClientFactory());
+                FlurlHttp.Clients.WithDefaults(builder =>
+                {
+                    if (_allowInsecure)
+                    {
+                        _logger?.LogWarning("Allowing all certificates");
+                        builder.ConfigureInnerHandler(h =>
+                        {
+                            h.ServerCertificateCustomValidationCallback = (_, _, _, _) => true;
+                        });
+                    }
+
+                    builder.WithSettings(settings =>
+                    {
+                        settings.JsonSerializer = JsonSerializer;
+                    });
+                });
+
                 _initialized = true;
             }
 
             return new Url(_url)
                 .AppendPathSegment("/auth")
-                .ConfigureRequest(settings => settings.JsonSerializer = _serializer)
                 .WithAuthentication(_getToken, _url, authenticationRealm, _userName, _password, _clientId, _clientSecret);
-        }
-
-        public class UntrustedCertClientFactory : DefaultHttpClientFactory
-        {
-            public override HttpMessageHandler CreateMessageHandler()
-            {
-                return new HttpClientHandler
-                {
-                    ServerCertificateCustomValidationCallback = (_, _, _, _) => true
-                };
-            }
         }
     }
 }

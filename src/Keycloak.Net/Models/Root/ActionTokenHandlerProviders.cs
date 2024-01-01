@@ -1,19 +1,19 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ActionTokenHandlerProviders
     {
-        [JsonProperty("verify-email")]
+        [JsonPropertyName("verify-email")]
         public HasOrder VerifyEmail { get; set; }
 
-        [JsonProperty("execute-actions")]
+        [JsonPropertyName("execute-actions")]
         public HasOrder ExecuteActions { get; set; }
 
-        [JsonProperty("reset-credentials")]
+        [JsonPropertyName("reset-credentials")]
         public HasOrder ResetCredentials { get; set; }
 
-        [JsonProperty("idp-verify-account-via-email")]
+        [JsonPropertyName("idp-verify-account-via-email")]
         public HasOrder IdpVerifyAccountViaEmail { get; set; }
     }
 }

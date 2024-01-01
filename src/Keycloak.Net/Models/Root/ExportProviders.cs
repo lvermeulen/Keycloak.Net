@@ -1,13 +1,13 @@
-﻿namespace Keycloak.Net.Models.Root
+namespace Keycloak.Net.Models.Root
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ExportProviders
     {
-        [JsonProperty("singleFile")]
+        [JsonPropertyName("singleFile")]
         public HasOrder SingleFile { get; set; }
 
-        [JsonProperty("dir")]
+        [JsonPropertyName("dir")]
         public HasOrder Dir { get; set; }
     }
 }

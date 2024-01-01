@@ -1,30 +1,30 @@
-﻿namespace Keycloak.Net.Models.RealmsAdmin
+namespace Keycloak.Net.Models.RealmsAdmin
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SmtpServer
     {
-        [JsonProperty("host")]
+        [JsonPropertyName("host")]
         public string Host { get; set; }
-        [JsonProperty("ssl")]
+        [JsonPropertyName("ssl")]
         public string Ssl { get; set; }
-        [JsonProperty("starttls")]
+        [JsonPropertyName("starttls")]
         public string StartTls { get; set; }
-        [JsonProperty("user")]
+        [JsonPropertyName("user")]
         public string User { get; set; }
-        [JsonProperty("password")]
+        [JsonPropertyName("password")]
         public string Password { get; set; }
-        [JsonProperty("auth")]
+        [JsonPropertyName("auth")]
         public string Auth { get; set; }
-        [JsonProperty("from")]
+        [JsonPropertyName("from")]
         public string From { get; set; }
-        [JsonProperty("fromDisplayName")]
+        [JsonPropertyName("fromDisplayName")]
         public string FromDisplayName { get; set; }
-        [JsonProperty("replyTo")]
+        [JsonPropertyName("replyTo")]
         public string ReplyTo { get; set; }
-        [JsonProperty("replyToDisplayName")]
+        [JsonPropertyName("replyToDisplayName")]
         public string ReplyToDisplayName { get; set; }
-        [JsonProperty("envelopeFrom")]
+        [JsonPropertyName("envelopeFrom")]
         public string EnvelopeFrom { get; set; }
     }
 }

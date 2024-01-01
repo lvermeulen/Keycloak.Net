@@ -1,15 +1,16 @@
 ﻿namespace Keycloak.Net.Models.AuthenticationManagement
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class AuthenticatorConfig
     {
-        [JsonProperty("alias")]
+        [JsonPropertyName("alias")]
         public string Alias { get; set; }
-        [JsonProperty("config")]
+        [JsonPropertyName("config")]
         public IDictionary<string, object> Config { get; set; }
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
     }
 }

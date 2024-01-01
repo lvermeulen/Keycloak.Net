@@ -2,16 +2,18 @@ namespace Keycloak.Net
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
+    using System.Text.Json.Nodes;
     using System.Threading.Tasks;
     using Flurl.Http;
-    using Common.Extensions;
-    using Models.Clients;
-    using Models.ClientScopes;
+    using Keycloak.Net.Common.Extensions;
+    using Keycloak.Net.Models.Clients;
+    using Keycloak.Net.Models.ClientScopes;
     using Keycloak.Net.Models.Common;
-    using Models.Roles;
-    using Models.Root;
-    using Models.Users;
+    using Keycloak.Net.Models.Roles;
+    using Keycloak.Net.Models.Root;
+    using Keycloak.Net.Models.Users;
 
     public partial class KeycloakClient
     {
@@ -230,10 +232,10 @@ namespace Keycloak.Net
         {
             var result = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/offline-session-count")
-                .GetJsonAsync()
+                .GetJsonAsync<GenericCount>()
                 .ConfigureAwait(false);
 
-            return Convert.ToInt32(DynamicExtensions.GetFirstPropertyValue(result));
+            return result.Count;
         }
 
         public async Task<IEnumerable<UserSession>> GetClientOfflineSessionsAsync(string realm, string clientId, int? first = null, int? max = null)
@@ -308,10 +310,10 @@ namespace Keycloak.Net
         {
             var result = await GetBaseUrl(realm)
                 .AppendPathSegment($"/admin/realms/{realm}/clients/{clientId}/session-count")
-                .GetJsonAsync()
+                .GetJsonAsync<GenericCount>()
                 .ConfigureAwait(false);
 
-            return Convert.ToInt32(DynamicExtensions.GetFirstPropertyValue(result));
+            return result.Count;
         }
 
         public async Task<GlobalRequestResult> TestClientClusterNodesAvailableAsync(string realm, string clientId)
