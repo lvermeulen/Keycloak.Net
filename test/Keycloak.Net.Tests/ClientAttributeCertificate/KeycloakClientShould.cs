@@ -7,7 +7,7 @@
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetKeyInfoAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);

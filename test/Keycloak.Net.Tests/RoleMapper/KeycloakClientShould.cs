@@ -7,7 +7,7 @@
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRoleMappingsForGroupAsync(string realm)
         {
             var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
@@ -20,7 +20,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRealmRoleMappingsForGroupAsync(string realm)
         {
             var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
@@ -33,7 +33,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetAvailableRealmRoleMappingsForGroupAsync(string realm)
         {
             var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
@@ -46,7 +46,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetEffectiveRealmRoleMappingsForGroupAsync(string realm)
         {
             var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
@@ -59,7 +59,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRoleMappingsForUserAsync(string realm)
         {
             var users = await _client.GetUsersAsync(realm).ConfigureAwait(false);
@@ -72,7 +72,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRealmRoleMappingsForUserAsync(string realm)
         {
             var users = await _client.GetUsersAsync(realm).ConfigureAwait(false);
@@ -85,7 +85,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetAvailableRealmRoleMappingsForUserAsync(string realm)
         {
             var users = await _client.GetUsersAsync(realm).ConfigureAwait(false);
@@ -98,7 +98,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetEffectiveRealmRoleMappingsForUserAsync(string realm)
         {
             var users = await _client.GetUsersAsync(realm).ConfigureAwait(false);

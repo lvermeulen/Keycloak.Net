@@ -6,7 +6,7 @@
     public partial class KeycloakClientShould
     {
         [Theory(Skip = "Not working yet")]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task TriggerUserSynchronizationAsync(string realm)
         {
             string storageProviderId = "";
@@ -15,7 +15,7 @@
         }
 
         [Theory(Skip = "Not working yet")]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task TriggerLdapMapperSynchronizationAsync(string realm)
         {
             string storageProviderId = "";

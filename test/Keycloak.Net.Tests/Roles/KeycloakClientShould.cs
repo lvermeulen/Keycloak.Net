@@ -7,7 +7,7 @@
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetRolesForClientAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -20,7 +20,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetRoleByNameForClientAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -38,7 +38,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetRoleCompositesForClientAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -56,7 +56,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetApplicationRolesForCompositeForClientAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -74,7 +74,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetRealmRolesForCompositeForClientAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -92,7 +92,7 @@
         }
 
         [Theory(Skip = "Not working yet")]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetGroupsWithRoleNameForClientAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -110,7 +110,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetRoleAuthorizationPermissionsInitializedForClientAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -128,7 +128,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetUsersWithRoleNameForClientAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -146,7 +146,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRolesForRealmAsync(string realm)
         {
             var result = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -154,7 +154,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRoleByNameForRealmAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -167,7 +167,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRoleCompositesForRealmAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -180,7 +180,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetApplicationRolesForCompositeForRealmAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -198,7 +198,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRealmRolesForCompositeForRealmAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -211,7 +211,7 @@
         }
 
         [Theory(Skip = "Not working yet")]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetGroupsWithRoleNameForRealmAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -224,7 +224,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRoleAuthorizationPermissionsInitializedForRealmAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -237,7 +237,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetUsersWithRoleNameForRealmAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);

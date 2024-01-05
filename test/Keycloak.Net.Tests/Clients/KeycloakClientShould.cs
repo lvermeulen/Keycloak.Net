@@ -7,7 +7,7 @@
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetClientsAsync(string realm)
         {
             var result = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -15,7 +15,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetClientAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -28,7 +28,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GenerateClientSecretAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -41,7 +41,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetClientSecretAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -54,7 +54,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetDefaultClientScopesAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -67,7 +67,7 @@
         }
 
         [Theory(Skip = "Not working yet")]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GenerateClientExampleAccessTokenAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -80,7 +80,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetProtocolMappersInTokenGenerationAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -93,7 +93,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetClientGrantedScopeMappingsAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -108,7 +108,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetClientNotGrantedScopeMappingsAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -123,7 +123,7 @@
         }
 
         [Theory(Skip = "Not working yet")]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetClientProviderAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -141,7 +141,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetClientAuthorizationPermissionsInitializedAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -154,7 +154,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetClientOfflineSessionCountAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -167,7 +167,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetClientOfflineSessionsAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -180,7 +180,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetOptionalClientScopesAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -193,7 +193,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GenerateClientRegistrationAccessTokenAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -206,7 +206,7 @@
         }
 
         [Theory(Skip = "Not working yet")]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetUserForServiceAccountAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -219,7 +219,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetClientSessionCountAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -232,7 +232,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task TestClientClusterNodesAvailableAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -245,7 +245,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetClientUserSessionsAsync(string realm, string clientId)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -258,7 +258,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetResourcesOwnedByClientAsync(string realm, string clientId)
         {
 	        var result = await _client.GetResourcesOwnedByClientAsync(realm, clientId).ConfigureAwait(false);

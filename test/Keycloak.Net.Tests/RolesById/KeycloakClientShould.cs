@@ -7,7 +7,7 @@
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRoleByIdAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -20,7 +20,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRoleChildrenAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -33,7 +33,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetClientRolesForCompositeByIdAsync(string realm, string clientId)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -51,7 +51,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRealmRolesForCompositeByIdAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
@@ -64,7 +64,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRoleByIdAuthorizationPermissionsInitializedAsync(string realm)
         {
             var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);

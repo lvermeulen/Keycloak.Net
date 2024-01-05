@@ -7,7 +7,7 @@
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetProtocolMappersAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -20,7 +20,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetProtocolMapperAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -38,7 +38,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetProtocolMappersByNameAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);

@@ -7,7 +7,7 @@
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetScopeMappingsAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -20,7 +20,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetClientRolesForClientScopeAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -38,7 +38,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetAvailableClientRolesForClientScopeAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -56,7 +56,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetEffectiveClientRolesForClientScopeAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -74,7 +74,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRealmRolesForClientScopeAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -87,7 +87,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetAvailableRealmRolesForClientScopeAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -100,7 +100,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetEffectiveRealmRolesForClientScopeAsync(string realm)
         {
             var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
@@ -113,7 +113,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetScopeMappingsForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -126,7 +126,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetClientRolesScopeMappingsForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -139,7 +139,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetAvailableClientRolesForClientScopeForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -152,7 +152,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetEffectiveClientRolesForClientScopeForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -165,7 +165,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetRealmRolesScopeMappingsForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -178,7 +178,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetAvailableRealmRolesForClientScopeForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
@@ -191,7 +191,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetEffectiveRealmRolesForClientScopeForClientAsync(string realm)
         {
             var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);

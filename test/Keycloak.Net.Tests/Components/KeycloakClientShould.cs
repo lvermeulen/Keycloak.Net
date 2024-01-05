@@ -7,7 +7,7 @@
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetComponentsAsync(string realm)
         {
             var result = await _client.GetComponentsAsync(realm).ConfigureAwait(false);
@@ -15,7 +15,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetComponentAsync(string realm)
         {
             var components = await _client.GetComponentsAsync(realm).ConfigureAwait(false);

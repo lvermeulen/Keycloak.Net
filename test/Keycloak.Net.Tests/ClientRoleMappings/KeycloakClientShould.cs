@@ -7,7 +7,7 @@
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetClientRoleMappingsForGroupAsync(string realm, string clientId)
         {
             var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
@@ -25,7 +25,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetAvailableClientRoleMappingsForGroupAsync(string realm, string clientId)
         {
             var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
@@ -43,7 +43,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetEffectiveClientRoleMappingsForGroupAsync(string realm, string clientId)
         {
             var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
@@ -61,7 +61,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetClientRoleMappingsForUserAsync(string realm, string clientId)
         {
             var users = await _client.GetUsersAsync(realm).ConfigureAwait(false);
@@ -79,7 +79,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetAvailableClientRoleMappingsForUserAsync(string realm, string clientId)
         {
             var users = await _client.GetUsersAsync(realm).ConfigureAwait(false);
@@ -97,7 +97,7 @@
         }
 
         [Theory]
-        [InlineData("Insurance", "insurance-product")]
+        [InlineData(RealmId, ClientId)]
         public async Task GetEffectiveClientRoleMappingsForUserAsync(string realm, string clientId)
         {
             var users = await _client.GetUsersAsync(realm).ConfigureAwait(false);

@@ -7,7 +7,7 @@
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetGroupHierarchyAsync(string realm)
         {
             var result = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
@@ -15,7 +15,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetGroupsCountAsync(string realm)
         {
             int? result = await _client.GetGroupsCountAsync(realm);
@@ -23,7 +23,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetGroupAsync(string realm)
         {
             var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
@@ -36,7 +36,7 @@
         }
         
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetGroupClientAuthorizationPermissionsInitializedAsync(string realm)
         {
             var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
@@ -49,7 +49,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetGroupUsersAsync(string realm)
         {
             var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);

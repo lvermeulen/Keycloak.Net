@@ -6,7 +6,7 @@
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task GetServerInfoAsync(string realm)
         {
             var result = await _client.GetServerInfoAsync(realm).ConfigureAwait(false);
@@ -14,7 +14,7 @@
         }
 
         [Theory]
-        [InlineData("master")]
+        [InlineData(RealmId)]
         public async Task CorsPreflightAsync(string realm)
         {
             bool? result = await _client.CorsPreflightAsync(realm);

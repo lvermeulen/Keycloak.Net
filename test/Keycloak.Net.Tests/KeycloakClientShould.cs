@@ -5,20 +5,17 @@
 
     public partial class KeycloakClientShould
     {
+        private const string KeycloakUrl = "http://localhost:8080";
+        private const string RealmId = "test";
+        private const string ClientId = "test-client";
+        private const string ClientSecret = "test-client-secret";
+        private const string User = $"service-account-{ClientId}";
+
         private readonly KeycloakClient _client;
 
         public KeycloakClientShould()
         {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .Build();
-
-            string url = configuration["url"] ?? "https://localhost:8443";
-            string userName = configuration["userName"] ?? "admin";
-            string password = configuration["password"] ?? "changeit";
-
-            _client = new KeycloakClient(url, userName, password);
+            _client = new KeycloakClient(KeycloakUrl, ClientId, ClientSecret);
         }
     }
 }
