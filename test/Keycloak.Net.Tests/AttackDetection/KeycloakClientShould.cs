@@ -7,14 +7,14 @@
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData(RealmId, User)]
-        public async Task GetUserNameStatusInBruteForceDetectionAsync(string realm, string search)
+        [InlineData("test-data-user-1")]
+        public async Task GetUserNameStatusInBruteForceDetectionAsync(string search)
         {
-            var users = await _client.GetUsersAsync(realm, search: search).ConfigureAwait(false);
+            var users = await _client.GetUsersAsync(RealmId, search: search);
             string userId = users.FirstOrDefault()?.Id;
             if (userId != null)
             {
-                var result = await _client.GetUserNameStatusInBruteForceDetectionAsync(realm, userId).ConfigureAwait(false);
+                var result = await _client.GetUserNameStatusInBruteForceDetectionAsync(RealmId, userId);
                 Assert.NotNull(result);
             }
         }

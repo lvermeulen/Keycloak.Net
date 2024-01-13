@@ -1,0 +1,15 @@
+version: '3'
+services:
+  keycloak:
+    image: keycloak-net/test/keycloak
+    build: test/Keycloak
+    ports:
+      - 8080:8080
+
+  tests:
+    image: keycloak-net/test/tests
+    build:  
+      context: .
+      dockerfile: test/Keycloak.Net.Tests/Dockerfile
+    environment:
+      - TEST_URL=http://keycloak:8080

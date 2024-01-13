@@ -8,6 +8,7 @@ namespace Keycloak.Net
     using System.Text.Json;
     using System.Text.Json.Serialization;
     using Microsoft.Extensions.Logging;
+    using System.Threading.Tasks;
 
     public partial class KeycloakClient
     {
@@ -75,6 +76,21 @@ namespace Keycloak.Net
                         builder.ConfigureInnerHandler(h =>
                         {
                             h.ServerCertificateCustomValidationCallback = (_, _, _, _) => true;
+                        });
+                    }
+
+                    if (_logger.IsEnabled(LogLevel.Debug))
+                    {
+                        builder.BeforeCall(call =>
+                        {
+                            _logger.LogDebug("Starting {verb} {request}", call.Request?.Verb, call.Request?.Url);
+                            return Task.CompletedTask;
+                        });
+
+                        builder.AfterCall(call =>
+                        {
+                            _logger.LogDebug("Completed {verb} {request} with {status} in {time}", call.Request?.Verb, call.Request?.Url, call.Response?.StatusCode, call?.Duration);
+                            return Task.CompletedTask;
                         });
                     }
 

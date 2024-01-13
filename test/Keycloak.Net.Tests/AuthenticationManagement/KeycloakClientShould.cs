@@ -6,149 +6,135 @@
 
     public partial class KeycloakClientShould
     {
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetAuthenticatorProvidersAsync(string realm)
+        [Fact]
+        public async Task GetAuthenticatorProvidersAsync()
         {
-            var result = await _client.GetAuthenticatorProvidersAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetAuthenticatorProvidersAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetClientAuthenticatorProvidersAsync(string realm)
+        [Fact]
+        public async Task GetClientAuthenticatorProvidersAsync()
         {
-            var result = await _client.GetClientAuthenticatorProvidersAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetClientAuthenticatorProvidersAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetAuthenticatorProviderConfigurationDescriptionAsync(string realm)
+        [Fact]
+        public async Task GetAuthenticatorProviderConfigurationDescriptionAsync()
         {
-            var providers = await _client.GetAuthenticatorProvidersAsync(realm).ConfigureAwait(false);
+            var providers = await _client.GetAuthenticatorProvidersAsync(RealmId);
             string providerId = providers.FirstOrDefault()?.FirstOrDefault(x => x.Key == "id").Value.ToString();
             if (providerId != null)
             {
-                var result = await _client.GetAuthenticatorProviderConfigurationDescriptionAsync(realm, providerId).ConfigureAwait(false);
+                var result = await _client.GetAuthenticatorProviderConfigurationDescriptionAsync(RealmId, providerId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory(Skip = "Not working yet")]
-        [InlineData(RealmId)]
-        public async Task GetAuthenticatorConfigurationAsync(string realm)
+        [Fact(Skip = "Not working yet")]
+        public async Task GetAuthenticatorConfigurationAsync()
         {
             string configurationId = ""; //TODO
             if (configurationId != null)
             {
-                var result = await _client.GetAuthenticatorConfigurationAsync(realm, configurationId).ConfigureAwait(false);
+                var result = await _client.GetAuthenticatorConfigurationAsync(RealmId, configurationId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetAuthenticationExecutionAsync(string realm)
+        [Fact]
+        public async Task GetAuthenticationExecutionAsync()
         {
-            var flows = await _client.GetAuthenticationFlowsAsync(realm).ConfigureAwait(false);
+            var flows = await _client.GetAuthenticationFlowsAsync(RealmId);
             string flowAlias = flows.FirstOrDefault()?.Alias;
             if (flowAlias != null)
             {
-                var executions = await _client.GetAuthenticationFlowExecutionsAsync(realm, flowAlias).ConfigureAwait(false);
+                var executions = await _client.GetAuthenticationFlowExecutionsAsync(RealmId, flowAlias);
                 string executionId = executions.FirstOrDefault()?.Id;
                 if (executionId != null)
                 {
-                    var result = await _client.GetAuthenticationExecutionAsync(realm, executionId).ConfigureAwait(false);
+                    var result = await _client.GetAuthenticationExecutionAsync(RealmId, executionId);
                     Assert.NotNull(result);
                 }
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetAuthenticationFlowsAsync(string realm)
+        [Fact]
+        public async Task GetAuthenticationFlowsAsync()
         {
-            var result = await _client.GetAuthenticationFlowsAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetAuthenticationFlowsAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetAuthenticationFlowExecutionsAsync(string realm)
+        [Fact]
+        public async Task GetAuthenticationFlowExecutionsAsync()
         {
-            var flows = await _client.GetAuthenticationFlowsAsync(realm).ConfigureAwait(false);
+            var flows = await _client.GetAuthenticationFlowsAsync(RealmId);
             string flowAlias = flows.FirstOrDefault()?.Alias;
             if (flowAlias != null)
             {
-                var result = await _client.GetAuthenticationFlowExecutionsAsync(realm, flowAlias).ConfigureAwait(false);
+                var result = await _client.GetAuthenticationFlowExecutionsAsync(RealmId, flowAlias);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetAuthenticationFlowByIdAsync(string realm)
+        [Fact]
+        public async Task GetAuthenticationFlowByIdAsync()
         {
-            var flows = await _client.GetAuthenticationFlowsAsync(realm).ConfigureAwait(false);
+            var flows = await _client.GetAuthenticationFlowsAsync(RealmId);
             string flowId = flows.FirstOrDefault()?.Id;
             if (flowId != null)
             {
-                var result = await _client.GetAuthenticationFlowByIdAsync(realm, flowId).ConfigureAwait(false);
+                var result = await _client.GetAuthenticationFlowByIdAsync(RealmId, flowId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetFormActionProvidersAsync(string realm)
+        [Fact]
+        public async Task GetFormActionProvidersAsync()
         {
-            var result = await _client.GetFormActionProvidersAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetFormActionProvidersAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetFormProvidersAsync(string realm)
+        [Fact]
+        public async Task GetFormProvidersAsync()
         {
-            var result = await _client.GetFormProvidersAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetFormProvidersAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetConfigurationDescriptionsForAllClientsAsync(string realm)
+        [Fact]
+        public async Task GetConfigurationDescriptionsForAllClientsAsync()
         {
-            var result = await _client.GetConfigurationDescriptionsForAllClientsAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetConfigurationDescriptionsForAllClientsAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRequiredActionsAsync(string realm)
+        [Fact]
+        public async Task GetRequiredActionsAsync()
         {
-            var result = await _client.GetRequiredActionsAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetRequiredActionsAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRequiredActionByAliasAsync(string realm)
+        [Fact]
+        public async Task GetRequiredActionByAliasAsync()
         {
-            var requiredActions = await _client.GetRequiredActionsAsync(realm).ConfigureAwait(false);
+            var requiredActions = await _client.GetRequiredActionsAsync(RealmId);
             string requiredActionAlias = requiredActions.FirstOrDefault()?.Alias;
             if (requiredActionAlias != null)
             {
-                var result = await _client.GetRequiredActionByAliasAsync(realm, requiredActionAlias).ConfigureAwait(false);
+                var result = await _client.GetRequiredActionByAliasAsync(RealmId, requiredActionAlias);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetUnregisteredRequiredActionsAsync(string realm)
+        [Fact]
+        public async Task GetUnregisteredRequiredActionsAsync()
         {
-            var result = await _client.GetUnregisteredRequiredActionsAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetUnregisteredRequiredActionsAsync(RealmId);
             Assert.NotNull(result);
         }
     }

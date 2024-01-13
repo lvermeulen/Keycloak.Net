@@ -6,101 +6,94 @@
 
     public partial class KeycloakClientShould
     {
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetIdentityProviderInstancesAsync(string realm)
+        [Fact]
+        public async Task GetIdentityProviderInstancesAsync()
         {
-            var result = await _client.GetIdentityProviderInstancesAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetIdentityProviderInstancesAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetIdentityProviderAsync(string realm)
+        [Fact]
+        public async Task GetIdentityProviderAsync()
         {
-            var identityProviderInstances = await _client.GetIdentityProviderInstancesAsync(realm).ConfigureAwait(false);
+            var identityProviderInstances = await _client.GetIdentityProviderInstancesAsync(RealmId);
             string identityProviderAlias = identityProviderInstances.FirstOrDefault()?.Alias;
             if (identityProviderAlias != null)
             {
-                var result = await _client.GetIdentityProviderAsync(realm, identityProviderAlias).ConfigureAwait(false);
+                var result = await _client.GetIdentityProviderAsync(RealmId, identityProviderAlias);
                 Assert.NotNull(result);
             }
         }
 
         //[Theory]
         //[InlineData(DefaultRealm)]
-        //public async Task GetIdentityProviderTokenAsync(string realm)
+        //public async Task GetIdentityProviderTokenAsync()
         //{
-        //    var token = await _client.GetIdentityProviderTokenAsync(realm).ConfigureAwait(false);
+        //    var token = await _client.GetIdentityProviderTokenAsync(RealmId).ConfigureAwait(false);
         //    Assert.NotNull(token);
         //}
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetIdentityProviderAuthorizationPermissionsInitializedAsync(string realm)
+        [Fact]
+        public async Task GetIdentityProviderAuthorizationPermissionsInitializedAsync()
         {
-            var identityProviderInstances = await _client.GetIdentityProviderInstancesAsync(realm).ConfigureAwait(false);
+            var identityProviderInstances = await _client.GetIdentityProviderInstancesAsync(RealmId);
             string identityProviderAlias = identityProviderInstances.FirstOrDefault()?.Alias;
             if (identityProviderAlias != null)
             {
-                var result = await _client.GetIdentityProviderAuthorizationPermissionsInitializedAsync(realm, identityProviderAlias).ConfigureAwait(false);
+                var result = await _client.GetIdentityProviderAuthorizationPermissionsInitializedAsync(RealmId, identityProviderAlias);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory(Skip = "500 Internal server error")]
-        [InlineData(RealmId)]
-        public async Task GetIdentityProviderMapperTypesAsync(string realm)
+        [Fact(Skip = "500 Internal server error")]
+        public async Task GetIdentityProviderMapperTypesAsync()
         {
-            var identityProviderInstances = await _client.GetIdentityProviderInstancesAsync(realm).ConfigureAwait(false);
+            var identityProviderInstances = await _client.GetIdentityProviderInstancesAsync(RealmId);
             string identityProviderAlias = identityProviderInstances.FirstOrDefault()?.Alias;
             if (identityProviderAlias != null)
             {
-                var result = await _client.GetIdentityProviderMapperTypesAsync(realm, identityProviderAlias).ConfigureAwait(false);
+                var result = await _client.GetIdentityProviderMapperTypesAsync(RealmId, identityProviderAlias);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetIdentityProviderMappersAsync(string realm)
+        [Fact]
+        public async Task GetIdentityProviderMappersAsync()
         {
-            var identityProviderInstances = await _client.GetIdentityProviderInstancesAsync(realm).ConfigureAwait(false);
+            var identityProviderInstances = await _client.GetIdentityProviderInstancesAsync(RealmId);
             string identityProviderAlias = identityProviderInstances.FirstOrDefault()?.Alias;
             if (identityProviderAlias != null)
             {
-                var result = await _client.GetIdentityProviderMappersAsync(realm, identityProviderAlias).ConfigureAwait(false);
+                var result = await _client.GetIdentityProviderMappersAsync(RealmId, identityProviderAlias);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetIdentityProviderMapperByIdAsync(string realm)
+        [Fact]
+        public async Task GetIdentityProviderMapperByIdAsync()
         {
-            var identityProviderInstances = await _client.GetIdentityProviderInstancesAsync(realm).ConfigureAwait(false);
+            var identityProviderInstances = await _client.GetIdentityProviderInstancesAsync(RealmId);
             string identityProviderAlias = identityProviderInstances.FirstOrDefault()?.Alias;
             if (identityProviderAlias != null)
             {
-                var mappers = await _client.GetIdentityProviderMappersAsync(realm, identityProviderAlias).ConfigureAwait(false);
+                var mappers = await _client.GetIdentityProviderMappersAsync(RealmId, identityProviderAlias);
                 string mapperId = mappers.FirstOrDefault()?.Id;
                 if (mapperId != null)
                 {
-                    var result = await _client.GetIdentityProviderMapperByIdAsync(realm, identityProviderAlias, mapperId).ConfigureAwait(false);
+                    var result = await _client.GetIdentityProviderMapperByIdAsync(RealmId, identityProviderAlias, mapperId);
                     Assert.NotNull(result);
                 }
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetIdentityProviderByProviderIdAsync(string realm)
+        [Fact]
+        public async Task GetIdentityProviderByProviderIdAsync()
         {
-            var identityProviderInstances = await _client.GetIdentityProviderInstancesAsync(realm).ConfigureAwait(false);
+            var identityProviderInstances = await _client.GetIdentityProviderInstancesAsync(RealmId);
             string identityProviderId = identityProviderInstances.FirstOrDefault()?.ProviderId;
             if (identityProviderId != null)
             {
-                var result = await _client.GetIdentityProviderByProviderIdAsync(realm, identityProviderId).ConfigureAwait(false);
+                var result = await _client.GetIdentityProviderByProviderIdAsync(RealmId, identityProviderId);
                 Assert.NotNull(result);
             }
         }

@@ -6,106 +6,98 @@
 
     public partial class KeycloakClientShould
     {
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRoleMappingsForGroupAsync(string realm)
+        [Fact]
+        public async Task GetRoleMappingsForGroupAsync()
         {
-            var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
+            var groups = await _client.GetGroupHierarchyAsync(RealmId);
             string groupId = groups.FirstOrDefault()?.Id;
             if (groupId != null)
             {
-                var result = await _client.GetRoleMappingsForGroupAsync(realm, groupId).ConfigureAwait(false);
+                var result = await _client.GetRoleMappingsForGroupAsync(RealmId, groupId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRealmRoleMappingsForGroupAsync(string realm)
+        [Fact]
+        public async Task GetRealmRoleMappingsForGroupAsync()
         {
-            var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
+            var groups = await _client.GetGroupHierarchyAsync(RealmId);
             string groupId = groups.FirstOrDefault()?.Id;
             if (groupId != null)
             {
-                var result = await _client.GetRealmRoleMappingsForGroupAsync(realm, groupId).ConfigureAwait(false);
+                var result = await _client.GetRealmRoleMappingsForGroupAsync(RealmId, groupId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetAvailableRealmRoleMappingsForGroupAsync(string realm)
+        [Fact]
+        public async Task GetAvailableRealmRoleMappingsForGroupAsync()
         {
-            var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
+            var groups = await _client.GetGroupHierarchyAsync(RealmId);
             string groupId = groups.FirstOrDefault()?.Id;
             if (groupId != null)
             {
-                var result = await _client.GetAvailableRealmRoleMappingsForGroupAsync(realm, groupId).ConfigureAwait(false);
+                var result = await _client.GetAvailableRealmRoleMappingsForGroupAsync(RealmId, groupId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetEffectiveRealmRoleMappingsForGroupAsync(string realm)
+        [Fact]
+        public async Task GetEffectiveRealmRoleMappingsForGroupAsync()
         {
-            var groups = await _client.GetGroupHierarchyAsync(realm).ConfigureAwait(false);
+            var groups = await _client.GetGroupHierarchyAsync(RealmId);
             string groupId = groups.FirstOrDefault()?.Id;
             if (groupId != null)
             {
-                var result = await _client.GetEffectiveRealmRoleMappingsForGroupAsync(realm, groupId).ConfigureAwait(false);
+                var result = await _client.GetEffectiveRealmRoleMappingsForGroupAsync(RealmId, groupId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRoleMappingsForUserAsync(string realm)
+        [Fact]
+        public async Task GetRoleMappingsForUserAsync()
         {
-            var users = await _client.GetUsersAsync(realm).ConfigureAwait(false);
+            var users = await _client.GetUsersAsync(RealmId);
             string userId = users.FirstOrDefault()?.Id;
             if (userId != null)
             {
-                var result = await _client.GetRoleMappingsForUserAsync(realm, userId).ConfigureAwait(false);
+                var result = await _client.GetRoleMappingsForUserAsync(RealmId, userId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRealmRoleMappingsForUserAsync(string realm)
+        [Fact]
+        public async Task GetRealmRoleMappingsForUserAsync()
         {
-            var users = await _client.GetUsersAsync(realm).ConfigureAwait(false);
+            var users = await _client.GetUsersAsync(RealmId);
             string userId = users.FirstOrDefault()?.Id;
             if (userId != null)
             {
-                var result = await _client.GetRealmRoleMappingsForUserAsync(realm, userId).ConfigureAwait(false);
+                var result = await _client.GetRealmRoleMappingsForUserAsync(RealmId, userId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetAvailableRealmRoleMappingsForUserAsync(string realm)
+        [Fact]
+        public async Task GetAvailableRealmRoleMappingsForUserAsync()
         {
-            var users = await _client.GetUsersAsync(realm).ConfigureAwait(false);
+            var users = await _client.GetUsersAsync(RealmId);
             string userId = users.FirstOrDefault()?.Id;
             if (userId != null)
             {
-                var result = await _client.GetAvailableRealmRoleMappingsForUserAsync(realm, userId).ConfigureAwait(false);
+                var result = await _client.GetAvailableRealmRoleMappingsForUserAsync(RealmId, userId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetEffectiveRealmRoleMappingsForUserAsync(string realm)
+        [Fact]
+        public async Task GetEffectiveRealmRoleMappingsForUserAsync()
         {
-            var users = await _client.GetUsersAsync(realm).ConfigureAwait(false);
+            var users = await _client.GetUsersAsync(RealmId);
             string userId = users.FirstOrDefault()?.Id;
             if (userId != null)
             {
-                var result = await _client.GetEffectiveRealmRoleMappingsForUserAsync(realm, userId).ConfigureAwait(false);
+                var result = await _client.GetEffectiveRealmRoleMappingsForUserAsync(RealmId, userId);
                 Assert.NotNull(result);
             }
         }

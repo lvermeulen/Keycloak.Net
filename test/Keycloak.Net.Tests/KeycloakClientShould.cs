@@ -1,21 +1,36 @@
 ﻿namespace Keycloak.Net.Tests
 {
-    using System.IO;
-    using Microsoft.Extensions.Configuration;
+    using System;
+    using Xunit.Abstractions;
 
     public partial class KeycloakClientShould
     {
-        private const string KeycloakUrl = "http://localhost:8080";
-        private const string RealmId = "test";
-        private const string ClientId = "test-client";
-        private const string ClientSecret = "test-client-secret";
-        private const string User = $"service-account-{ClientId}";
+        private static readonly string KeycloakUrl = 
+            Environment.GetEnvironmentVariable($"TEST_URL") 
+            ?? "http://localhost:8080";
 
+        private static readonly string RealmId = 
+            Environment.GetEnvironmentVariable($"TEST_REALM_ID") 
+            ?? "test";
+
+        private static readonly string ClientId = 
+            Environment.GetEnvironmentVariable($"TEST_CLIENT_ID") 
+            ?? "test-client";
+
+        private static readonly string ClientSecret = 
+            Environment.GetEnvironmentVariable($"TEST_CLIENT_SECRET") 
+            ?? "test-client-secret";
+
+        private static readonly string User = 
+            Environment.GetEnvironmentVariable($"TEST_CLIENT_SA") 
+            ?? $"service-account-{ClientId}";
+            
         private readonly KeycloakClient _client;
 
-        public KeycloakClientShould()
+        public KeycloakClientShould(ITestOutputHelper output)
         {
-            _client = new KeycloakClient(KeycloakUrl, ClientId, ClientSecret);
+            var logger = new XUnitLogger<KeycloakClient>(output);
+            _client = new KeycloakClient(KeycloakUrl, ClientId, ClientSecret, logger: logger);
         }
     }
 }

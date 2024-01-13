@@ -6,96 +6,85 @@
 
     public partial class KeycloakClientShould
     {
-	    [Theory]
-        [InlineData(RealmId)]
-	    public async Task GetRealmsAsync(string realm)
+	    [Fact]
+        public async Task GetRealmsAsync()
 	    {
-		    var result = await _client.GetRealmsAsync(realm).ConfigureAwait(false);
+		    var result = await _client.GetRealmsAsync(RealmId);
 		    Assert.NotNull(result);
 	    }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRealmAsync(string realm)
+        [Fact]
+        public async Task GetRealmAsync()
         {
-            var result = await _client.GetRealmAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetRealmAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetAdminEventsAsync(string realm)
+        [Fact]
+        public async Task GetAdminEventsAsync()
         {
-            var result = await _client.GetAdminEventsAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetAdminEventsAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetClientSessionStatsAsync(string realm)
+        [Fact]
+        public async Task GetClientSessionStatsAsync()
         {
-            var result = await _client.GetClientSessionStatsAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetClientSessionStatsAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRealmDefaultClientScopesAsync(string realm)
+        [Fact]
+        public async Task GetRealmDefaultClientScopesAsync()
         {
-            var result = await _client.GetRealmDefaultClientScopesAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetRealmDefaultClientScopesAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRealmGroupHierarchyAsync(string realm)
+        [Fact]
+        public async Task GetRealmGroupHierarchyAsync()
         {
-            var result = await _client.GetRealmGroupHierarchyAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetRealmGroupHierarchyAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRealmOptionalClientScopesAsync(string realm)
+        [Fact]
+        public async Task GetRealmOptionalClientScopesAsync()
         {
-            var result = await _client.GetRealmOptionalClientScopesAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetRealmOptionalClientScopesAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetEventsAsync(string realm)
+        [Fact]
+        public async Task GetEventsAsync()
         {
-            var result = await _client.GetEventsAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetEventsAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRealmEventsProviderConfigurationAsync(string realm)
+        [Fact]
+        public async Task GetRealmEventsProviderConfigurationAsync()
         {
-            var result = await _client.GetRealmEventsProviderConfigurationAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetRealmEventsProviderConfigurationAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRealmGroupByPathAsync(string realm)
+        [Fact]
+        public async Task GetRealmGroupByPathAsync()
         {
-            var groups = await _client.GetRealmGroupHierarchyAsync(realm).ConfigureAwait(false);
+            var groups = await _client.GetRealmGroupHierarchyAsync(RealmId);
             string path = groups.FirstOrDefault()?.Path;
             if (path != null)
             {
-                var result = await _client.GetRealmGroupByPathAsync(realm, path).ConfigureAwait(false);
+                var result = await _client.GetRealmGroupByPathAsync(RealmId, path);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRealmUsersManagementPermissionsAsync(string realm)
+        [Fact]
+        public async Task GetRealmUsersManagementPermissionsAsync()
         {
-            var result = await _client.GetRealmUsersManagementPermissionsAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetRealmUsersManagementPermissionsAsync(RealmId);
             Assert.NotNull(result);
         }
     }

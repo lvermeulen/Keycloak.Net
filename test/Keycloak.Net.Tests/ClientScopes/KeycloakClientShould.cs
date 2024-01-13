@@ -6,23 +6,21 @@
 
     public partial class KeycloakClientShould
     {
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetClientScopesAsync(string realm)
+        [Fact]
+        public async Task GetClientScopesAsync()
         {
-            var result = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetClientScopesAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetClientScopeAsync(string realm)
+        [Fact]
+        public async Task GetClientScopeAsync()
         {
-            var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
+            var clientScopes = await _client.GetClientScopesAsync(RealmId);
             string clientScopeId = clientScopes.FirstOrDefault()?.Id;
             if (clientScopeId != null)
             {
-                var result = await _client.GetClientScopeAsync(realm, clientScopeId).ConfigureAwait(false);
+                var result = await _client.GetClientScopeAsync(RealmId, clientScopeId);
                 Assert.NotNull(result);
             }
         }

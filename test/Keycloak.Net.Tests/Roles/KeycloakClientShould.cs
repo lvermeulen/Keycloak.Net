@@ -7,244 +7,237 @@
     public partial class KeycloakClientShould
     {
         [Theory]
-        [InlineData(RealmId, ClientId)]
-        public async Task GetRolesForClientAsync(string realm, string clientId)
+        [InlineData("test-data-client-1")]
+        public async Task GetRolesForClientAsync(string clientId)
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientsId = clients.FirstOrDefault(x => x.ClientId == clientId)?.Id;
             if (clientsId != null)
             {
-                var result = await _client.GetRolesAsync(realm, clientsId).ConfigureAwait(false);
+                var result = await _client.GetRolesAsync(RealmId, clientsId);
                 Assert.NotNull(result);
             }
         }
 
         [Theory]
-        [InlineData(RealmId, ClientId)]
-        public async Task GetRoleByNameForClientAsync(string realm, string clientId)
+        [InlineData("test-data-client-1")]
+        public async Task GetRoleByNameForClientAsync(string clientId)
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientsId = clients.FirstOrDefault(x => x.ClientId == clientId)?.Id;
             if (clientsId != null)
             {
-                var roles = await _client.GetRolesAsync(realm, clientsId).ConfigureAwait(false);
+                var roles = await _client.GetRolesAsync(RealmId, clientsId);
                 string roleName = roles.FirstOrDefault()?.Name;
                 if (roleName != null)
                 {
-                    var result = await _client.GetRoleByNameAsync(realm, clientsId, roleName).ConfigureAwait(false);
+                    var result = await _client.GetRoleByNameAsync(RealmId, clientsId, roleName);
                     Assert.NotNull(result);
                 }
             }
         }
 
         [Theory]
-        [InlineData(RealmId, ClientId)]
-        public async Task GetRoleCompositesForClientAsync(string realm, string clientId)
+        [InlineData("test-data-client-1")]
+        public async Task GetRoleCompositesForClientAsync(string clientId)
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientsId = clients.FirstOrDefault(x => x.ClientId == clientId)?.Id;
             if (clientsId != null)
             {
-                var roles = await _client.GetRolesAsync(realm, clientsId).ConfigureAwait(false);
+                var roles = await _client.GetRolesAsync(RealmId, clientsId);
                 string roleName = roles.FirstOrDefault()?.Name;
                 if (roleName != null)
                 {
-                    var result = await _client.GetRoleCompositesAsync(realm, clientsId, roleName).ConfigureAwait(false);
+                    var result = await _client.GetRoleCompositesAsync(RealmId, clientsId, roleName);
                     Assert.NotNull(result);
                 }
             }
         }
 
         [Theory]
-        [InlineData(RealmId, ClientId)]
-        public async Task GetApplicationRolesForCompositeForClientAsync(string realm, string clientId)
+        [InlineData("test-data-client-1")]
+        public async Task GetApplicationRolesForCompositeForClientAsync(string clientId)
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientsId = clients.FirstOrDefault(x => x.ClientId == clientId)?.Id;
             if (clientsId != null)
             {
-                var roles = await _client.GetRolesAsync(realm, clientsId).ConfigureAwait(false);
+                var roles = await _client.GetRolesAsync(RealmId, clientsId);
                 string roleName = roles.FirstOrDefault()?.Name;
                 if (roleName != null)
                 {
-                    var result = await _client.GetApplicationRolesForCompositeAsync(realm, clientsId, roleName, clientsId).ConfigureAwait(false);
+                    var result = await _client.GetApplicationRolesForCompositeAsync(RealmId, clientsId, roleName, clientsId);
                     Assert.NotNull(result);
                 }
             }
         }
 
         [Theory]
-        [InlineData(RealmId, ClientId)]
-        public async Task GetRealmRolesForCompositeForClientAsync(string realm, string clientId)
+        [InlineData("test-data-client-1")]
+        public async Task GetRealmRolesForCompositeForClientAsync(string clientId)
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientsId = clients.FirstOrDefault(x => x.ClientId == clientId)?.Id;
             if (clientsId != null)
             {
-                var roles = await _client.GetRolesAsync(realm, clientsId).ConfigureAwait(false);
+                var roles = await _client.GetRolesAsync(RealmId, clientsId);
                 string roleName = roles.FirstOrDefault()?.Name;
                 if (roleName != null)
                 {
-                    var result = await _client.GetRealmRolesForCompositeAsync(realm, clientsId, roleName).ConfigureAwait(false);
+                    var result = await _client.GetRealmRolesForCompositeAsync(RealmId, clientsId, roleName);
                     Assert.NotNull(result);
                 }
             }
         }
 
         [Theory(Skip = "Not working yet")]
-        [InlineData(RealmId, ClientId)]
-        public async Task GetGroupsWithRoleNameForClientAsync(string realm, string clientId)
+        [InlineData("test-data-client-1")]
+        public async Task GetGroupsWithRoleNameForClientAsync(string clientId)
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientsId = clients.FirstOrDefault(x => x.ClientId == clientId)?.Id;
             if (clientsId != null)
             {
-                var roles = await _client.GetRolesAsync(realm, clientsId).ConfigureAwait(false);
+                var roles = await _client.GetRolesAsync(RealmId, clientsId);
                 string roleName = roles.FirstOrDefault()?.Name;
                 if (roleName != null)
                 {
-                    var result = await _client.GetGroupsWithRoleNameAsync(realm, clientsId, roleName).ConfigureAwait(false);
+                    var result = await _client.GetGroupsWithRoleNameAsync(RealmId, clientsId, roleName);
                     Assert.NotNull(result);
                 }
             }
         }
 
         [Theory]
-        [InlineData(RealmId, ClientId)]
-        public async Task GetRoleAuthorizationPermissionsInitializedForClientAsync(string realm, string clientId)
+        [InlineData("test-data-client-1")]
+        public async Task GetRoleAuthorizationPermissionsInitializedForClientAsync(string clientId)
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientsId = clients.FirstOrDefault(x => x.ClientId == clientId)?.Id;
             if (clientsId != null)
             {
-                var roles = await _client.GetRolesAsync(realm, clientsId).ConfigureAwait(false);
+                var roles = await _client.GetRolesAsync(RealmId, clientsId);
                 string roleName = roles.FirstOrDefault()?.Name;
                 if (roleName != null)
                 {
-                    var result = await _client.GetRoleAuthorizationPermissionsInitializedAsync(realm, clientsId, roleName).ConfigureAwait(false);
+                    var result = await _client.GetRoleAuthorizationPermissionsInitializedAsync(RealmId, clientsId, roleName);
                     Assert.NotNull(result);
                 }
             }
         }
 
         [Theory]
-        [InlineData(RealmId, ClientId)]
-        public async Task GetUsersWithRoleNameForClientAsync(string realm, string clientId)
+        [InlineData("test-data-client-1")]
+        public async Task GetUsersWithRoleNameForClientAsync(string clientId)
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientsId = clients.FirstOrDefault(x => x.ClientId == clientId)?.Id;
             if (clientsId != null)
             {
-                var roles = await _client.GetRolesAsync(realm, clientsId).ConfigureAwait(false);
+                var roles = await _client.GetRolesAsync(RealmId, clientsId);
                 string roleName = roles.FirstOrDefault()?.Name;
                 if (roleName != null)
                 {
-                    var result = await _client.GetUsersWithRoleNameAsync(realm, clientsId, roleName).ConfigureAwait(false);
+                    var result = await _client.GetUsersWithRoleNameAsync(RealmId, clientsId, roleName);
                     Assert.NotNull(result);
                 }
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRolesForRealmAsync(string realm)
+        [Fact]
+        public async Task GetRolesForRealmAsync()
         {
-            var result = await _client.GetRolesAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetRolesAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRoleByNameForRealmAsync(string realm)
+        [Fact]
+        public async Task GetRoleByNameForRealmAsync()
         {
-            var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
+            var roles = await _client.GetRolesAsync(RealmId);
             string roleName = roles.FirstOrDefault()?.Name;
             if (roleName != null)
             {
-                var result = await _client.GetRoleByNameAsync(realm, roleName).ConfigureAwait(false);
+                var result = await _client.GetRoleByNameAsync(RealmId, roleName);
+                Assert.NotNull(result);
+            }
+        }
+
+        [Fact]
+        public async Task GetRoleCompositesForRealmAsync()
+        {
+            var roles = await _client.GetRolesAsync(RealmId);
+            string roleName = roles.FirstOrDefault()?.Name;
+            if (roleName != null)
+            {
+                var result = await _client.GetRoleCompositesAsync(RealmId, roleName);
                 Assert.NotNull(result);
             }
         }
 
         [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRoleCompositesForRealmAsync(string realm)
+        [InlineData("test-data-client-1")]
+        public async Task GetApplicationRolesForCompositeForRealmAsync(string clientId)
         {
-            var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
-            string roleName = roles.FirstOrDefault()?.Name;
-            if (roleName != null)
-            {
-                var result = await _client.GetRoleCompositesAsync(realm, roleName).ConfigureAwait(false);
-                Assert.NotNull(result);
-            }
-        }
-
-        [Theory]
-        [InlineData(RealmId, ClientId)]
-        public async Task GetApplicationRolesForCompositeForRealmAsync(string realm, string clientId)
-        {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientsId = clients.FirstOrDefault(x => x.ClientId == clientId)?.Id;
             if (clientsId != null)
             {
-                var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
+                var roles = await _client.GetRolesAsync(RealmId);
                 string roleName = roles.FirstOrDefault()?.Name;
                 if (roleName != null)
                 {
-                    var result = await _client.GetApplicationRolesForCompositeAsync(realm, roleName, clientsId).ConfigureAwait(false);
+                    var result = await _client.GetApplicationRolesForCompositeAsync(RealmId, roleName, clientsId);
                     Assert.NotNull(result);
                 }
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRealmRolesForCompositeForRealmAsync(string realm)
+        [Fact]
+        public async Task GetRealmRolesForCompositeForRealmAsync()
         {
-            var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
+            var roles = await _client.GetRolesAsync(RealmId);
             string roleName = roles.FirstOrDefault()?.Name;
             if (roleName != null)
             {
-                var result = await _client.GetRealmRolesForCompositeAsync(realm, roleName).ConfigureAwait(false);
+                var result = await _client.GetRealmRolesForCompositeAsync(RealmId, roleName);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory(Skip = "Not working yet")]
-        [InlineData(RealmId)]
-        public async Task GetGroupsWithRoleNameForRealmAsync(string realm)
+        [Fact(Skip = "Not working yet")]
+        public async Task GetGroupsWithRoleNameForRealmAsync()
         {
-            var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
+            var roles = await _client.GetRolesAsync(RealmId);
             string roleName = roles.FirstOrDefault()?.Name;
             if (roleName != null)
             {
-                var result = await _client.GetGroupsWithRoleNameAsync(realm, roleName).ConfigureAwait(false);
+                var result = await _client.GetGroupsWithRoleNameAsync(RealmId, roleName);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetRoleAuthorizationPermissionsInitializedForRealmAsync(string realm)
+        [Fact]
+        public async Task GetRoleAuthorizationPermissionsInitializedForRealmAsync()
         {
-            var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
+            var roles = await _client.GetRolesAsync(RealmId);
             string roleName = roles.FirstOrDefault()?.Name;
             if (roleName != null)
             {
-                var result = await _client.GetRoleAuthorizationPermissionsInitializedAsync(realm, roleName).ConfigureAwait(false);
+                var result = await _client.GetRoleAuthorizationPermissionsInitializedAsync(RealmId, roleName);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData(RealmId)]
-        public async Task GetUsersWithRoleNameForRealmAsync(string realm)
+        [Fact]
+        public async Task GetUsersWithRoleNameForRealmAsync()
         {
-            var roles = await _client.GetRolesAsync(realm).ConfigureAwait(false);
+            var roles = await _client.GetRolesAsync(RealmId);
             string roleName = roles.FirstOrDefault()?.Name;
             if (roleName != null)
             {
-                var result = await _client.GetUsersWithRoleNameAsync(realm, roleName).ConfigureAwait(false);
+                var result = await _client.GetUsersWithRoleNameAsync(RealmId, roleName);
                 Assert.NotNull(result);
             }
         }
