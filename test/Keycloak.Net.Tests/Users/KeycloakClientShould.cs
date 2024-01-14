@@ -34,7 +34,7 @@
         }
 
         [Theory]
-        [InlineData("vermeulen")]
+        [InlineData("test-data-user-1")]
         public async Task GetUserSocialLoginsAsync(string search)
         {
             var users = await _client.GetUsersAsync(RealmId, search: search);
@@ -47,7 +47,7 @@
         }
 
         [Theory]
-        [InlineData("vermeulen")]
+        [InlineData("test-data-user-1")]
         public async Task GetUserGroupsAsync(string search)
         {
             var users = await _client.GetUsersAsync(RealmId, search: search);
@@ -60,7 +60,7 @@
         }
 
         [Theory]
-        [InlineData("vermeulen")]
+        [InlineData("test-data-user-1")]
         public async Task GetUserGroupsCountAsync(string search)
         {
             var users = await _client.GetUsersAsync(RealmId, search: search);
@@ -73,7 +73,7 @@
         }
 
         [Theory]
-        [InlineData("vermeulen")]
+        [InlineData("test-data-user-1")]
         public async Task GetUserSessionsAsync(string search)
         {
             var users = await _client.GetUsersAsync(RealmId, search: search);

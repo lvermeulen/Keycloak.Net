@@ -1,5 +1,9 @@
 FROM quay.io/keycloak/keycloak:20.0
 
+USER root
+RUN microdnf install -y jq
+USER keycloak
+
 WORKDIR /opt/keycloak
 
 COPY *.sh .

@@ -25,9 +25,9 @@ namespace Keycloak.Net.Models.Users
         [JsonPropertyName("email")]
         public string Email { get; set; }
         [JsonPropertyName("disableableCredentialTypes")]
-        public ReadOnlyCollection<string> DisableableCredentialTypes { get; set; }
+        public List<string> DisableableCredentialTypes { get; set; }
         [JsonPropertyName("requiredActions")]
-        public ReadOnlyCollection<string> RequiredActions { get; set; }
+        public List<string> RequiredActions { get; set; }
         [JsonPropertyName("notBefore")]
         public int? NotBefore { get; set; }
         [JsonPropertyName("access")]

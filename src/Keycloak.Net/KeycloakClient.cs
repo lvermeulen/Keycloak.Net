@@ -92,6 +92,18 @@ namespace Keycloak.Net
                             _logger.LogDebug("Completed {verb} {request} with {status} in {time}", call.Request?.Verb, call.Request?.Url, call.Response?.StatusCode, call?.Duration);
                             return Task.CompletedTask;
                         });
+
+                        builder.OnError(async call =>
+                        {
+                            if(call.Exception == null)
+                            {
+                                return;
+                            }
+
+                            _logger.LogDebug("Exception {exception} occured during {verb} {request} with {status} in {time}", call.Exception.GetType().Name, 
+                                call.Request?.Verb, call.Request?.Url, call.Response?.StatusCode, call?.Duration);
+                            _logger.LogDebug("Response body: {body}", await call.Response?.GetStringAsync());
+                        });
                     }
 
                     builder.WithSettings(settings =>
