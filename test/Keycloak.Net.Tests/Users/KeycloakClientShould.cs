@@ -6,84 +6,81 @@
 
     public partial class KeycloakClientShould
     {
-        [Theory]
-        [InlineData("master")]
-        public async Task GetUsersAsync(string realm)
+        [Fact]
+        public async Task GetUsersAsync()
         {
-            var result = await _client.GetUsersAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetUsersAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetUsersCountAsync(string realm)
+        [Fact]
+        public async Task GetUsersCountAsync()
         {
-            int? result = await _client.GetUsersCountAsync(realm);
+            int? result = await _client.GetUsersCountAsync(RealmId);
             Assert.True(result >= 0);
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetUserAsync(string realm)
+        [Fact]
+        public async Task GetUserAsync()
         {
-            var users = await _client.GetUsersAsync(realm).ConfigureAwait(false);
+            var users = await _client.GetUsersAsync(RealmId);
             string userId = users.FirstOrDefault()?.Id;
             if (userId != null)
             {
-                var result = await _client.GetUserAsync(realm, userId).ConfigureAwait(false);
+                var result = await _client.GetUserAsync(RealmId, userId);
                 Assert.NotNull(result);
                 Assert.Equal(userId, result.Id);
             }
         }
 
         [Theory]
-        [InlineData("Insurance", "vermeulen")]
-        public async Task GetUserSocialLoginsAsync(string realm, string search)
+        [InlineData("test-data-user-1")]
+        public async Task GetUserSocialLoginsAsync(string search)
         {
-            var users = await _client.GetUsersAsync(realm, search: search).ConfigureAwait(false);
+            var users = await _client.GetUsersAsync(RealmId, search: search);
             string userId = users.FirstOrDefault()?.Id;
             if (userId != null)
             {
-                var result = await _client.GetUserSocialLoginsAsync(realm, userId).ConfigureAwait(false);
+                var result = await _client.GetUserSocialLoginsAsync(RealmId, userId);
                 Assert.NotNull(result);
             }
         }
 
         [Theory]
-        [InlineData("Insurance", "vermeulen")]
-        public async Task GetUserGroupsAsync(string realm, string search)
+        [InlineData("test-data-user-1")]
+        public async Task GetUserGroupsAsync(string search)
         {
-            var users = await _client.GetUsersAsync(realm, search: search).ConfigureAwait(false);
+            var users = await _client.GetUsersAsync(RealmId, search: search);
             string userId = users.FirstOrDefault()?.Id;
             if (userId != null)
             {
-                var result = await _client.GetUserGroupsAsync(realm, userId).ConfigureAwait(false);
+                var result = await _client.GetUserGroupsAsync(RealmId, userId);
                 Assert.NotNull(result);
             }
         }
 
         [Theory]
-        [InlineData("Insurance", "vermeulen")]
-        public async Task GetUserGroupsCountAsync(string realm, string search)
+        [InlineData("test-data-user-1")]
+        public async Task GetUserGroupsCountAsync(string search)
         {
-            var users = await _client.GetUsersAsync(realm, search: search).ConfigureAwait(false);
+            var users = await _client.GetUsersAsync(RealmId, search: search);
             string userId = users.FirstOrDefault()?.Id;
             if (userId != null)
             {
-                int? result = await _client.GetUserGroupsCountAsync(realm, userId);
+                int? result = await _client.GetUserGroupsCountAsync(RealmId, userId);
                 Assert.True(result >= 0);
             }
         }
 
         [Theory]
-        [InlineData("Insurance", "vermeulen")]
-        public async Task GetUserSessionsAsync(string realm, string search)
+        [InlineData("test-data-user-1")]
+        public async Task GetUserSessionsAsync(string search)
         {
-            var users = await _client.GetUsersAsync(realm, search: search).ConfigureAwait(false);
+            var users = await _client.GetUsersAsync(RealmId, search: search);
             string userId = users.FirstOrDefault()?.Id;
             if (userId != null)
             {
-                var result = await _client.GetUserSessionsAsync(realm, userId).ConfigureAwait(false);
+                var result = await _client.GetUserSessionsAsync(RealmId, userId);
                 Assert.NotNull(result);
             }
         }

@@ -9,9 +9,9 @@ namespace Keycloak.Net
         public async Task<ServerInfo> GetServerInfoAsync(string realm)
         {
             return await GetBaseUrl(realm)
-            .AppendPathSegment("/admin/serverinfo/")
-            .GetJsonAsync<ServerInfo>()
-            .ConfigureAwait(false);
+                .AppendPathSegment("/admin/serverinfo/")
+                .GetJsonAsync<ServerInfo>()
+                .ConfigureAwait(false);
         }
 
         public async Task<bool> CorsPreflightAsync(string realm)

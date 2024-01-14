@@ -5,22 +5,20 @@
 
     public partial class KeycloakClientShould
     {
-        [Theory(Skip = "Not working yet")]
-        [InlineData("master")]
-        public async Task TriggerUserSynchronizationAsync(string realm)
+        [Fact(Skip = "Not working yet")]
+        public async Task TriggerUserSynchronizationAsync()
         {
             string storageProviderId = "";
-            var result = await _client.TriggerUserSynchronizationAsync(realm, storageProviderId, UserSyncActions.Full).ConfigureAwait(false);
+            var result = await _client.TriggerUserSynchronizationAsync(RealmId, storageProviderId, UserSyncActions.Full);
             Assert.NotNull(result);
         }
 
-        [Theory(Skip = "Not working yet")]
-        [InlineData("master")]
-        public async Task TriggerLdapMapperSynchronizationAsync(string realm)
+        [Fact(Skip = "Not working yet")]
+        public async Task TriggerLdapMapperSynchronizationAsync()
         {
             string storageProviderId = "";
             string mapperId = "";
-            var result = await _client.TriggerLdapMapperSynchronizationAsync(realm, storageProviderId, mapperId, LdapMapperSyncActions.KeycloakToFed).ConfigureAwait(false);
+            var result = await _client.TriggerLdapMapperSynchronizationAsync(RealmId, storageProviderId, mapperId, LdapMapperSyncActions.KeycloakToFed);
             Assert.NotNull(result);
         }
     }

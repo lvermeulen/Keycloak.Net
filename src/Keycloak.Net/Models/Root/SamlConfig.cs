@@ -1,5 +1,7 @@
 namespace Keycloak.Net.Models.Root
 {
+    using Keycloak.Net.Common.Converters;
+    using System.ComponentModel;
     using System.Text.Json.Serialization;
 
     public class SamlConfig
@@ -17,6 +19,7 @@ namespace Keycloak.Net.Models.Root
         public string AttributeName { get; set; }
 
         [JsonPropertyName("single")]
+        [JsonConverter(typeof(BooleanJsonConverter))]
         public bool? Single { get; set; }
     }
 }

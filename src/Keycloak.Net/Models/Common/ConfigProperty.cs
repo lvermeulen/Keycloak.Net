@@ -3,6 +3,7 @@ namespace Keycloak.Net.Models.Common
     using System.Collections.Generic;
     using Keycloak.Net.Models.Root;
     using System.Text.Json.Serialization;
+    using Keycloak.Net.Common.Converters;
 
     public class ConfigProperty
     {
@@ -22,6 +23,7 @@ namespace Keycloak.Net.Models.Common
         public bool? Secret { get; set; }
 
         [JsonPropertyName("defaultValue")]
+        [JsonConverter(typeof(AlwaysStringJsonConverter))]
         public string DefaultValue { get; set; }
 
         [JsonPropertyName("options")]

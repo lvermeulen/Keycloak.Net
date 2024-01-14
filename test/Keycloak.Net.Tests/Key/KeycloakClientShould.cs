@@ -5,11 +5,10 @@
 
     public partial class KeycloakClientShould
     {
-        [Theory]
-        [InlineData("master")]
-        public async Task GetKeysAsync(string realm)
+        [Fact]
+        public async Task GetKeysAsync()
         {
-            var result = await _client.GetKeysAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetKeysAsync(RealmId);
             Assert.NotNull(result);
         }
     }

@@ -5,19 +5,17 @@
 
     public partial class KeycloakClientShould
     {
-        [Theory]
-        [InlineData("master")]
-        public async Task GetServerInfoAsync(string realm)
+        [Fact]
+        public async Task GetServerInfoAsync()
         {
-            var result = await _client.GetServerInfoAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetServerInfoAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task CorsPreflightAsync(string realm)
+        [Fact]
+        public async Task CorsPreflightAsync()
         {
-            bool? result = await _client.CorsPreflightAsync(realm);
+            bool? result = await _client.CorsPreflightAsync(RealmId);
             Assert.True(result);
         }
     }

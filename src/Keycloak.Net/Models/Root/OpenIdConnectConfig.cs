@@ -1,19 +1,23 @@
 namespace Keycloak.Net.Models.Root
 {
+    using Keycloak.Net.Common.Converters;
     using System.Text.Json.Serialization;
 
     public class OpenIdConnectConfig
     {
         [JsonPropertyName("userinfo.token.claim")]
+        [JsonConverter(typeof(BooleanJsonConverter))]
         public bool? UserInfoTokenClaim { get; set; }
 
         [JsonPropertyName("user.attribute")]
         public string UserAttribute { get; set; }
 
         [JsonPropertyName("id.token.claim")]
+        [JsonConverter(typeof(BooleanJsonConverter))]
         public bool? IdTokenClaim { get; set; }
 
         [JsonPropertyName("access.token.claim")]
+        [JsonConverter(typeof(BooleanJsonConverter))]
         public bool? AccessTokenClaim { get; set; }
 
         [JsonPropertyName("claim.name")]
@@ -44,6 +48,7 @@ namespace Keycloak.Net.Models.Root
         public string UserSessionNote { get; set; }
 
         [JsonPropertyName("multivalued")]
+        [JsonConverter(typeof(BooleanJsonConverter))]
         public bool? Multivalued { get; set; }
     }
 }

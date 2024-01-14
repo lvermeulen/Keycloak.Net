@@ -6,199 +6,185 @@
 
     public partial class KeycloakClientShould
     {
-        [Theory]
-        [InlineData("master")]
-        public async Task GetScopeMappingsAsync(string realm)
+        [Fact]
+        public async Task GetScopeMappingsAsync()
         {
-            var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
+            var clientScopes = await _client.GetClientScopesAsync(RealmId);
             string clientScopeId = clientScopes.FirstOrDefault()?.Id;
             if (clientScopeId != null)
             {
-                var result = await _client.GetScopeMappingsAsync(realm, clientScopeId).ConfigureAwait(false);
+                var result = await _client.GetScopeMappingsAsync(RealmId, clientScopeId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetClientRolesForClientScopeAsync(string realm)
+        [Fact]
+        public async Task GetClientRolesForClientScopeAsync()
         {
-            var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
+            var clientScopes = await _client.GetClientScopesAsync(RealmId);
             string clientScopeId = clientScopes.FirstOrDefault()?.Id;
             if (clientScopeId != null)
             {
-                var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+                var clients = await _client.GetClientsAsync(RealmId);
                 string clientId = clients.FirstOrDefault()?.Id;
                 if (clientId != null)
                 {
-                    var result = await _client.GetClientRolesForClientScopeAsync(realm, clientScopeId, clientId).ConfigureAwait(false);
+                    var result = await _client.GetClientRolesForClientScopeAsync(RealmId, clientScopeId, clientId);
                     Assert.NotNull(result);
                 }
             }
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetAvailableClientRolesForClientScopeAsync(string realm)
+        [Fact]
+        public async Task GetAvailableClientRolesForClientScopeAsync()
         {
-            var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
+            var clientScopes = await _client.GetClientScopesAsync(RealmId);
             string clientScopeId = clientScopes.FirstOrDefault()?.Id;
             if (clientScopeId != null)
             {
-                var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+                var clients = await _client.GetClientsAsync(RealmId);
                 string clientId = clients.FirstOrDefault()?.Id;
                 if (clientId != null)
                 {
-                    var result = await _client.GetAvailableClientRolesForClientScopeAsync(realm, clientScopeId, clientId).ConfigureAwait(false);
+                    var result = await _client.GetAvailableClientRolesForClientScopeAsync(RealmId, clientScopeId, clientId);
                     Assert.NotNull(result);
                 }
             }
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetEffectiveClientRolesForClientScopeAsync(string realm)
+        [Fact]
+        public async Task GetEffectiveClientRolesForClientScopeAsync()
         {
-            var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
+            var clientScopes = await _client.GetClientScopesAsync(RealmId);
             string clientScopeId = clientScopes.FirstOrDefault()?.Id;
             if (clientScopeId != null)
             {
-                var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+                var clients = await _client.GetClientsAsync(RealmId);
                 string clientId = clients.FirstOrDefault()?.Id;
                 if (clientId != null)
                 {
-                    var result = await _client.GetEffectiveClientRolesForClientScopeAsync(realm, clientScopeId, clientId).ConfigureAwait(false);
+                    var result = await _client.GetEffectiveClientRolesForClientScopeAsync(RealmId, clientScopeId, clientId);
                     Assert.NotNull(result);
                 }
             }
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetRealmRolesForClientScopeAsync(string realm)
+        [Fact]
+        public async Task GetRealmRolesForClientScopeAsync()
         {
-            var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
+            var clientScopes = await _client.GetClientScopesAsync(RealmId);
             string clientScopeId = clientScopes.FirstOrDefault()?.Id;
             if (clientScopeId != null)
             {
-                var result = await _client.GetRealmRolesForClientScopeAsync(realm, clientScopeId).ConfigureAwait(false);
+                var result = await _client.GetRealmRolesForClientScopeAsync(RealmId, clientScopeId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetAvailableRealmRolesForClientScopeAsync(string realm)
+        [Fact]
+        public async Task GetAvailableRealmRolesForClientScopeAsync()
         {
-            var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
+            var clientScopes = await _client.GetClientScopesAsync(RealmId);
             string clientScopeId = clientScopes.FirstOrDefault()?.Id;
             if (clientScopeId != null)
             {
-                var result = await _client.GetAvailableRealmRolesForClientScopeAsync(realm, clientScopeId).ConfigureAwait(false);
+                var result = await _client.GetAvailableRealmRolesForClientScopeAsync(RealmId, clientScopeId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetEffectiveRealmRolesForClientScopeAsync(string realm)
+        [Fact]
+        public async Task GetEffectiveRealmRolesForClientScopeAsync()
         {
-            var clientScopes = await _client.GetClientScopesAsync(realm).ConfigureAwait(false);
+            var clientScopes = await _client.GetClientScopesAsync(RealmId);
             string clientScopeId = clientScopes.FirstOrDefault()?.Id;
             if (clientScopeId != null)
             {
-                var result = await _client.GetEffectiveRealmRolesForClientScopeAsync(realm, clientScopeId).ConfigureAwait(false);
+                var result = await _client.GetEffectiveRealmRolesForClientScopeAsync(RealmId, clientScopeId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetScopeMappingsForClientAsync(string realm)
+        [Fact]
+        public async Task GetScopeMappingsForClientAsync()
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientId = clients.FirstOrDefault()?.Id;
             if (clientId != null)
             {
-                var result = await _client.GetScopeMappingsForClientAsync(realm, clientId).ConfigureAwait(false);
+                var result = await _client.GetScopeMappingsForClientAsync(RealmId, clientId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetClientRolesScopeMappingsForClientAsync(string realm)
+        [Fact]
+        public async Task GetClientRolesScopeMappingsForClientAsync()
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientId = clients.FirstOrDefault()?.Id;
             if (clientId != null)
             {
-                var result = await _client.GetClientRolesScopeMappingsForClientAsync(realm, clientId, clientId).ConfigureAwait(false);
+                var result = await _client.GetClientRolesScopeMappingsForClientAsync(RealmId, clientId, clientId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetAvailableClientRolesForClientScopeForClientAsync(string realm)
+        [Fact]
+        public async Task GetAvailableClientRolesForClientScopeForClientAsync()
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientId = clients.FirstOrDefault()?.Id;
             if (clientId != null)
             {
-                var result = await _client.GetAvailableClientRolesForClientScopeForClientAsync(realm, clientId, clientId).ConfigureAwait(false);
+                var result = await _client.GetAvailableClientRolesForClientScopeForClientAsync(RealmId, clientId, clientId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetEffectiveClientRolesForClientScopeForClientAsync(string realm)
+        [Fact]
+        public async Task GetEffectiveClientRolesForClientScopeForClientAsync()
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientId = clients.FirstOrDefault()?.Id;
             if (clientId != null)
             {
-                var result = await _client.GetEffectiveClientRolesForClientScopeForClientAsync(realm, clientId, clientId).ConfigureAwait(false);
+                var result = await _client.GetEffectiveClientRolesForClientScopeForClientAsync(RealmId, clientId, clientId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetRealmRolesScopeMappingsForClientAsync(string realm)
+        [Fact]
+        public async Task GetRealmRolesScopeMappingsForClientAsync()
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientId = clients.FirstOrDefault()?.Id;
             if (clientId != null)
             {
-                var result = await _client.GetRealmRolesScopeMappingsForClientAsync(realm, clientId).ConfigureAwait(false);
+                var result = await _client.GetRealmRolesScopeMappingsForClientAsync(RealmId, clientId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetAvailableRealmRolesForClientScopeForClientAsync(string realm)
+        [Fact]
+        public async Task GetAvailableRealmRolesForClientScopeForClientAsync()
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientId = clients.FirstOrDefault()?.Id;
             if (clientId != null)
             {
-                var result = await _client.GetAvailableRealmRolesForClientScopeForClientAsync(realm, clientId).ConfigureAwait(false);
+                var result = await _client.GetAvailableRealmRolesForClientScopeForClientAsync(RealmId, clientId);
                 Assert.NotNull(result);
             }
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetEffectiveRealmRolesForClientScopeForClientAsync(string realm)
+        [Fact]
+        public async Task GetEffectiveRealmRolesForClientScopeForClientAsync()
         {
-            var clients = await _client.GetClientsAsync(realm).ConfigureAwait(false);
+            var clients = await _client.GetClientsAsync(RealmId);
             string clientId = clients.FirstOrDefault()?.Id;
             if (clientId != null)
             {
-                var result = await _client.GetEffectiveRealmRolesForClientScopeForClientAsync(realm, clientId).ConfigureAwait(false);
+                var result = await _client.GetEffectiveRealmRolesForClientScopeForClientAsync(RealmId, clientId);
                 Assert.NotNull(result);
             }
         }

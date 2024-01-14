@@ -5,11 +5,10 @@
 
     public partial class KeycloakClientShould
     {
-        [Theory]
-        [InlineData("master")]
-        public async Task GetRetrieveProvidersBasePathAsync(string realm)
+        [Fact]
+        public async Task GetRetrieveProvidersBasePathAsync()
         {
-            var result = await _client.GetRetrieveProvidersBasePathAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetRetrieveProvidersBasePathAsync(RealmId);
             Assert.NotNull(result);
         }
     }

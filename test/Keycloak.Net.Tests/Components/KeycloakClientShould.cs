@@ -6,23 +6,21 @@
 
     public partial class KeycloakClientShould
     {
-        [Theory]
-        [InlineData("master")]
-        public async Task GetComponentsAsync(string realm)
+        [Fact]
+        public async Task GetComponentsAsync()
         {
-            var result = await _client.GetComponentsAsync(realm).ConfigureAwait(false);
+            var result = await _client.GetComponentsAsync(RealmId);
             Assert.NotNull(result);
         }
 
-        [Theory]
-        [InlineData("master")]
-        public async Task GetComponentAsync(string realm)
+        [Fact]
+        public async Task GetComponentAsync()
         {
-            var components = await _client.GetComponentsAsync(realm).ConfigureAwait(false);
+            var components = await _client.GetComponentsAsync(RealmId);
             string componentId = components.FirstOrDefault()?.Id;
             if (componentId != null)
             {
-                var result = await _client.GetComponentAsync(realm, componentId).ConfigureAwait(false);
+                var result = await _client.GetComponentAsync(RealmId, componentId);
                 Assert.NotNull(result);
             }
         }

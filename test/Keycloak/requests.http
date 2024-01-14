@@ -1,0 +1,4 @@
+GET http://localhost:8080/auth/realms/test/.well-known/openid-configuration
+
+###
+GET http://localhost:8080/auth/realms/test/protocol/openid-connect/auth
